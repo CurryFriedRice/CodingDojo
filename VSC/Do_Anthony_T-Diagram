@@ -1,0 +1,31 @@
+Code Snippet 1: displayContactInfo()
+
+Variable/Action | Value
+---------------------------------------
+auntContactInfo | ["Paula", "Smith", "1234 Main Street", "St. Louis", "MO", 12345]
+output          | Array ["Paula", "Smith", "1234 Main Street", "St. Louis", "MO", 12345]
+
+
+Since there is no call to a specific value it will output the entire array as the array
+
+=======================================
+
+Code Snippet 2: displayGroceryList()
+
+Variable/Action | Value
+---------------------------------------
+produce         | ["apples", "oranges"]
+frozen          | ["broccoli", "ice cream"]
+frozen.push     | ["broccoli", "ice cream", "hashbrowns"]
+output          | Array ["broccoli", "ice cream", "hashbrowns"]
+
+=======================================
+
+Code Snippet 3: movieLibrary
+
+Variable/Action   | Value
+---------------------------------------
+movieLibrary      | ["Bambi", "E.T.", "Toy Story"]
+movieLibrary.push | ["Bambi", "E.T.", "Toy Story", "Zoro"]
+movieLibrary[1] override | ["Bambi", "Beetlejuice", "Toy Story", "Zoro"]
+output            | Array ["Bambi", "Beetlejuice", "Toy Story", "Zoro"]
