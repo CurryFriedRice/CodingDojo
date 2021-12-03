@@ -5,7 +5,7 @@
     </div>
     <script type="text/javascript">
 	    var leftValue = 450, topValue = 100;
-
+		var walkValue = 1;
     	function update(){
     		document.getElementById("character").style.left = leftValue+"px";
     		document.getElementById("character").style.top = topValue+"px";
@@ -13,17 +13,32 @@
 
     	document.onkeydown = function(e){
     		console.log(e);
+			walkValue++;
+			if(walkValue > 2) walkValue = 1;
     		if(e.keyCode == 37) { // LEFT
     			leftValue = leftValue - 10 > 0 ? leftValue - 10: 0;
-    		}
-    		else if (e.keyCode == 39) { // RIGHT
-    			leftValue = leftValue + 10 < 500 ? leftValue +10 : 500;    		
-    		}
+				setSprite(leftValue, "left" + walkValue);
+			}
+			else if (e.keyCode == 39) { // RIGHT
+    			leftValue = leftValue + 10 < 500 ? leftValue +10 : 500;
+				setSprite(leftValue, 'right'+ walkValue);
+			}
     		else if (e.keyCode == 40) { // DOWN
 				topValue = topValue + 10 < 500 ? topValue + 10 : 500;
-    		}else if(e.keyCode == 38) topValue = topValue - 10 > 0 ? topValue - 10 : 0;
-    		// ...
+				setSprite(topValue, 'down'+ walkValue);
+    		}
+			else if(e.keyCode == 38) { // UP
+				topValue = topValue - 10 > 0 ? topValue - 10 : 0;
+				setSprite(topValue, 'top'+ walkValue);
+			}
     		update();
+
+
+			function setSprite(axisVal ,direction)
+			{
+				direction == 'top' || 'down' ? document.getElementById("character").style.top = axisVal+"px" : document.getElementById("character").style.left = axisVal+"px";
+				document.getElementById("character").style.backgroundImage = "url('img/"+ direction+".png')";
+			}
     	}
     </script>
 </body>
