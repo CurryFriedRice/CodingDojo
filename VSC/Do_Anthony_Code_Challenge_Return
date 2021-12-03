@@ -1,0 +1,166 @@
+Yes the format of how I was writing these down changed as I progressed...
+Originally It was keeping track of order of operations and variable outputs
+Then as functions were used I used indentation to show parts of the function
+As functions were reused I solved the expressions then plugged them into the variables to solve for the final.
+
+* is denoting what the console will see
+
+Code Snippet 1: hello()
+
+Variable/Action | Value
+---------------------------------------
+function call   | 
+*output         | hello
+*output         | Dojo
+
+=======================================
+
+Code Snippet 2: hello()
+
+Variable/Action | Value
+---------------------------------------
+function call   | 
+output          | hello
+result          | 15
+*output         | result is 15
+
+=======================================
+
+Code Snippet 3: numPlus(num)
+
+Variable/Action   | Value
+---------------------------------------
+function call     |
+*output           | "num is" 3 
+result            | 3 + 15 =18
+*output           | "result is" 18
+
+
+=======================================
+
+Code Snippet 4: logAndReturn(num2)
+
+Variable/Action | Value
+---------------------------------------
+num             | 15
+*output         | 15
+function call   |
+*output         | 10
+result          | 10
+*output         | 10
+*output         | 15
+
+=======================================
+
+Code Snippet 5: timesTwo(num2)
+
+Variable/Action | Value
+---------------------------------------
+num             | 15
+*output num     | 15
+timesTwo(10)    | 
+*output num2    | 10
+return          | 10*2
+result          | 20
+*output result  | 20
+*output num     | 10
+=======================================
+
+Code Snippet 6: timesTwoAgain(num)
+
+Variable/Action | Value
+---------------------------------------
+result          | timesTwoAgain(3) + timesTwoAgain(5)
+timesTwoAgain(3)| 
+    *output num | "num is" 3
+    y           | 3*2 = 6
+    return      | 6
+timesTwoAgain(5)| 
+    *output num | "num is" 5
+    y           | 5*2 = 10
+    return      | 10
+result          | 6 + 10 = 16
+*output result  | "result is" 16
+
+
+=======================================
+
+Code Snippet 7: sumNums(num1, num2)
+
+Variable/Action | Value
+---------------------------------------
+*output         | sumNums(2,3)
+sumNums(2,3)    | 
+    return      | 2+3 = 5
+*output         | sumNums(3,5)
+sumNums(3,5)    |
+    return      | 3+5 = 8
+
+=======================================
+
+Code Snippet 8: printSumNums(num1, num2)
+
+Variable/Action | Value
+---------------------------------------
+printSumNums(2,3)|
+    *output     | 2
+    return      | 5 = 2 + 3 = num1 + num2
+*output         | 5 = printSumNums(2,3)
+printSumNums(3,5)|
+    *output     | 3 = num1
+    return      | 8 = 3 + 5 = num1 + num2
+*output         | 8 = printSumNums(3,5)
+
+=======================================
+
+Code Snippet 9: sumNums(num1,num2)
+
+Variable/Action | Value
+---------------------------------------
+sumNums(2,3)    |
+    sum         |  5 = 2 + 3 = num1 + num2
+    *output     | "sum is" 5
+    return      | 5 = sum
+sumNums(3,5)    |
+    sum         |  8 = 3 + 5 = num1 + num2
+    *output     | "sum is" 8
+    return      | 8 = sum
+results         | 13 = 5 + 8 = sumNums(2,3) +sumNums(3,5)
+*output         | "result is", 13
+
+=======================================
+
+Code Snippet 10: sumNums(num1, num2)
+
+Variable/Action | Value
+---------------------------------------
+result          | sumNums(2,3) + sumNums(3,sumNums(2,1)) + sumNums(sumNums(2,1),sumNums(2,3));
+result          | 5 + sumNums(3,3) + sumNums(3,5)
+result          | 5 + 6 + 8
+result          | 19
+
+solved values
+----------------------------------------
+sumNums(2,1)        |
+    sum             |  3 = 2 + 1 = num1 + num2
+    *output         | "sum is" 3
+    return          | 3 = sum
+
+----------------------------------------
+sumNums(2,3)            |
+    sum                 |  5 = 2 + 3 = num1 + num2
+    *output             | "sum is" 5
+    return              | 5 = sum
+
+----------------------------------------
+sumNums(3,3)            |
+    sum                 |  6 = 6 + 3 = num1 + num2
+    *output             | "sum is" 6
+    return              | 6 = sum
+    
+
+----------------------------------------
+sumNums(3,5)            |
+    sum                 |  8 = 3 + 5 = num1 + num2
+    *output             | "sum is" 8
+    return              | 8 = sum
