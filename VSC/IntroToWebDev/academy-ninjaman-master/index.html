@@ -1,0 +1,308 @@
+<html>
+	<head>
+		<style>
+			* 
+			{
+				padding: 0;
+				margin: 0;
+			}
+			.wall,
+			.sushi, 
+			.blank,
+			.onigiri,
+			.warp,
+			#ninjaman
+			{
+				height: 40;
+				width: 40;
+				display: inline-block;
+			}
+			.wall
+			{
+				background-color:cadetblue;
+			}
+			.warp
+			{
+				background-color:forestgreen;
+			}
+			.blank, 
+			.sushi,
+			.onigiri,
+			#ninjaman
+			{
+				background-color: black;
+				background-size: contain;
+			}
+			.sushi
+			{
+				background-image: url("img/sushi.png");
+			}
+			.onigiri
+			{
+				background-image: url("img/onigiri.png");
+			}
+			#ninjaman
+			{
+				height: 40;
+				width: 40;
+				background-image: url("img/ninja.gif");
+				position:absolute;
+			}
+
+		</style>
+	</head>
+	<body onload="selectWorld()">
+	
+	<div id="world"></div>
+	<div id ="ninjaman"></div>
+	<div id = scoreboard></div>
+	<script type="text/javascript">
+		var ninjaman = 
+		{
+			x: 1,
+			y: 1,
+			lives: 3,
+			sushi: 0,
+			onigiri: 0
+		}; //X then Y
+		
+		var warpTile =
+		{
+			//First Tile
+			x1: 0,
+			y1: 0,
+
+			//Second Tile
+			x2: 0,
+			y2: 0
+		};
+
+
+		var uniGrid = 
+		[
+			[
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,2,2,2,1,0,0,0,0,0,2,2,2,2,0],
+				[0,2,0,0,1,0,0,0,0,0,1,0,0,2,0],
+				[0,2,1,1,1,1,1,1,1,1,1,1,1,2,0],
+				[0,0,0,0,1,0,0,0,0,0,1,0,0,0,0],
+				[0,0,1,1,1,1,2,2,2,1,1,1,1,0,0],
+				[0,0,1,0,0,2,0,0,0,2,0,0,1,0,0],
+				[0,9,1,0,0,2,0,0,0,2,0,0,1,9,0],
+				[0,0,1,0,0,2,0,0,0,2,0,0,1,0,0],
+				[0,0,1,1,1,1,2,2,2,1,1,1,1,0,0],
+				[0,0,0,0,1,0,0,0,0,0,1,0,0,0,0],
+				[0,2,1,1,1,1,1,1,1,1,1,1,1,2,0],
+				[0,2,0,0,1,0,0,0,0,0,1,0,0,2,0],
+				[0,2,2,2,2,0,0,0,0,0,2,2,2,2,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+			],
+			[
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,9,1,1,2,2,2,2,2,2,2,1,1,2,0],
+				[0,1,0,0,0,0,0,1,0,0,0,0,0,2,0],
+				[0,2,0,0,0,1,2,2,2,1,0,0,0,2,0],
+				[0,2,1,2,2,1,0,0,0,1,2,2,1,2,0],
+				[0,0,2,0,0,1,2,2,2,1,0,0,2,0,0],
+				[0,0,2,0,0,1,0,0,0,1,0,0,2,0,0],
+				[0,0,1,2,2,1,2,2,2,1,2,2,1,0,0],
+				[0,0,2,0,0,1,0,0,0,1,0,0,2,0,0],
+				[0,0,2,0,0,1,0,0,0,1,0,0,2,0,0],
+				[0,2,1,2,2,1,2,2,2,1,2,2,1,2,0],
+				[0,2,0,0,0,0,0,1,0,0,0,0,0,2,0],
+				[0,2,0,0,0,0,0,1,0,0,0,0,0,1,0],
+				[0,2,1,1,2,2,2,2,2,2,2,1,1,9,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+			],
+			[
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,2,2,1,1,2,2,0,1,1,2,2,2,1,0],
+				[0,2,2,0,0,2,2,0,1,1,0,9,0,1,0],
+				[0,1,0,0,0,0,1,0,1,0,0,0,0,1,0],
+				[0,1,1,2,2,1,1,0,1,1,2,2,1,1,0],
+				[0,2,1,0,0,1,1,2,1,1,0,0,1,2,0],
+				[0,2,1,0,0,1,1,0,1,1,0,0,1,2,0],
+				[0,2,1,2,2,1,1,0,1,1,2,2,1,2,0],
+				[0,2,1,0,0,1,1,0,1,1,0,0,1,2,0],
+				[0,2,1,0,0,1,1,2,1,1,0,0,1,2,0],
+				[0,1,1,2,2,1,1,0,1,1,2,2,1,1,0],
+				[0,1,0,0,0,0,1,0,1,0,0,0,0,1,0],
+				[0,1,0,9,0,1,1,0,2,2,0,0,2,2,0],
+				[0,1,2,2,2,1,1,0,2,2,1,1,2,2,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+			],
+		]
+		var worldGrid =[];
+		
+        var worldDict = 
+		{
+			0 : "wall",
+			1 : "blank",
+			2 : "sushi",
+			3 : "onigiri",
+			9 : "warp"
+		}
+
+		function drawWorld()
+		{
+			output = "";
+			for (var row = 0; row < worldGrid.length; row++)
+			{
+				//Open the row
+				output += "<div class='row'>";
+				//Populate the row
+				
+					for(var content = 0; content < worldGrid[row].length; content++)
+					{
+						output += "<div class = "+ worldDict[worldGrid[row][content]] + "></div>" 
+						setupWarpTiles();
+					}
+					
+				//Close the row
+				output += "</div>"
+			}
+			document.getElementById('world').innerHTML = output;
+			
+			function setupWarpTiles()
+			{
+				if(worldGrid[row][content] ==9)
+				{	
+					if(warpTile.x1 == 0 && warpTile.y1 == 0 )
+					{
+						warpTile.x1= content;
+						warpTile.y1 = row;
+					}else
+					{
+						warpTile.x2= content;
+						warpTile.y2 = row;
+					}
+				}
+			}
+		}
+
+		
+		document.onkeydown = function(e)
+		{
+			if(e.keyCode == 37) { // LEFT
+				ninjaman.x = checkWall(-1, 0) ? ninjaman.x : ninjaman.x - 1;				
+			}
+			else if (e.keyCode == 39) { // RIGHT
+				ninjaman.x = checkWall(1, 0) ? ninjaman.x : ninjaman.x + 1;
+			}
+    		else if (e.keyCode == 40) { // DOWN
+				//ninjaman.y += 1;
+				ninjaman.y = checkWall(0, 1) ? ninjaman.y : ninjaman.y + 1;
+			}
+			else if(e.keyCode == 38) { // UP
+				//ninjaman.y -= 1;
+				ninjaman.y = checkWall(0, -1) ? ninjaman.y : ninjaman.y - 1;
+			}
+			checkGround();
+			drawWorld();
+
+			document.getElementById('ninjaman').style.top = ninjaman.y *40;
+			document.getElementById('ninjaman').style.left =  ninjaman.x *40;;
+			
+			function checkWall(xDir, yDir)
+			{
+				/*
+				console.log("--------");
+				console.log(ninjaman);
+				console.log((ninjaman.x + xDir)+ " | "+(ninjaman.y + yDir))
+				console.log(worldDict[worldGrid[ninjaman.y + yDir][ninjaman.x + xDir]]);
+				*/
+				return worldGrid[ninjaman.y + yDir][ninjaman.x + xDir] == 0;
+			}
+			function checkGround()
+			{
+				switch(worldGrid[ninjaman.y][ninjaman.x])
+				{
+					case 2://if it's a sushi
+						ninjaman.sushi += 1;
+						worldGrid[ninjaman.y][ninjaman.x] = 1;
+						if(ninjaman.sushi %8 == 0) makeOnigiri(Math.round(worldGrid.length/2)-1, Math.round(worldGrid[0].length/2)-1);
+						hasSushi();
+						break;
+					case 3://if it's an onigiri
+						ninjaman.onigiri +=1;
+						worldGrid[ninjaman.y][ninjaman.x] = 1;
+						break;
+					case 9://if it's a warp tile
+						warpNinja();
+						break;
+					default:
+						break;
+				}
+
+				function warpNinja()
+				{
+					if(ninjaman.x == warpTile.x1 && ninjaman.y == warpTile.y1)
+					{
+						ninjaman.x = warpTile.x2;
+						ninjaman.y = warpTile.y2;
+					}else
+					{
+						ninjaman.x = warpTile.x1;
+						ninjaman.y = warpTile.y1;
+					}
+				}
+				
+				function makeOnigiri(xPos, yPos)
+				{
+					console.log(worldDict[worldGrid[yPos][xPos]]);
+					switch(worldGrid[yPos][xPos])
+					{
+						case 1:
+						case 2:
+						case 3: //if you don't get it another won't spawn
+							worldGrid[yPos][xPos] = 3;
+							break;
+						default: 
+							makeOnigiri(xPos,yPos+1);
+							break;
+					}
+				}
+			}
+		}
+		
+		function hasSushi()
+		{
+		
+			for (var row = 0; row < worldGrid.length; row++)
+			{
+				for(var content = 0; content < worldGrid[row].length; content++)
+				{
+					if(worldGrid[row][content] == 2) return;
+				}
+			}
+			return selectWorld();
+		}
+
+		function selectWorld()
+		{
+
+			var mapNum = Math.floor(Math.random()*(uniGrid.length));
+			console.log(mapNum);
+			worldGrid = uniGrid[mapNum];
+			placeNinjaman(Math.round(worldGrid.length/2)-1,Math.round(worldGrid[0].length/2)-1);
+			document.getElementById('ninjaman').style.top = ninjaman.y *40;
+			document.getElementById('ninjaman').style.left =  ninjaman.x *40;
+			drawWorld();
+			function placeNinjaman(xPos, yPos){
+				//if(yPos <= worldGrid.length) yPos = 0;
+				//console.log(xPos, yPos);
+				if(worldGrid[yPos][xPos] == 1||  worldGrid[yPos][xPos] == 2 ) 
+				{
+					ninjaman.x = xPos; ninjaman.y = yPos;
+				}
+				else placeNinjaman(xPos, yPos+1);
+			}
+		}
+		
+		selectWorld();
+		//drawWorld();
+        
+		
+    </script>
+</body>
+</html>
