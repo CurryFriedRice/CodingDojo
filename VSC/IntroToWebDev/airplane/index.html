@@ -20,26 +20,45 @@
                 height: 75px;
                 position: absolute;
                 background-size: contain;
-                
             }
             .player{background-image: url("img/player.png");}
             .enemy{background-image: url("img/enemy.png");}
+            .allyMissile,
+            .enemyMissile
+            {   
+                width: 32px;
+                height: 48px;
+                position: absolute;
+                background-size: contain;  
+            }
+            .allyMissile{background-image:url("img/AllyMissile.png");}
+            .enemyMissile{background-image:url("img/EnemyMissile.png");}
         </style>
 
         <div id="ocean">
             <div id = "players"></div>
             <div id = "enemies"></div>
+            <div id = "allyMissiles"></div>
+            <div id = "enemyMissiles"></div>
         </div>
     
         <script type = 'text/javascript'>
-            
+            var movingLeft = false;
             var player =
             {
                 x:450,
                 y:620,
                 lives: 3
             }
-
+            
+            var horizAxis = 'none';
+            var vertAxis = 'none';
+            
+            var missileReady = true;
+            var allyMissile = [];
+            
+            var enemyMissile = [];
+            
             //So there will only ever be 10 enemies on screen
             var enemy = 
             [
@@ -53,14 +72,58 @@
                 {x: 300, y:100, health: 0},
                 {x: 500, y:100, health: 0}
             ];
-
+            
             
             function drawPlayer()
             {
                 content =  "<div class='player' style='left:" + player.x+"px; top: "+ player.y+"px;'> </div>";
-                console.log(content);
                 document.getElementById('players').innerHTML = content;
             }
+            
+            function drawAllyMissile()
+            {
+                content ='';
+                for (var i = 0; i <allyMissile.length; i++)
+                {
+                    content += "<div class='allyMissile' style='left:"+ allyMissile[i].x+ "px; top:"+ allyMissile[i].y+"px;'> </div>";
+                }
+                document.getElementById("allyMissiles").innerHTML = content;
+            }
+
+            function movePlayer()
+            {
+                var speed = 10;
+                if(horizAxis == "left") { // LEFT
+                    player.x = player.x - speed > 50 ? player.x -speed: 50;
+				} 
+				else if (horizAxis == "right") { // RIGHT
+                    player.x = player.x + speed < 800 ? player.x +speed: 800;
+				}
+				if (vertAxis == "down") { // DOWN
+                    player.y = player.y + speed < 600 ? player.y +speed: 600;
+				}
+				else if(vertAxis == "up") { // UP
+                    player.y = player.y - speed > 450 ? player.y -speed: 450;
+				}
+                
+            }
+            
+            function moveAllyMissile()
+            {                
+                var speed = 15;
+                for(var i = 0; i < allyMissile.length; i++)
+                {
+                    allyMissile[i].y -= speed;
+                    allyMissile = allyMissile.filter(offScreen);
+                    //if(contactEnemy(allyMissile[i]));
+                }
+
+                function offScreen(value)
+                {
+                    return value.y > -50;
+                }
+            }
+
             function drawEnemy()
             {
                 content ='';
@@ -70,35 +133,157 @@
                 }
                 document.getElementById("enemies").innerHTML = content;
             }
-            drawEnemy();
-            document.onkeydown = function(e)
+            
+
+            function moveEnemy()
             {
-                console.log(player);
-                if(e.keyCode == 37) { // LEFT
-                    player.x = player.x - 10 > 50 ? player.x -10: 50;
-				} 
-				else if (e.keyCode == 39) { // RIGHT
-                    player.x = player.x + 10 < 800 ? player.x +10: 800;
-				}
-				else if (e.keyCode == 40) { // DOWN
-                    player.y = player.y + 10 < 600 ? player.y +10: 600;
-				}
-				else if(e.keyCode == 38) { // UP
-                    player.y = player.y - 10 > 450 ? player.y -10: 450;
-				}
-                drawPlayer();
-            }
- 
-            document.onkeypress = function(e)
-            {
-                if(e.keycode = 32)//SPACEBAR
+
+                MoveHorizontal();
+                function MoveHorizontal(){
+                    var direction = movingLeft ? -10 : 10;
+
+                    for(var i = 0; i < enemy.length; i++)
+                    {
+                        if(enemy[i].x <= 50) 
+                        {
+                            movingLeft = false; 
+                            moveVertical();
+                        }
+                        else if(enemy[i].x >= 800)
+                        {
+                            movingLeft = true; 
+                        }
+                        enemy[i].x += direction;
+                    }
+                }
+
+                function moveVertical()
                 {
-                    //Shoot the GUN... then also figure ou
+                    for(var i = 0; i < enemy.length; i++)
+                    {
+                        enemy[i].y = (enemy[i].y + 10) <= 600 ? enemy[i].y + 10 : 600;
+                    }
+                }
+            }
+            
+            function drawEnemyMissile()
+            {   
+                //console.log(enemyMissile);             
+                content ='';
+                for (var i = 0; i <enemyMissile.length; i++)
+                {
+                    content += "<div class='enemyMissile' style='left:"+ enemyMissile[i].x+ "px; top:"+ enemyMissile[i].y+"px;'> </div>";
+                }
+                document.getElementById("enemyMissiles").innerHTML = content;
+                
+            }
+
+
+
+            function moveEnemyMissile()
+            {
+                var speed = -8;
+                for(var i = 0; i < enemyMissile.length; i++)
+                {
+                    enemyMissile[i].y -= speed;
+                    enemyMissile = enemyMissile.filter(offScreen);
+                    //if(contactEnemy(allyMissile[i]));
+                }
+
+                function offScreen(value)
+                {
+                    
+                    return value.y < 650;
                 }
             }
 
+            
+            document.onkeydown = function(e)
+            {
+                                //console.log(player);
+                if(e.keyCode == 37) { // LEFT
+                    //player.x = player.x - 10 > 50 ? player.x -10: 50;
+                    horizAxis = "left";
+                } 
+				else if (e.keyCode == 39) { // RIGHT
+                    //player.x = player.x + 10 < 800 ? player.x +10: 800;
+                    horizAxis = "right";
+                }
+				if (e.keyCode == 40) { // DOWN
+                    //player.y = player.y + 10 < 600 ? player.y +10: 600;
+                    vertAxis = "down";
+                }
+				else if(e.keyCode == 38) { // UP
+                    //player.y = player.y - 10 > 450 ? player.y -10: 450;
+                    vertAxis = "up";
+                }
+                if(e.keyCode == 32)//SPACEBAR
+                {
+                    //Shoot the GUN... then also figure ou
+                    firingMissile = true;
+                    if(allyMissile.length <= 5 && missileReady)// && firingMissile)
+                    {
+                        allyMissile.push({x: player.x, y: player.y});
+                        missileReady = false;
+                        setTimeout(readyMissile, 250);
+                    }
+                }
+                function readyMissile()
+                {
+                    missileReady = true;
+                }
+
+            }
+            document.onkeyup = function(e)
+            {
+                if(e.keyCode == 37) { // LEFT
+                    horizAxis= "none";
+				} 
+				else if (e.keyCode == 39) { // RIGHT
+                    horizAxis = "none";
+				}
+				else if (e.keyCode == 40) { // DOWN
+                    vertAxis = "none";
+				}
+				else if(e.keyCode == 38) { // UP
+                    vertAxis = "none";
+				}
+            }
 
 
+
+            function gameLoop()
+            {
+                moveEnemy();
+                drawEnemy();
+                moveEnemyMissile();
+                drawEnemyMissile();
+                setTimeout(gameLoop, 66);
+            }
+
+            function fireEnemyMissile()
+            {
+                if(enemyMissile.length < 3)
+                {   
+                    var R = Math.floor(enemy.length*Math.random()); 
+                    enemyMissile.push({x: enemy[R].x, y: enemy[R].y});
+                }
+                setTimeout(fireEnemyMissile,2000);
+            }
+            
+            //player loop is slightly faster so the player feels more in control
+            function playerLoop()
+            {
+                movePlayer();
+                drawPlayer();
+                moveAllyMissile();
+                drawAllyMissile();
+                setTimeout(playerLoop, 33);
+            }
+            
+            playerLoop();
+            gameLoop();
+            fireEnemyMissile();
         </script>
     </body>
 </html>
