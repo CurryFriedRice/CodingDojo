@@ -11,7 +11,12 @@
 			.blank,
 			.onigiri,
 			.warp,
-			#ninjaman
+			#ninjaman,
+			#bluey,
+			#pinky,
+			#red,
+			#pumpky
+		
 			{
 				height: 40;
 				width: 40;
@@ -28,7 +33,11 @@
 			.blank, 
 			.sushi,
 			.onigiri,
-			#ninjaman
+			#ninjaman,		
+			#bluey,
+			#pinky,
+			#red,
+			#pumpky
 			{
 				background-color: black;
 				background-size: contain;
@@ -43,10 +52,40 @@
 			}
 			#ninjaman
 			{
-				height: 40;
-				width: 40;
 				background-image: url("img/ninja.gif");
 				position:absolute;
+			}
+			#bluey,
+			#pinky,
+			#red,
+			#pumpky
+			{
+				position:absolute;
+				left:260;
+			}
+			#bluey
+			{
+				background-image: url("img/bluey.gif");
+				left: 140;
+			}
+			#pinky
+			{
+				background-image: url("img/pinky.gif");
+				left: 180;
+			}
+			#red
+			{
+				background-image: url("img/red.gif");
+				left: 220;
+			}
+			#pumpky
+			{
+				background-image: url("img/pumpky.gif");
+			}	
+			#scoreboard{
+				height: 40;
+				width: 400;
+				display: inline-block;
 			}
 
 		</style>
@@ -55,7 +94,13 @@
 	
 	<div id="world"></div>
 	<div id ="ninjaman"></div>
-	<div id = scoreboard></div>
+
+	<div id ="bluey"></div>
+	<div id ="pinky"></div>
+	<div id ="pumpky"></div>
+	<div id ="red"></div>
+	
+	<div id = scoreboard><div>SCORE: 0</div></div>
 	<script type="text/javascript">
 		var ninjaman = 
 		{
@@ -63,9 +108,43 @@
 			y: 1,
 			lives: 3,
 			sushi: 0,
-			onigiri: 0
+			onigiri: 0,
+			onigiriPower: 0
 		}; //X then Y
 		
+		var bluey = 
+		{
+			name: 'bluey',
+			x: 0,
+			y: 0,
+			eaten: false,
+			moveValue: 0
+		}
+		var pinky = 
+		{
+			name: 'pinky',
+			x: 0,
+			y: 0,
+			eaten: false,
+			moveValue: 0
+		}
+		var red =
+		{
+			name: 'red',
+			x: 0,
+			y: 0,
+			eaten: false,
+			moveValue: 0
+		}
+		var pumpky = 
+		{
+			name: 'pumpky',
+			x: 0,
+			y: 0,
+			eaten: false,
+			moveValue: 0
+		}
+
 		var warpTile =
 		{
 			//First Tile
@@ -183,26 +262,33 @@
 		
 		document.onkeydown = function(e)
 		{
-			if(e.keyCode == 37) { // LEFT
-				ninjaman.x = checkWall(-1, 0) ? ninjaman.x : ninjaman.x - 1;				
+			//so if the lives is greater than 0
+			if(ninjaman.lives > 0){
+				if(e.keyCode == 37) { // LEFT
+					ninjaman.x = checkWall(-1, 0) ? ninjaman.x : ninjaman.x - 1;				
+				}
+				else if (e.keyCode == 39) { // RIGHT
+					ninjaman.x = checkWall(1, 0) ? ninjaman.x : ninjaman.x + 1;
+				}
+				else if (e.keyCode == 40) { // DOWN
+					//ninjaman.y += 1;
+					ninjaman.y = checkWall(0, 1) ? ninjaman.y : ninjaman.y + 1;
+				}
+				else if(e.keyCode == 38) { // UP
+					//ninjaman.y -= 1;
+					ninjaman.y = checkWall(0, -1) ? ninjaman.y : ninjaman.y - 1;
+				}
+				checkGround();
+				ninjaman.onigiriPower = ninjaman.onigiriPower - 1 > 0 ? ninjaman.onigiriPower - 1 : 0;
+				drawWorld();
+				drawScoreboard();
+				document.getElementById('ninjaman').style.top = ninjaman.y *40;
+				document.getElementById('ninjaman').style.left =  ninjaman.x *40;;
+				
+				moveGhosts();
 			}
-			else if (e.keyCode == 39) { // RIGHT
-				ninjaman.x = checkWall(1, 0) ? ninjaman.x : ninjaman.x + 1;
-			}
-    		else if (e.keyCode == 40) { // DOWN
-				//ninjaman.y += 1;
-				ninjaman.y = checkWall(0, 1) ? ninjaman.y : ninjaman.y + 1;
-			}
-			else if(e.keyCode == 38) { // UP
-				//ninjaman.y -= 1;
-				ninjaman.y = checkWall(0, -1) ? ninjaman.y : ninjaman.y - 1;
-			}
-			checkGround();
-			drawWorld();
 
-			document.getElementById('ninjaman').style.top = ninjaman.y *40;
-			document.getElementById('ninjaman').style.left =  ninjaman.x *40;;
-			
+
 			function checkWall(xDir, yDir)
 			{
 				/*
@@ -225,6 +311,7 @@
 						break;
 					case 3://if it's an onigiri
 						ninjaman.onigiri +=1;
+						ninjaman.onigiriPower = 20;
 						worldGrid[ninjaman.y][ninjaman.x] = 1;
 						break;
 					case 9://if it's a warp tile
@@ -267,15 +354,16 @@
 		
 		function hasSushi()
 		{
-		
+			var available = false;
 			for (var row = 0; row < worldGrid.length; row++)
 			{
 				for(var content = 0; content < worldGrid[row].length; content++)
 				{
-					if(worldGrid[row][content] == 2) return;
+					if(worldGrid[row][content] == 2) available = true;
 				}
 			}
-			return selectWorld();
+		
+			if(!available) selectWorld();
 		}
 
 		function selectWorld()
@@ -287,8 +375,160 @@
 			placeNinjaman(Math.round(worldGrid.length/2)-1,Math.round(worldGrid[0].length/2)-1);
 			document.getElementById('ninjaman').style.top = ninjaman.y *40;
 			document.getElementById('ninjaman').style.left =  ninjaman.x *40;
+			placeGhosts();
+			drawGhost(pinky.name, pinky.x, pinky.y);
+			drawGhost(bluey.name, bluey.x, bluey.y);
+			drawGhost(red.name, red.x, red.y);
+			drawGhost(pumpky.name, pumpky.x, pumpky.y);
+			warpTile.x1 = 0;
+			warpTile.y1 = 0;
 			drawWorld();
-			function placeNinjaman(xPos, yPos){
+		
+		}
+		
+		function moveGhosts()
+		{	//TODO::
+			//Properly Implement each ghost 
+			//Make each ghost chase uniquely
+			if(!bluey.eaten) blueyAI();
+			if(!red.eaten) redAI();
+			if(!pumpky.eaten)pumpkyAI();
+			if(!pinky.eaten) pinkyAI();
+
+			function blueyAI()
+			{
+				//check at start of action
+				if(bluey.x == ninjaman.x && bluey.y == ninjaman.y)onNinjaman(bluey);
+				drawGhost(bluey.name, bluey.x, bluey.y);
+				if(bluey.moveValue %3 != 0)chaseNinjaman(bluey); //Their move ratio relative to the player
+				bluey.moveValue++;
+				//check at end of action
+				if(bluey.x == ninjaman.x && bluey.y == ninjaman.y)onNinjaman(bluey);
+			}
+			function redAI()
+			{
+					//check at start of action
+				if(red.x == ninjaman.x && red.y == ninjaman.y)onNinjaman(red);
+				drawGhost(red.name, red.x, red.y);
+				if(red.moveValue %6 != 0)chaseNinjaman(red); //Their move ratio relative to the player
+				red.moveValue++;
+				//check at end of action
+				if(red.x == ninjaman.x && red.y == ninjaman.y)onNinjaman(red);
+			}
+			function pumpkyAI()
+			{
+				//check at start of action
+				if(pumpky.x == ninjaman.x && pumpky.y == ninjaman.y)onNinjaman(pumpky);
+				drawGhost(pumpky.name, pumpky.x, pumpky.y);
+				if(pumpky.moveValue %2 != 0)chaseNinjaman(pumpky); //Their move ratio relative to the player
+				pumpky.moveValue++;
+				//check at end of action
+				if(pumpky.x == ninjaman.x && pumpky.y == ninjaman.y)onNinjaman(pumpky);
+			}
+			function pinkyAI()
+			{
+				//check at start of action
+				if(pinky.x == ninjaman.x && pinky.y == ninjaman.y)onNinjaman(pinky);
+				drawGhost(pinky.name, pinky.x, pinky.y);
+				if(pinky.moveValue %8 != 0)chaseNinjaman(pinky); //Their move ratio relative to the player
+				pinky.moveValue++;
+				//check at end of action
+				if(pinky.x == ninjaman.x && pinky.y == ninjaman.y)onNinjaman(pinky);
+			}
+
+			function chaseNinjaman(object)
+			{
+				
+				//So move X first... then try to move Y
+				//If can't move Y then try to move X
+				//I doubt that it'll reach a point where it can do neither....
+				if(object.x != ninjaman.x)
+				{
+					if(!moveX()) moveY();
+				}
+				else if(object.y != ninjaman.y)
+				{
+					if(!moveY()) moveX();
+				}
+				else
+				{
+					console.log(object.name + " is trapped");
+				}
+
+				function moveX()
+				{
+					if(object.x < ninjaman.x)
+					{
+						//so if we're less than target we're left of them
+						if(!checkWll(1,0)) object.x +=1;
+						else return false;
+					}
+					else if(object.x > ninjaman.x)
+					{
+						//if we're greater than target then we're right of them
+						if(!checkWll(-1,0)) object.x -=1;
+						else return false;
+					}else if(object.x == ninjaman.x)
+					{
+						return true;
+					}
+					
+				}
+
+				function moveY()
+				{
+					if(object.y < ninjaman.y)
+					{
+						//so if we're less than target we're above of them
+						if(!checkWll(0,1)) object.y +=1;
+						else return false;
+					}
+					else if(object.y > ninjaman.y)
+					{
+						//if we're greater than target then we're below of them
+						if(!checkWll(0,-1)) object.y -=1;
+						else return false;
+					}
+					return true;
+				}
+				function checkWll(xDir, yDir)
+				{	
+					console.log( "GHOST WALLCHECK" + xDir + " | " + yDir+" " + (worldGrid[object.y + yDir][object.x + xDir] == 0));
+					return worldGrid[object.y + yDir][object.x + xDir] == 0;
+				}
+			}
+
+			function onNinjaman(object)
+			{
+				if(ninjaman.onigiriPower > 0)
+				{
+					//if ninjaman has onigiri power they get eaten
+					object.eaten = true;
+				}
+				else
+				{
+					//otherwise hit the player, reduce lives, reset them
+					ninjaman.lives = ninjaman.lives - 1 > 0 ? ninjaman.lives - 1 : 0;
+					if(ninjaman.lives == 0) 
+					{
+						drawScoreboard();
+					}else
+					{
+					placeNinjaman(Math.round(worldGrid.length/2)-1,Math.round(worldGrid[0].length/2)-1);
+					}
+				}
+			}
+		}
+		
+		function drawGhost(name, x, y)
+		{
+			if(ninjaman.onigiriPower != 0){document.getElementById(name).style.backgroundImage = "url('img/scaredy.png')";}
+			else document.getElementById(name).style.backgroundImage = "url('img/"+name+".gif')";
+			document.getElementById(name).style.top = y *40;
+			document.getElementById(name).style.left =  x *40;
+		}
+
+		function placeNinjaman(xPos, yPos){
 				//if(yPos <= worldGrid.length) yPos = 0;
 				//console.log(xPos, yPos);
 				if(worldGrid[yPos][xPos] == 1||  worldGrid[yPos][xPos] == 2 ) 
@@ -297,11 +537,51 @@
 				}
 				else placeNinjaman(xPos, yPos+1);
 			}
+		//Used after "selectWorld has been called"
+		function placeGhosts()
+		{
+			//Just attempt to place the ghosts in the corners.
+			//Don't forget to set them to not eaten
+			//in order.... #bluey, #pinky, #red, #pumpky
+			
+			//Top Left
+			bluey.x = 1;
+			bluey.y = 1;
+			bluey.eaten = false;
+			//Bottom Right
+			pinky.x = worldGrid.length-2;
+			pinky.y = worldGrid[0].length-2;
+			pinky.eaten = false;
+
+			//bottom Left
+			red.x = 1;
+			red.y = worldGrid[0].length-2;
+			red.eaten = false;
+
+			//TopRight
+			pumpky.x = worldGrid.length-2;
+			pumpky.y = 1;
+			pumpky.eaten = false;
+
+			
 		}
-		
-		selectWorld();
+		hasSushi();
 		//drawWorld();
-        
+        function drawScoreboard()
+		{
+			output = "";
+			
+				//Open the row
+				output += "<div>";
+				output += "<div class='score'> SCORE : " + (ninjaman.sushi *10 ) +" </div>";
+				output += "<div class='score'> ONIGIRIPOWER : " + (ninjaman.onigiriPower) +" </div>";
+				output += "<div class='score'> LIVES : " + (ninjaman.lives) +" </div>";
+				if(ninjaman.lives == 0) output += "<div class='score'>  GAME OVER </div>";
+				
+				//Close the row
+				output += "</div>"
+			document.getElementById('scoreboard').innerHTML = output;
+		}
 		
     </script>
 </body>
