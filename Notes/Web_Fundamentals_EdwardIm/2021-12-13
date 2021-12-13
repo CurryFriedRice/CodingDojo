@@ -1,0 +1,69 @@
+Each stack uses a different calender/schedule that has all the data
+
+The one for web fundamentals is: https://docs.google.com/spreadsheets/d/17i0xBrIwMkNfbxWUrykW8u3dJhf5MHMgqTYmxBmXv_s/edit#gid=0
+
+He'll ping us
+
+House rules:
+
+Be Present
+Be Humble
+Strength through Struggle
+
+Attendance is 
+    * 9:00 AM
+    * 10:00 AM
+    * 3:00 PM
+
+Don't talk down onto people... Duh
+NOTE: REALLY JUST DIRECT THEM. Don't give them a solution.
+
+compare to your OWN progress...
+Which means I should get it done then get it done RIGHT.
+
+Remember to Message Support with a doctor's Note
+2 Full days of excused absences
+
+Remember to Note and rewrite code
+
+Snippits are okay to use...
+Class Demo Code is okay to be shared since it was created by students
+official Documentation is okay to use
+Code on Github is blurry.... Since it's someone else's
+
+
+
+Breakout Rooms:
+Work together in smaller groups.
+
+20 minute rule
+if you're stuck debugging for 20 minutes+ then
+Use the internet to figure out the problem
+Use your co-horts to help you
+
+For a boot camp that's going "fast" we sure are going slow at the start...
+Maybe it's because I set the speed to 2x on all videos since they talk so slow
+
+HTTP Request Response Cycle
+
+
+Front End (Web Dev Stack is front end)
+^v
+Back End
+^v
+DB
+
+What is a client to the internet... Pretty much everything that requires an internet connection. The client doesn't get information unless they 'request' it. then the server files a respones and tells them. 
+
+The 'user' requests to the backend system then the backend system goes to the database and collects a 'packet' of information and returns it to the 'user' frontend
+
+HTML CSS for front end
+JS for Algos A series of steps that is followed
+
+Two tracks of learning
+General Programming knowledge | Web Development Knowledge
+Variables                     | HTML
+Loops                         | CSS
+functions                     | Web Javascript
+
+Supposedly Finish 
