@@ -1,0 +1,42 @@
+body
+{
+    margin: 0px;
+}
+.row
+{
+    display:flex;
+    justify-content: space-between;
+    margin:10px 0px;
+    height:50px;
+    
+}
+.col, .col-2, .col-3
+{
+    background-color:darkcyan;
+    color:whitesmoke;
+    padding: 13px;
+    margin:5px;
+}
+
+div :first-child
+{
+    margin-left: 0px;
+}
+div :last-child
+{
+    margin-right: 0px;
+}
+.col
+{
+    flex:1;
+}
+
+.col-2
+{   
+    flex:2;
+}
+
+.col-3
+{
+    flex:3;
+}
