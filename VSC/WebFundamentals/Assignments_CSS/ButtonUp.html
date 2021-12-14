@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ButtonUp</title>
+    <style>
+   
+   
+        .searchBtn
+        {
+            --mainColor:turquoise;
+            
+            border-radius: 20px;
+            border-color: var(--mainColor);
+            color: var(--mainColor);
+            border-width: 2px;
+            text-align: center;
+            background-color:beige;
+            font-size:  12pt;
+            padding:0.5em 5em;
+            margin-top: 2em;
+        }
+        .addBtn
+        {
+            --mainColor:turquoise;
+            --radius: 32pt;
+            
+            height: var(--radius);
+            width: var(--radius);
+
+            border-radius: 50%;
+            background-color: var(--mainColor);
+            color: white;
+            font-size: 24pt;
+            border-width: 0px;
+        }
+        .submitBtn
+        {
+            --mainColor:blue;
+            --secondaryColor: black;
+
+            background-color:var(--mainColor);
+            border-color:var(--secondaryColor);
+            color: white;
+            border-width: 2px;
+            border-color:  var(--secondaryColor);
+            box-shadow: 10px 10px var(--secondaryColor);
+            font-size: 12pt;
+            padding: 10px 30px;
+            text-align: center;
+        }
+        div
+        {
+            padding: auto;
+            margin:1em;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div>
+            <input class ="searchBtn" type="button" name="query" value="Search">
+        </div>
+        <div>   
+            <input class = "addBtn" type="button" name="addSearchVal" value="+">
+        </div>
+        <div>
+            <input class = "submitBtn" type="button" name="submit" value="Create Account">
+        </div>
+    </form>
+</body>
+</html>
