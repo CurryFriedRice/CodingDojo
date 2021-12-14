@@ -1,0 +1,26 @@
+====== Algorithm Session ======  
+
+Talking variables
+Be specifc with what the variable should Be
+
+it's actually two lines, as it should be. 
+1. Declaring what data structure the variable is
+2. DEclaring what the value is 
+
+Since Javascript is generous the var can be anything it wants;
+
+Modulo will return base if the base value is less than Modulo value
+1 % 3 = 2;
+
+JS is kind of a jerk and if you use a string it'll all be strings
+
+JS 'vars' are declared GLOBALLY;
+
+====== Lecture Session ======
+ID Names should be super unique; learned that the hard way... since professors are bad
+
+Cascading Style sheets goes top to bottom but with 'Weights' based off of Tag, Class, ID
+with ID being the heaviest
+
+====== Algorithm Session ====== 
+

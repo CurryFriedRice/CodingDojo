@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Styling</title>
     <style>
-
+        *
+        {
+            margin: 0px;
+            padding: 0px;
+        }
         h1
         {
             width: auto;
             background-color:black;
             text-align: left;
         }
-        h1 :nth-child(1)
+        h1 :first-child
         {
             color:white;
         }
-        h1 :nth-last-child(1)
+        h1 :last-child
         {
             color:turquoise;
         }
@@ -42,6 +46,5 @@
         <h1><span>My</span><span>Cloud</span></h1>
         <h2><em>Completed Projects:</em></h2>
         <h3><u>Contact Us</u></h3>
-    
 </body>
 </html>
