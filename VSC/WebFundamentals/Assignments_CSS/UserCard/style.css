@@ -1,0 +1,49 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+.cardBody
+{
+    width: 600px;
+    background-color:cornsilk;
+    margin:60px auto;   
+    display:flex;
+    flex-direction: column;
+}
+
+.cardBanner
+{
+    width: inherit;
+    height:100px;
+    background-color: darkturquoise;
+}
+
+.cardContent
+{
+    display:flex;
+    flex-direction: column;
+    position:relative;
+    margin: -48px 48px 32px 48px;
+
+}
+
+.profilePic
+{
+    width:96px;
+    border-style: double;   /*Opting for a double Border just for a bit of FLAIR*/ 
+    border-width: 6px;
+    border-color:white; 
+    border-radius: 50%;
+}
+
+.systemIcon
+{
+    height: 16px;
+}
+
+.cardItem
+{
+    margin:5px 0px;
+}
