@@ -1,0 +1,35 @@
+img 
+{
+    width: 128px;
+    height: 128px;
+    margin:10px;
+}
+div
+{
+    padding:10px;
+    width: 600px;
+}
+
+.r1
+{
+    display:flex;
+    justify-content: right;
+    background-color: Purple;
+}
+
+.r2
+{
+    display:flex;
+    justify-content: space-evenly;
+    background-color: orange;
+}
+.r3
+{
+    display:flex;
+    justify-content:space-around;
+    background-color: palevioletred;
+    /*HARD SETTING A WIDTH HERE TO PRACTICE AND UNDERSTAND 'STRENGTH' OF TAGS*/
+    width:fit-content;
+    
+}
+
