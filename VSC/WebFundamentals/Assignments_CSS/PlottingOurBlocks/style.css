@@ -2,11 +2,6 @@
     margin: 0px;
     padding: 0px;
 }
-#advertisement, .sub-content, .side-nav, .main, .top-nav
-{
-    margin:5px;
-}
-
 
 
 .container{
@@ -20,6 +15,7 @@
     height: 150px;
     background-color: green;
     display:block;
+    margin-bottom:10px;
 }
 .side-nav {
     height: 300px;
@@ -27,6 +23,7 @@
     background-color: blue;
     display: inline-block;
     vertical-align: top;
+    margin-right:10px;
 }
 .main {
     height: 400px;
@@ -34,14 +31,16 @@
     background-color: red;
     display: inline-block;
     vertical-align: top;
-    padding:5px;
-    margin:5px 0px 10px 20px;
+    padding:17px;
+    
 }
 .sub-content {
     height: 200px;
     width: 210px;
     background-color: yellow;
     display: inline-block;
+    margin-right:10px;
+    margin-bottom:20px;
  
 }
 #advertisement {
