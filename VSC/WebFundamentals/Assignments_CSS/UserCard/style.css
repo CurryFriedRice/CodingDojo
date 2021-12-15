@@ -18,7 +18,7 @@
     width: inherit;
     height:100px;
     background-color: darkturquoise;
-    box-shadow: inset 0px -10px 20px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -5px 10px 5px rgba(0, 0, 0, 0.25);
 }
 
 .cardContent
@@ -32,7 +32,7 @@
 .profilePic
 {
     width:96px;
-    border-style: double;   /*Opting for a double Border just for a bit of FLAIR*/ 
+    border-style:solid; 
     border-width: 6px;
     border-color:white; 
     border-radius: 50%;

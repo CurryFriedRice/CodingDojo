@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page w/CSS</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="navBar" class="nav">
+        <div class="fullWidth">
+            <ul class="navList">
+                <li class="navElement">
+                    <h1> PROFILE</h1>
+                </li>
+                <li class="navElement">
+                    <h2> Home</h2>
+                </li>
+                <li class="navElement">
+                    <h2> My Profile</h2>
+                </li>
+                <li class="navElement">
+                    <h2> Find Connections</h2>
+                </li>
+            </ul>
+            <input class="signOut" type="button" value="Sign Out">
+        </div>
+    </div>
+    <div class="pageContent">
+        <div class="mainContent">
+
+            <div class="card">
+                <header class="cardBanner">
+                    <img class="profilePic" src="images/jane-m.jpg" alt="Jane's Profile Picture">
+                </header>
+                <ul class="cardContent profileCard">
+
+                    <li class="cardItem">
+                        <h1> Jane Doe </h1>
+                    </li>
+                    <li class="cardItem">
+                        <h2><img class="iconSmall" src="icons/map-marker.png" alt="Map Marker">Seattle</h2>
+                    </li>
+                    <li class="cardItem">Developer | Engineer | Problem Solver</li>
+                    <li class="cardItem">Master of shadows and the Internet!</li>
+                    <li class="cardItem"><a href=""><img class="iconSmall" src="icons/gear.png" alt="Settings Gear">edit
+                            profile</a></li>
+                </ul>
+
+            </div>
+
+            <div class="card">
+                <header class="cardBanner smallBanner">
+                    <h2>Education</h2>
+                </header>
+                <ul class="cardContent">
+
+                    <li class="cardItem">
+                        <h2>Coding Dojo - Full Stack Bootcamp</h2>
+                        <h3>December 2019 - March 2020</h3>
+                        <p>Triple Black belt in Python, MERN, and C#...</p>
+                    </li>
+                    <li class="cardItem">
+                        <h2>University of Washington</h2>
+                        <h3>July 2014 - July 2018</h3>
+                        <p>Bacheler of Arts</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="sidebarContent">
+            <div class="card">
+                <header class="cardBanner smallBanner">
+                    <h2 class="notification">2</h2>
+                    <h3>Connection Request</h3>
+                </header>
+                <ul class="cardContent">
+                    <li class="cardItem">
+                        <div class="otherUser">
+                            <div>
+                                <img src="images/todd-s.jpg" class="smallProfilePic">
+                                <h2>Todd E</h2>
+                            </div>
+                            <div>
+                                <!--TODO actually wrap the images in Anchor tags so they'd be able  to action-->
+                                <img src="icons/accept-circle.png" class="iconMedium">
+                                <img src="icons/close-circle.png" class="iconMedium">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="cardItem">
+                        <div class="otherUser">
+                            <div>
+                                <img src="images/phil-s.jpg" class="smallProfilePic">
+                                <h2>Phil K</h2>
+                            </div>
+                            <div>
+                                <img src="icons/accept-circle.png" class="iconMedium">
+                                <img src="icons/close-circle.png" class="iconMedium">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <header class="cardBanner smallBanner">
+                    <h2 class="notification">500+</h2>
+                    <h3>Your Connections</h3>
+                </header>
+                <ul class="cardContent">
+                    <li class="cardItem">
+                        <div class="otherUser">
+                            <div>
+                                <img src="images/adrien-s.jpg" class="smallProfilePic">
+                                <h2>Adrien D</h2>
+                            </div>
+                            <div>
+                                <img src="icons/accept-circle.png" class="iconMedium">
+                                <img src="icons/close-circle.png" class="iconMedium">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="cardItem">
+                        <div class="otherUser">
+                            <div>
+                                <img src="images/anne-s.jpg" class="smallProfilePic">
+                                <h2>Anne J</h2>
+                            </div>
+                            <div>
+                                <img src="icons/accept-circle.png" class="iconMedium">
+                                <img src="icons/close-circle.png" class="iconMedium">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="cardItem">
+
+                        <div class="otherUser">
+                            <div>
+                                <img src="images/Alayne-s.jpg" class="smallProfilePic">
+                                <h2>Alayne T</h2>
+                            </div>
+                            <div>
+                                <img src="icons/accept-circle.png" class="iconMedium">
+                                <img src="icons/close-circle.png" class="iconMedium">
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="cardItem">
+
+                        <div class="otherUser">
+                            <div>
+                                <img src="images/arry-s.jpg" class="smallProfilePic">
+                                <h2>Arry Y</h2>
+                            </div>
+                            <div>
+                                <img src="icons/accept-circle.png" class="iconMedium">
+                                <img src="icons/close-circle.png" class="iconMedium">
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+                <footer>
+                    <a href="">View More</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
