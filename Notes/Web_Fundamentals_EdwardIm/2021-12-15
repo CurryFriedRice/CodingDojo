@@ -1,0 +1,20 @@
+===== Algorithm Session =====
+
+Conditionals....
+
+Don't mix && and || statements? 
+That seems like a silly thing... especially if they're going to run the same code
+
+=== Work Session ===
+
+Think about what's effecting what with CSS
+
+if one element is taking care of the "spacing" for certain parts 
+the others shouldn't mess with them others worry about it
+
+Work outside inward, get content inside before final outside adjustments
+
+Margin is non visual size
+Border is seperation betwee margin and Padding
+Padding is visual size
+Content is content....
