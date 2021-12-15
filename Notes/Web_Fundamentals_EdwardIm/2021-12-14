@@ -22,5 +22,19 @@ ID Names should be super unique; learned that the hard way... since professors a
 Cascading Style sheets goes top to bottom but with 'Weights' based off of Tag, Class, ID
 with ID being the heaviest
 
-====== Algorithm Session ====== 
+====== Evening Lecture ====== 
+
+Margin and Padding
+Padding for Parent and Child
+Margin for siblings
+
+HTML Shortcuts
+
+tag.Class
+tag#ID
+alt Left click for multiple cursors
+alt Arrow to quickly move cursors
+
+ctrl D to select like text
+
 
