@@ -1,0 +1,117 @@
+/* CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fixed width container class that will "auto-center" itself The MAIN body of the content*/
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.row
+{
+    display:flex;
+    justify-content: space-between;
+    margin:10px 0px;
+    height:50px;
+    
+}
+.col-small, .col-mid, .col-large
+{
+    background-color:darkcyan;
+    color:whitesmoke;
+    padding: 13px;
+    margin:5px;
+}
+
+/*A small column will always take 1 units*/
+.col-small
+{
+    flex:1;
+}
+
+/*A small column will always take 2 units*/
+.col-mid
+{   
+    flex:2;
+}
+
+/*A small column will always take 3 units*/
+.col-large
+{
+    flex:3;
+}
+
+.btn
+{
+    --mainColor:turquoise;
+    --radius: 32pt;
+    
+    height: var(--radius);
+    width: var(--radius);
+
+    border-radius: 50%;
+    background-color: var(--mainColor);
+    color: white;
+    font-size: 24pt;
+    border-width: 0px;
+}
+
+.nav
+{
+    display:flex;
+    background-color: darkslategrey;
+    padding:10px;
+    width:auto;
+    justify-content: space-between;
+}
+
+.nav-title
+{
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;   
+}
+
+.nav-links {
+    display:flex;
+    text-align: right;
+}
+
+/*Cards are what i'm calling containers for content... I"m DOING CARD BASED COMBAT!*/
+.card
+{
+
+}
+/*Cards are split into 3 parts, like a webpage*/ 
+.card-header
+{
+
+}
+/*the main content of the card where the Logo and descriptor text go*/
+.card-body
+{
+
+}
+/*The link to the project if they want to see it in action, bith source and page*/
+.card-footer
+{
+
+}
+
+/*These are the items in the card each unique part with have a new content*/
+.card-content
+{
+
+}
+/*this is used in the header*/
+.card-logo
+{
+
+}
+
+
+
