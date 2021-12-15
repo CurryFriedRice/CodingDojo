@@ -6,19 +6,25 @@
 img.octocat
 {
     height: 200px;
-  
+    margin:0px 10px;
 }
 div
 {
     padding:10px;
 }
+
 .mainContent 
 {
+    width: 700px;
     margin:0 auto;
     display: flex;
     flex-direction: column;
     align-items:center;
     background-color: lightgrey;
+}
+.mainContent h1
+{
+    font-size: 36pt;
 }
 
 .row
@@ -27,11 +33,10 @@ div
     background-color: Purple;
     width:660px;
     margin:10px;
+    padding:10px;
 }
 
-.space-around{ justify-content: space-around;
-    
-}
+.space-around{ justify-content: space-around;}
 .space-between{justify-content: space-between;}
 
 .space-evenly{
