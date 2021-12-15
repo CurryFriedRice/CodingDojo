@@ -81,11 +81,12 @@
     text-align: right;
 }
 
-/*Cards are what i'm calling containers for content... I"m DOING CARD BASED COMBAT!*/
+/*Cards are what i'm calling containers for content... I"m DOING CARD BASED PRESENTATION*/
 .card
 {
-
+    
 }
+
 /*Cards are split into 3 parts, like a webpage*/ 
 .card-header
 {
