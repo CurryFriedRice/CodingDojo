@@ -103,7 +103,7 @@
 /*.card*/
 .cardContent, .card footer
 {
-    border: 6px solid grey;
+    border: 6px solid lightgrey;
     border-top: green;
 }
 
@@ -168,7 +168,8 @@
     background-color: slategray;
     text-align:center;
     height:30px;
-    width:30px;
+    min-width:30px;
+    width:auto;
 
 }
 
