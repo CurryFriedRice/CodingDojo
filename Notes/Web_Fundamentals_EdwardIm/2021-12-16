@@ -1,0 +1,46 @@
+====== algorithim session =====
+
+Functions
+Be descriptive of its purpose
+code block/body the are between function braces{}
+
+Rules
+Only return once;
+
+
+"Java script is weird..."
+it shouldn't reach outside of the code body?
+
+function rules....
+1. Functions should not mutate information.
+
+
+
+
+====== Lecture =====
+    Position Fixed
+    Position Relative
+    Position Absolute
+    Position Sticky
+
+----- Relative -----
+It's in relation to the origin Position
+
+Position we are using Directions Top Bottom Left Right
+    - Akin to Padding? 
+    - It pushes from that direction to the opposite 
+    - can be negative
+
+The box model doesn't change but the elements move when the position is changed
+So you can get overlaying elements if not careful
+
+----- Fixed -----
+Position that STICKS to the page in that position regardless of the screen position
+
+----- Absolute -----
+It depends on the Parent Component
+
+
+----- Sticky -----
+Sticks it to the edge of the screen
+
