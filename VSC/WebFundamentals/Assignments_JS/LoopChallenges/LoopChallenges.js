@@ -72,4 +72,4 @@ while (i <= 12)
     i++;
 }
 
-console.log(i);
+console.log(result);
