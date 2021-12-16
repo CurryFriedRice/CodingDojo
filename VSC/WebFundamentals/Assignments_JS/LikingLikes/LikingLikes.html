@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LikingLikes</title>
+    <link rel="stylesheet" type="text/css" href="dojo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <h1 class="nav-title">Network</h1>
+        </div>
+        <div class="row">
+            <h1 class="title">Your Feed</h1>
+        </div>
+        <div class="row">
+            <div class="col-small">
+                <div class="card">
+                    <div class="card-header col-small">
+                        <!-- Left Side -->
+                        <img class="profilePic card-content" src="assets/user-circle.png" alt="profile picture">
+                        <a href ="" class="card-content">Add an avatar</a>
+                        <h2 class="card-content">James Doe</h2>                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-large">
+                <div class="card">
+                    <div class="card-header flex-row-between">
+                        <!--Card Top-->
+                        <div class="card-content">
+                            <h1>Niel M</h1>
+                        </div>
+                        <div class="card-content flex-row-between" id="nielPost">
+                            <h2><span class="likeCount">9</span> Like(s)</h2>
+                            <button class="likeButton buttonFlair" onclick="increaseLikes(nielPost)">Like</button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Card Bottom -->
+                        <p>I just set up this new discort bot, let me know what you all think. <a href =""> link</a></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header flex-row-between">
+                        <!--Card Top-->
+                        <div class="card-content">
+                            <h1>Nichole K</h1>
+                        </div>
+                        <div class="card-content flex-row-between" id="nicholePost">
+                            <h2><span class="likeCount">12</span> Like(s)</h2>
+                            <button class="likeButton buttonFlair" onclick="increaseLikes(nicholePost)">Like</button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Card Bottom -->
+                        <p>I just finished my <a href="">next comic</a>, check it out.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header flex-row-between">
+                        <!--Card Top-->
+                        <div class="card-content">
+                            <h1>Jim R</h1>
+                        </div>
+                        <div class="card-content flex-row-between" id="jimPost">
+                            <h2><span class="likeCount">9</span> Like(s)</h2>
+                            <button class="likeButton buttonFlair" onclick="increaseLikes(jimPost)">Like</button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Card Bottom -->
+                        <p>I can't stop listening to the <a href="">new album</a>. Who else is liking it?</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="likingLikes.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+/* CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+/* Fixed width container class that will "auto-center" itself The MAIN body of the content*/
+.container {
+    width: 800px;
+    margin: 0 auto;
+    
+    
+}
+
+.row
+{
+    display:flex;
+    margin:0px auto;
+}
+
+
+.col-small, .col-mid, .col-large
+{
+    display:flex;
+    flex-direction: column;
+    
+}
+
+/*A small column will always take 1 units*/
+.col-small
+{
+    flex:1;
+    margin-right:24px;
+}
+
+/*A small column will always take 2 units*/
+.col-mid
+{   
+    flex:2;
+    
+}
+
+/*A small column will always take 3 units*/
+.col-large
+{
+    flex:3;
+}
+
+.navBtn
+{
+    --mainColor:blue;
+    --padding: 10px;
+    
+    padding:10px;
+    background-color: var(--mainColor);
+    color: white;
+    font-size: 12pt;
+    border: 3px solid black;
+    box-shadow:4px 4px black; 
+    width:128px;
+
+}
+
+.nav
+{
+    display:flex;
+    background-color: darkslategrey;
+    padding:10px;
+    width:auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nav-title
+{
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;   
+}
+
+.nav-links {
+    display:flex;
+    text-align: right;
+}
+
+.profilePic
+{
+    width: 64px;
+    margin: 0px auto;
+}
+
+
+
+/*Cards are what i'm calling containers for content... I"m DOING CARD BASED PRESENTATION*/
+.card
+{
+    margin: 10px 0px;
+    display:flex;
+    border: 5px solid grey;
+    padding: 0px 24px 24px 24px;
+    flex-direction:column;
+}
+
+/*Cards are split into 3 parts, like a webpage*/ 
+.card-header
+{
+    margin: auto 0px;
+    text-align: center;
+}
+.card-header *
+{
+    margin-bottom:10px;
+}
+
+.likeButton
+{
+    background-color:gold;
+    padding:10px 20px;
+    margin-left:16px;
+    width:96px;
+}
+
+.buttonFlair
+{ 
+    border: 4px solid black;
+    box-shadow: 4px 4px 0px black;
+    font-size: large;
+    font-family: cursive;
+}
+
+
+/*the main content of the card where the Logo and descriptor text go*/
+.card-body
+{
+    margin:auto 0px;
+    font-size: 16pt;
+}
+/*The link to the project if they want to see it in action, bith source and page*/
+.card-footer
+{
+    margin: 0px;
+}
+
+/*These are the items in the card each unique part with have a new content*/
+.card-content
+{
+    padding-top:16px;
+ 
+}
+/*this is used in the header*/
+.card-logo
+{
+    margin: 0px;
+}
+
+#search
+{
+    width:50%;
+    height:32px;
+}
+
+.bg-green
+{
+    background-color:lightgreen;
+}
+.flex-row-between
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
