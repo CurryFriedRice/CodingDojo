@@ -18,3 +18,22 @@ Margin is non visual size
 Border is seperation betwee margin and Padding
 Padding is visual size
 Content is content....
+
+
+Afternoon Lecture FLEX
+
+FLex to Parent and it only affects immediate children
+Display flex and Justify Content are used in conjunction
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+Display Flex is in parent and the parent
+Flex Atribute is in child to say how much space it takes
+
+Justify Content is for flex when we HAVE a width
+
+
+Display Flex        |   Inline Block
+Justify Content     |   Vertical Align
+Align Items         |   Margin
+
