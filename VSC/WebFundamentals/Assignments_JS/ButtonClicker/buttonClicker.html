@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="dojo.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <h1 class="nav-title">Dojonary</h1>
+            <input type="text" name="search" id="search" value="search">
+            <button class="navBtn buttonFlair" onclick="toggle(this)">Log In</button>
+        </div>
+
+        <div class="row">
+            <div class="col-mid">
+                <div class="card">
+                    <div class="card-header col-small">
+                        <!-- Left Side -->
+                        <h2>ninja</h2>
+                        <h3><em>Noun</em></h3>
+                        <h3>Plural: <em>ninjas</em></h3>
+                        <button class="likeButton buttonFlair" onclick="increase(this,0)"><span>13</span> Likes</button>
+                    </div>
+                    <div class="card-body col-large">
+                        <!-- Right Side -->
+                        <p>A person skilled in the <a href ="">Japanese</a> art of <a href="">ninjutsu</a>.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header col-small">
+                        <!-- Left Side -->
+                        <h2>ninja</h2>
+                        <h3><em>Noun</em></h3>
+                        <h3>Plural: <em>ninjas</em></h3>
+                        <button class="likeButton buttonFlair" onclick="increase(this, 1)">89 Likes</button>
+                    </div>
+                    <div class="card-body col-large">
+                        <!-- Right Side -->
+                        <p>A <a href="">programmer</a> who breaks down problems with <a href="">zen</a>-like focus.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-small">
+                <div class="card">
+                    <div class="card-header ">
+                        <h2>Dojonary is powered by YOU</h2>
+                        <button class="likeButton bg-green buttonFlair" onclick="hide(this)">Add Definition</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="buttonClicker.js"></script>
+</body>
+
+</html>
