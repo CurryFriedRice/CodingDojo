@@ -2,17 +2,24 @@
 {
     margin:0;
     padding:0;
+    font-family: cursive;
 }
 
-.nav
+#navBar
 {
     width: 100%;
     background-color: black;
+    margin-bottom:40px;
 }
 
-.fullWidth
+/*So if I ever needed to change width It'd just be here*/
+.contentWidth
 {
     width:1080px;
+}
+
+#navBody
+{
     margin:0px auto;
     display:flex;
     justify-content:space-between;
@@ -39,10 +46,9 @@
     margin-left:0px;
 }
 
-
 .signOut
 {
-    background-color:turquoise;
+    background-color:#17A2B8;
     color:white;
     height:32px;
     width: 92px;
@@ -52,40 +58,40 @@
     border-style: none;
 }
 
-.pageContent
+#pageContent
 {
     display:flex;
-    width:1080px;
     margin:0px auto;
     /*background-color: purple;*/
 }
 
-.mainContent, .sidebarContent
+#mainContent, #sidebarContent
 {
     display:flex;
     flex-direction: column;
 }
 
-.mainContent
+#mainContent
 {
     /*background-color:yellow;*/
     flex: 2;
+    margin-right: 40px;
 }
-.sidebarContent
+#sidebarContent
 {
     /*background-color:royalblue;*/
     flex:1;
 }
 
-.mainContent > .card
+#mainContent > .card, #sidebarContent > .card
 {
-    margin:40px 10px 0px 0px;
+    margin:40px 0px;
     background-color:white;
 }
 
-.sidebarContent > .card
+#sidebarContent > .card
 {
-    margin: 40px 0px 0px 10px;
+    margin:40px 0px;
     background-color:white;
 }
 
@@ -100,27 +106,17 @@
     box-shadow: 2px 2px 4px black;
 }
 
+.profileBanner
+{
+    background-color: #17A2B8;
+}
+
 /*.card*/
-.cardContent, .card footer
+.cardContent, .card-footer
 {
     border: 6px solid lightgrey;
-    border-top: green;
-}
-
-.card .cardBanner
-{
-    background-color:darkcyan;
-    height:96px;
-}
-
-.card .cardContent
-{
-    padding:30px 30px 30px 30px;
-    
-}
-.card .profileCard
-{
-    padding-top: 60px;
+    border-top: none;
+    padding:20px;
 }
 
 .cardItem
@@ -133,6 +129,7 @@
 {
     width:16px;
     margin-right:10px;
+    display: inline-block;
 }
 
 .card .smallBanner
@@ -156,11 +153,14 @@
     align-items:center;
 }
 
-.otherUser .iconMedium, .otherUser .smallProfilePic
+.iconMedium, .smallProfilePic
 {
     width: 48px;
     margin:0px 4px;
 
+}.smallProfilePic, .notification
+{
+    border-radius: 50%;
 }
 
 .smallBanner .notification
@@ -173,13 +173,3 @@
 
 }
 
-.smallProfilePic, .smallBanner h2
-{
-    border-radius: 50%;
-}
-
-.card footer
-{
-    padding:20px;
-    border-top:none;
-}

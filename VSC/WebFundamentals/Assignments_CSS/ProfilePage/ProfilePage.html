@@ -10,8 +10,9 @@
 </head>
 
 <body>
-    <div id="navBar" class="nav">
-        <div class="fullWidth">
+    
+    <div id="navBar">
+        <div id="navBody" class="contentWidth">
             <ul class="navList">
                 <li class="navElement">
                     <h1> PROFILE</h1>
@@ -29,20 +30,18 @@
             <input class="signOut" type="button" value="Sign Out">
         </div>
     </div>
-    <div class="pageContent">
-        <div class="mainContent">
-
-            <div class="card">
-                <header class="cardBanner">
+    <div id="pageContent" class="contentWidth">
+        <div id="mainContent">
+            <div class="profileCard">
+                <div class="profileBanner">
                     <img class="profilePic" src="images/jane-m.jpg" alt="Jane's Profile Picture">
-                </header>
-                <ul class="cardContent profileCard">
-
+                </div>
+                <ul class="cardContent">
                     <li class="cardItem">
                         <h1> Jane Doe </h1>
                     </li>
                     <li class="cardItem">
-                        <h2><img class="iconSmall" src="icons/map-marker.png" alt="Map Marker">Seattle</h2>
+                        <img class="iconSmall" src="icons/map-marker.png" alt="Map Marker"><h2>Seattle</h2>
                     </li>
                     <li class="cardItem">Developer | Engineer | Problem Solver</li>
                     <li class="cardItem">Master of shadows and the Internet!</li>
@@ -53,15 +52,20 @@
             </div>
 
             <div class="card">
-                <header class="cardBanner smallBanner">
+                <div class="cardBanner smallBanner">
                     <h2>Education</h2>
-                </header>
+                </div>
                 <ul class="cardContent">
 
                     <li class="cardItem">
                         <h2>Coding Dojo - Full Stack Bootcamp</h2>
                         <h3>December 2019 - March 2020</h3>
                         <p>Triple Black belt in Python, MERN, and C#...</p>
+                    </li>
+                    <li class="cardItem">
+                        <h2>FreeCodeCamp</h2>
+                        <h3>January 2019 - March 2019</h3>
+                        <p>Various Certifications</p>
                     </li>
                     <li class="cardItem">
                         <h2>University of Washington</h2>
@@ -73,12 +77,12 @@
         </div>
 
 
-        <div class="sidebarContent">
+        <div id="sidebarContent">
             <div class="card">
-                <header class="cardBanner smallBanner">
+                <div class="cardBanner smallBanner">
                     <h2 class="notification">2</h2>
                     <h3>Connection Request</h3>
-                </header>
+                </div>
                 <ul class="cardContent">
                     <li class="cardItem">
                         <div class="otherUser">
@@ -88,7 +92,7 @@
                             </div>
                             <div>
                                 <!--TODO actually wrap the images in Anchor tags so they'd be able  to action-->
-                                <img src="icons/accept-circle.png" class="iconMedium" alt="accept icon">>
+                                <img src="icons/accept-circle.png" class="iconMedium" alt="accept icon">
                                 <img src="icons/close-circle.png" class="iconMedium" alt="decline icon">
                             </div>
                         </div>
@@ -108,10 +112,10 @@
                 </ul>
             </div>
             <div class="card">
-                <header class="cardBanner smallBanner">
+                <div class="cardBanner smallBanner">
                     <h2 class="notification">500+</h2>
                     <h3>Your Connections</h3>
-                </header>
+                </div>
                 <ul class="cardContent">
                     <li class="cardItem">
                         <div class="otherUser">
@@ -166,9 +170,9 @@
 
                     </li>
                 </ul>
-                <footer>
+                <div class="card-footer">
                     <a href="">View More</a>
-                </footer>
+                </div>
             </div>
         </div>
     </div>
