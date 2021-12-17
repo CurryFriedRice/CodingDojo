@@ -65,32 +65,32 @@
     /*background-color: purple;*/
 }
 
-#mainContent, #sidebarContent
+#left-col, #right-col
 {
     display:flex;
     flex-direction: column;
 }
-#mainContent
+#left-col
 {
     /*background-color:yellow;*/
     flex: 2;
     margin-right: 40px;
 }
-#sidebarContent
+#right-col
 {
     /*background-color:royalblue;*/
     flex:1;
 }
 
 
-#mainContent > .card, #sidebarContent > .card
+#left-col > .card, #right-col > .card
 {
     margin:40px 0px;
     background-color:white;
 }
 
 
-#sidebarContent :first-child
+#right-col :first-child
 {
     margin-top:0;
 }
