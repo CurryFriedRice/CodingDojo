@@ -12,4 +12,11 @@ Objects
 Javascript objects use a Key Value system. It's not actually too different from C# objects
 Used to store more complex information by fetching a key to make sure that it's all right.
 
+===== Lecture Javascript =====
+Well with javascript we can effect the page and get proper results
 
+Event Listeners..
+On 'Action' Do this
+Action can be whatever you want... Load, keypress, keyUp, click, ect
+
+Event Handlers do things when the Event is clicked.

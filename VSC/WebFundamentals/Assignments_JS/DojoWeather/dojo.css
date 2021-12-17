@@ -1,0 +1,88 @@
+/* CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+/* Fixed width container class that will "auto-center" itself The MAIN body of the content*/
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    background-color:red;
+}
+
+/*Navigation Elements*/
+#nav
+{
+    background-color: purple;
+    padding:15px 0px;
+}
+
+#nav > .header > ul
+{
+    display:flex;
+    list-style: none;
+}
+#nav > .header > ul >li
+{
+    margin-left:30px
+}
+
+.header
+{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* End of Nav Items*/
+
+/*this sets the border under the location*/
+.container > .header
+{
+    border-bottom: 5px solid black;
+}
+
+/*Setting up Weather Body*/
+#weatherBody
+{
+    display:flex;
+    justify-content:space-between;
+}
+
+/*setting up a weather Card*/
+.card
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:red;
+    
+}
+.card-footer
+{
+    display:flex;
+    justify-content:space-evenly;
+}
+.card-footer :first-child 
+{
+    color:purple;
+}
+.card-footer :last-child 
+{
+    color:blue;
+}
+
+
+.round
+{
+    border-radius:50%;
+}
+
+.pictureMedium
+{
+    height:128px;
+}
+
+

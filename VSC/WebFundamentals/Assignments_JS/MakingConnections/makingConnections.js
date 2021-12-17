@@ -53,13 +53,14 @@ function updateActiveRequests()
 //Create a new list item and append it to the end of the user list
 function updateNetworkList(element)
 {
-    var addedInner = "<li class='cardItem'>" 
-        addedInner += "<div class='otherUser'>"
-        addedInner += "<div class='cardID'>"
-        addedInner += element
-        addedInner += "</div>"
-        addedInner += '</div>'
-        addedInner += '</li>'
+    var addedInner = "<li class='cardItem'>" +
+                        "<div class='otherUser'>" +
+                            "<div class='cardID'>"+
+                                element +
+                            "</div>" +
+                        '</div>' + 
+                    '</li>';
+
     console.log(addedInner);
         document.getElementById("network").innerHTML +=  addedInner;
 }
