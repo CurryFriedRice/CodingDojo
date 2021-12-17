@@ -1,0 +1,175 @@
+*
+{
+    margin:0;
+    padding:0;
+    font-family: cursive;
+}
+
+#navBar
+{
+    width: 100%;
+    background-color: black;
+    margin-bottom:40px;
+}
+
+/*So if I ever needed to change width It'd just be here*/
+.contentWidth
+{
+    width:1080px;
+}
+
+#navBody
+{
+    margin:0px auto;
+    display:flex;
+    justify-content:space-between;
+    /*background-color:chartreuse;*/
+}   
+
+.navList
+{
+    display:flex;
+    flex-direction: row;
+    /*background-color:pink;*/
+    align-items: baseline;
+    /*padding-left:30px;*/
+    color:white;
+}
+
+.navElement
+{
+    margin:10px;
+    list-style: none;
+}
+.navElement:first-child
+{
+    margin-left:0px;
+}
+
+.signOut
+{
+    background-color:#17A2B8;
+    color:white;
+    height:32px;
+    width: 92px;
+    align-self:center;
+    font-weight:bold;
+    font-size: 11pt;
+    border-style: none;
+}
+
+#pageContent
+{
+    display:flex;
+    margin:0px auto;
+    /*background-color: purple;*/
+}
+
+#mainContent, #sidebarContent
+{
+    display:flex;
+    flex-direction: column;
+}
+#mainContent
+{
+    /*background-color:yellow;*/
+    flex: 2;
+    margin-right: 40px;
+}
+#sidebarContent
+{
+    /*background-color:royalblue;*/
+    flex:1;
+}
+
+
+#mainContent > .card, #sidebarContent > .card
+{
+    margin:40px 0px;
+    background-color:white;
+}
+
+
+#sidebarContent :first-child
+{
+    margin-top:0;
+}
+
+.profilePic
+{
+    width:96px;
+    position:relative;
+    top:48px;
+    margin:0px 20px;
+    border: 5px solid white;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px black;
+}
+
+.profileBanner
+{
+    background-color: #17A2B8;
+}
+
+/*.card*/
+.cardContent, .card-footer
+{
+    border: 6px solid lightgrey;
+    border-top: none;
+    padding:20px;
+}
+
+.cardItem
+{
+    margin-top:20px;
+    list-style: none;
+}
+
+.iconSmall
+{
+    width:16px;
+    margin-right:10px;
+    display: inline-block;
+}
+
+.card .smallBanner
+{
+    height: 48px;
+    background-color: black;
+    color:white;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card .smallBanner h2, .card .smallBanner h3 
+{
+    margin: 0px 30px;
+}
+
+.otherUser, .otherUser div
+{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.iconMedium, .smallProfilePic
+{
+    width: 48px;
+    margin:0px 4px;
+
+}.smallProfilePic, .notification
+{
+    border-radius: 50%;
+}
+
+.smallBanner .notification
+{
+    background-color: slategray;
+    text-align:center;
+    height:30px;
+    min-width:30px;
+    width:auto;
+
+}
+
