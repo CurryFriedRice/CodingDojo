@@ -24,7 +24,7 @@
 #nav
 {
     background-color: skyblue;
-    padding:15px 0px;
+    color:white;
 }
 
 #nav > .header > ul
@@ -43,6 +43,7 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
+    padding:24px 0px;
 }
 /* End of Nav Items*/
 
