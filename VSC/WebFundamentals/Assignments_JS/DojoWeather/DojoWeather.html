@@ -10,67 +10,78 @@
 </head>
 
 <body>
-    <div id="nav">
-        <div class="container header">
-            <h1>DojoWeather</h1>
-            <ul>
-                <li>Burbank</li>
-                <li>Chicago</li>
-                <li>Dallas</li>
-            </ul>
+    <div class="setWidth">
+        <div id="nav">
+            <div class="container header">
+                <h1>DojoWeather</h1>
+                <ul>
+                    <li><h2 onclick="changeRegion()">Burbank</h2></li>
+                    <li><h2 onclick="changeRegion()">Chicago</h2></li>
+                    <li><h2 onclick="changeRegion()">Dallas</h2></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="header">
-            <h1>San Jose</h1>
+        <div class="container">
+            <div class="header">
+                <h1>San Jose</h1>
+                <div>
+                    <label for="tempType">Show Temperature in: </label>
+                    <select name="tempType" id="tempType" onchange="setTemp(value)">
+                        <option value="cel">°C</option>
+                        <option value="far">°F</option>
+                    </select>
+                </div>
+            </div>
+            <div id="weatherBody" class="container">
+                <div class="card">
+                    <h1 class="cardHeader">Today</h1>
+                    <img src="assets/some_rain.png" alt="Some Rain" class="round pictureMedium">
+                    <p>Some Rain</p>
+                    <div class="cardFooter temperatureField">
+                        <h2>24°</h2>
+                        <h2>18°</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1 class="cardHeader">Tomorrow</h1>
+                    <img src="assets/some_sun.png" alt="picture of sun" class="round pictureMedium">
+                    <p>Some Sun</p>
+                    <div class="cardFooter temperatureField">
+                        <h2>27°</h2>
+                        <h2>19°</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1 class="cardHeader">Friday</h1>
+                    <img src="assets/some_clouds.png" alt="Some Clouds" class="round pictureMedium">
+                    <p>Some Clouds</p>
+                    <div class="cardFooter temperatureField">
+                        <h2>21°</h2>
+                        <h2>16°</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1 class="cardHeader">Saturday</h1>
+                    <img src="assets/some_sun.png" alt="Some Clouds" class="round pictureMedium">
+                    <p>Some Sun</p>
+                    <div class="cardFooter temperatureField">
+                        <h2>26°</h2>
+                        <h2>21°</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cookiesAgreement">    
+           
+            <img src="assets/cookie.png" alt="cookie logo" class="pictureMedium">
             <div>
-                <label for="tempType">Show Temperature in: </label>
-                <select name="tempType">
-                    <option>°F</option>
-                    <option>°C</option>
-                </select>
+                <h2>Stop Cookie time</h2>
+                <p>We use Cookies (sadly not the edible ones) to personalize content and ads, to provide social media features and to analyse our traffic. <a href="#">Read more...</a></p>
             </div>
-        </div>
-        <div id="weatherBody">
-            <div class="card">
-                <h1 class="cardHeader">Today</h1>
-                <img src="assets/some_clouds.png" alt="Some Clouds" class="round pictureMedium">
-                <p>Description Goes here </p>
-                <div class="card-footer">
-                    <p>Hot</p>
-                    <p>Cold</p>
-                </div>
-            </div>
-            <div class="card">
-                <h1 class="cardHeader">Tomorrow</h1>
-                <img src="assets/some_clouds.png" alt="Some Clouds" class="round pictureMedium">
-                <p>Description Goes here </p>
-                <div class="card-footer">
-                    <p>Hot</p>
-                    <p>Cold</p>
-                </div>
-            </div>
-            <div class="card">
-                <h1 class="cardHeader">Friday</h1>
-                <img src="assets/some_clouds.png" alt="Some Clouds" class="round pictureMedium">
-                <p>Description Goes here </p>
-                <div class="card-footer">
-                    <p>Hot</p>
-                    <p>Cold</p>
-                </div>
-            </div>
-            <div class="card">
-                <h1 class="cardHeader">Saturday</h1>
-                <img src="assets/some_clouds.png" alt="Some Clouds" class="round pictureMedium">
-                <p>Description Goes here </p>
-                <div class="card-footer">
-                    <p>Hot</p>
-                    <p>Cold</p>
-                </div>
-            </div>
+            <input type="button" name="cookies" value="I Accept" onClick="dismiss(cookiesAgreement)">
         </div>
     </div>
-    <script src="dojoweather.js"></script>
+    <script src="dojoWeather.js"></script>
 </body>
 
 </html>
