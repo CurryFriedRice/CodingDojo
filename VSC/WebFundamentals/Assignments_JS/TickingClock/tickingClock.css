@@ -1,0 +1,76 @@
+*{
+    margin:0;
+    padding:0;
+}
+#face {
+    background-color: #f3f3f3;
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    border: 6px solid black;
+    position: relative;
+    margin:30px auto;
+
+}
+
+#minutes, #hour, #seconds {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: top center;
+    transition: 500ms;
+}
+
+#seconds {
+    background-color: red;
+    height: 250px;
+    width: 2px;
+}
+    
+#hour {
+    background-color: black;
+    height: 200px;
+    width: 8px;
+
+}
+    
+#minutes {
+    background-color: grey;
+    height: 225px;
+    width: 4px;
+
+}
+
+.clockhand{
+    width: 150px;
+    height: 150px;
+    position:relative;
+    top:100%;
+    left:-75px;
+}
+
+#face > img
+{
+    position:absolute;
+    left:300px;
+    top:300px;
+    z-index: 1;
+    float:left;
+}
+#face >p
+{
+    text-align: center;
+   
+}
+
+#footer
+{
+    margin: 0px ;
+    width:100%;
+    position: fixed;
+    bottom:10px;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+   
+}
