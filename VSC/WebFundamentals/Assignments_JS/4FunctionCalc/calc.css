@@ -15,15 +15,26 @@
     display:flex;
     flex-direction: column;
     align-items: flex-end;
-    padding:0 30px;
+    padding:30px 30px;
 }
 
 .row
 {
+    
     width:380px;
     display: flex;
     justify-content: space-between;
 }
+
+#calculator > #display
+{
+    width:100%;
+    background-color:#36B7E0;
+    display:flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
 
 .row button
 {
@@ -42,9 +53,14 @@
     width:100%;
 }
 
+.row > .operator
+{
+    background-color:#36B7E0;
+}
 
 #display > *
 {
     font-size: 300%;
     height:100%;
+    
 }
