@@ -1,0 +1,98 @@
+* 
+{
+    padding: 0;
+    margin: 0;
+}
+.row
+{
+    background-color:orange;
+    height:40px;
+}
+.wall,
+.blank,
+.pellet, 
+.powerPellet,
+.fruit,
+.warp,
+.startingPoint,
+#pacman, #pactwo,
+#inky,
+#blinky,
+#pinky,
+#clyde
+{
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+
+}
+
+
+.blank,
+.pellet, 
+.powerPellet,
+.fruit,
+.startingPoint,
+#pacman, #pactwo,
+#inky,
+#blinky,
+#pinky,
+#clyde
+{
+    background-color: black;
+    background-size: contain;
+}
+.wall
+{
+    background-color:cadetblue;
+}
+.warp
+{
+    background-color:forestgreen;
+}
+
+
+#pacman, #pactwo
+{
+    background-image: url("img/Tako.png");
+  /*   background-color :gold; */
+}
+.pellet
+{
+    background-image: url('img/smallCookie.png');
+    /* background-image: url("img/sushi.png"); */
+}
+.powerPellet
+{
+    background-image: url("img/FullCookie.png"); 
+}
+.fruit
+{
+    background-image: url("img/taco.png"); 
+}
+
+#pacman, #pactwo
+{
+    /* background-image: url("img/ninja.gif");*/
+    position:absolute;
+}
+
+
+#bluey,
+#pinky,
+#inky,
+#pumpky
+{
+    position:absolute;
+    left:260;
+}
+#inky
+{
+    background-image: url("img/red.gif");
+}
+#scoreboard{
+    height: 40;
+    width: 400;
+    display: flex;
+    justify-content: space-between;
+}

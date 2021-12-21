@@ -2,3 +2,73 @@
 
 Finish the fortune teller and finish the dice roller
 
+User shouldn't have the inspector open to view information. 
+
+===== Lecture =====
+JSON
+
+Dot notation        | 
+vs Bracket Notation | 
+
+If you use a value that doesn't exist it'll generate that key and populate it with the value said.
+
+you can nest an object inside an object. 
+
+e.g. user.address.zipCode
+      O1   KEY1    KEY2
+
+
+Javascript in web dev to hit the DOM
+
+understanding what an object does an how it operates.
+
+
+string interpolation 
+use the ${variable} to break to the JS value ` ` vs ''
+                                            Tilda  quotes
+                                             ^^^
+
+
+===== Inputs =====
+
+Typically it's in a form
+
+Input listeners so the user can do things
+
+SetTimeout(function, how long to wait)
+then it callsback ^^
+
+SetInterval(Function, how long till loop)
+then it calls ^^ ad infinitum
+
+if functions are inline they are anonomyous functions without names
+
+
+JS is read from top to bottom
+If it sees () it will run ()
+
+//JAVASCRIPT FUNCTIONS
+Changing images on any event
+Using Alert and or Confirm window for certain amount of time or till excused
+Removing From HTML
+Increasing Counts of Clicks and displaying amount of clicks
+display Values in a given Input. 
+
+
+Switching from Dark mode to Light mode in CSS
+
+hardest part is the CSS figuring out colors
+
+we have a container
+
+class called darkmode
+
+class called lightmode
+
+onclick functions to call to the major body to do light/dark
+
+don't use ',' when removing class
+element.classList.add(); 
+element.classList.remove();
+element.classList.contains();
+
