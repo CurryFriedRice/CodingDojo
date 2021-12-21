@@ -1,0 +1,44 @@
+
+#ocean
+{
+    background-image: url("img/ocean.jpg");
+    width: 900px;
+    height: 700px;
+    margin: 0;
+    padding: 0;
+}
+
+.player,
+.enemy,
+.explosion
+{
+    width: 70px;
+    height: 75px;
+    position: absolute;
+    background-size: contain;
+}
+.player{background-image: url("img/player.png");}
+
+.type0{background-image: url("img/enemy0.png");}
+.type1{background-image: url("img/enemy1.png");}
+.type2{background-image: url("img/enemy2.png");}
+.type3{background-image: url("img/enemy3.png");}
+
+.allyMissile,
+.enemyMissile
+{   
+    width: 32px;
+    height: 48px;
+    position: absolute;
+    background-size: contain;  
+}
+.allyMissile{background-image:url("img/AllyMissile.png");}
+.enemyMissile{background-image:url("img/EnemyMissile.png");}
+
+.explosion
+{
+background-image:url("img/Explosion.gif");
+width:72px;
+height:72px;
+background-repeat: no-repeat;
+}

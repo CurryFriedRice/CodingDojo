@@ -108,12 +108,14 @@ function setupBoard() {
     return retBoard
 }
 
+//Sets the state to gameover and shows the restart button
 function gameOver() {
     console.log("GAME OVER MAN! GAME OVER!");
     GameOvered = true;
     document.getElementById("restartButton").innerHTML= "<button class='buttonSpace' onClick = 'restartGame()'>RESTART</button>"
 }
 
+//Updates the score field to show the score
 function UpdateScore()
 {
     console.log("Updating Score");
@@ -121,11 +123,13 @@ function UpdateScore()
     uiDiv.querySelector("h2 span").innerText = parseFloat(uiDiv.querySelector("h2 span").innerText) + 1; 
 }
 
+//Just sets up the scoreboard
 function setupUI()
 {
     return"<h2> Score: <span>0</span> </h2>";
 }
 
+//Button that restarts the game
 function restartGame()
 {
     console.log("Game Restarting");
