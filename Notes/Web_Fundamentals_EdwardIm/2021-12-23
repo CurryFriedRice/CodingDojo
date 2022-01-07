@@ -1,0 +1,52 @@
+APIs
+
+3rd Party API
+Gives us Services and Information
+
+Req Res model
+Fetch Operates through an Asynchronous Javascript and XML e.g. AJAX
+
+Sometimes a server may not get a response; A server may not get a response so don't execute the rest of the code...
+
+Though Also Do try to wait a for awhile to see if successful or unsuccessful respones.
+
+Async/Await key terms before 'function' call
+Await to wait for a response before continuing
+
+Async function Name()
+    {
+        do stuff
+        *await fetch (api)
+    }
+
+So with Async we can tell the JS to await until a step is complete.
+Await pushes it to become Sychronous Code;
+
+It's Asynchronous because we don't know if it's successful or not
+
+This is for Async Code after persay a fetch function
+    .then()
+    .catch()
+
+Make the API call dynamic we can call by concatanating to the URL we're fetching to.
+
+e.g. Weather APIs 
+
+The API is only as good as the documentation provided and have standards. 
+At the end of the day though they're Human... Go read the documentation.
+
+
+
+====== Python Projects =====
+Map api projects
+Shop storefront...
+Movie review page....
+Personality quiz.....?
+Coffee Breweres Site....
+Nerdspace.... Myspace for nerds...
+User front end for boba shop
+
+Character Tracker.... for Genshin Impact
+
+Build front end so you know how you want to have the back end to look
+e.g. WHAT DATA DO WE NEED....
