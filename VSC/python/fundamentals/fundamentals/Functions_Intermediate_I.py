@@ -20,6 +20,11 @@ students[0]["last_name"] = "Bryant"
 sports_directory["soccer"][0] = "Andres"
 z[0]['y'] = 30
 
+print ("1. Update Values in Dictionaries and Lists")
+print (x)
+print (students)
+print (sports_directory)
+print (z)
 # 2 Iterate Through a List of Dictionaries
 # Create a function iterateDictionary(some_list) that, given a list of dictionaries, 
 # the function loops through each dictionary in the list and prints each key and the 
@@ -37,7 +42,8 @@ def iterateDictionary(some_list):
         keys = list(value.keys())
         values = list(value.values())
         print("{} - {}, {} - {}".format(keys[0], values[0], keys[1], values[1]))
-
+print("==========")
+print ("2. Iterate Through a List of Dictionaries")
 iterateDictionary(students) 
 
 # should output: (it's okay if each key-value pair ends up on 2 separate lines;
@@ -66,7 +72,8 @@ def iterateDictionary2(key, studentList):
     for value in studentList:
         print(value[key])
 
-
+print("==========")
+print ("3. Get Values From a List of Dictionaries")
 iterateDictionary2('first_name', students)
 iterateDictionary2('last_name', students)
 
@@ -81,11 +88,15 @@ def printInfo(dojo_list):
         print(len(dojo_list[key]), key.upper())
         for value in dojo_list[key]:
             print(value)
+        print("---------")
+        
 
 dojo = {
-   'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
-   'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
+    'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
+    'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
 }
+print("==========")
+print ("4. Iterate Through a Dictionary with List Values")
 printInfo(dojo)
 
 """
