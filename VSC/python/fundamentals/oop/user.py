@@ -2,16 +2,20 @@ class User:
     def __init__ (self,name, balance = 0):
         self.name = name
         self.balance = balance
+        return self
     def make_withdrawal (self, amount):
         self.balance -= amount
+        return self
     def make_deposit(self, amount):
         self.balance += amount
+        return self
     def display_user_balance(self):
         print(f"USER: {self.name}, {self.balance}")
+        return self
     def transfer_money(self, other_user, amount):
         other_user.balance += amount
         self.balance -= amount
-
+        return self
 
 Greg = User("Gregory")
 Adam = User("Adam")

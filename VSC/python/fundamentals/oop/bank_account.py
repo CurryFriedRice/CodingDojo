@@ -27,7 +27,7 @@ class bank_account:
         for acct in cls.all_accounts:
             print(f"Balance: ${acct.balance}")
 
-        
+"""
 checkings = bank_account(0.002,10000)
 savings = bank_account(0.012, 489238)
 
@@ -35,3 +35,4 @@ savings.deposit(4832).deposit(2300).deposit(3912).yield_interest().display_accou
 checkings.deposit(3888).withdraw(123).withdraw(54).deposit(4350).withdraw(184).withdraw(371).yield_interest().display_account_info()
 
 bank_account.print_all_accounts()
+""" 
