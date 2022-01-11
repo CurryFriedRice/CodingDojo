@@ -39,3 +39,7 @@ e.g.
 def add(num, num2, num3)
 
 add(num = 1, num3= 3, num2 =1)
+
+Can use bootstraps: we plan on using Flask and React.js
+or with React we can with Tailwind
+
