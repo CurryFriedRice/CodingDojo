@@ -37,7 +37,7 @@ class SList:
         runner.next = None               #then if it's none we're at the back so cut it off
         return self
 
-    def insertAt(self, val, n):
+    def insert_at(self, val, n):
         if n > self.getLength() or n < 0:
             print("Index out of Range")
         elif n == 0:
@@ -61,6 +61,7 @@ class SList:
             runner = runner.next
             i = i + 1
         return i
+        
 class SLNode:
     def __init__(self, val):
         self.value = val
@@ -70,4 +71,4 @@ class SLNode:
 myList = SList()
 myList.add_to_front(" are ").add_to_front("Linked Lists").add_to_back(" cool").print_values().remove_from_back().print_values()
 
-myList.add_to_front("B").add_to_front("A").add_to_front("D").add_to_front("S").add_to_front("T").print_values().insertAt("V",0).print_values()
+myList.add_to_front("B").add_to_front("A").add_to_front("D").add_to_front("S").add_to_front("T").print_values().insert_at("V",0).print_values()
