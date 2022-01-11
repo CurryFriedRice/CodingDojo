@@ -22,7 +22,7 @@ class DList:
 
     def add_to_front(self, val):
         new_node = DLNode(val)
-       
+
         current_head = self.head     #so this is the current head...
         new_node.next = current_head # then we tell new node that its next value is the current head
         if current_head != None:current_head.prev = new_node
@@ -41,7 +41,9 @@ class DList:
         if current_tail != None: current_tail.next = new_node
         
         self.tail = new_node         #set this head to the new node created
-     
+        #should also do None Check here for the head 
+        if self.head == None:
+            self.head = new_node
         return self
     """ This was Looped Linked Lists
     def add_to_front2(self, val): #this  
@@ -189,6 +191,9 @@ myList = DList()
 
 myList.add_to_front("BACON").add_to_front("Pancakes").add_to_front("Potatoes").add_to_back("Grapes").add_to_back("OJ").print_values().print_values().insert_node("PAAAANCAKES", 1).print_values().print_values_rev().find_middle_value()
 
+
+myList2 = DList()
+myList2.add_to_back("Pants").add_to_back("Skirt").add_to_back("Dress").add_to_back("huh").print_values()
 #myList.add_to_front("BACON").add_to_front("Pancakes").add_to_front("OJ").add_to_front("Potatoes").find_middle_value()
 
 # print("My List 2")
