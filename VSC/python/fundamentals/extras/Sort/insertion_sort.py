@@ -1,6 +1,6 @@
 import random
 
-def bubble_sort(li):
+def insertion_sort(li):
     
     # alright so a bubble sort bubbles the smallest values to the top
     # so what will happen is I will iterate through the list
@@ -19,10 +19,10 @@ def bubble_sort(li):
     return li
 
 
-print(bubble_sort([5,2,4,1,3,6,9,7,0,8]))
+print(insertion_sort([5,2,4,1,3,6,9,7,0,8]))
 randArr = []
 for i in range(10):
     randArr.append(random.randint(0,10))
 
 print(randArr)
-print(bubble_sort(randArr))
+print(insertion_sort(randArr))
