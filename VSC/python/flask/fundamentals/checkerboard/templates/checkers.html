@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkers</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        
+        :root
+        {
+            --c_a : {{cA}};
+            --c_b : {{cB}};
+        }
+        {% if cA != None%}
+            .colorA
+            {
+                background-color:var(--c_a);
+            }
+            .header
+            {
+                background-color:var(--c_a);
+            }
+        {% endif %}
+        {% if cB != None%}
+            .colorB
+            {
+                background-color:var(--c_b);
+            }
+            .header
+            {
+                color:var(--c_b);
+            }
+        {% endif %}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">*** CHECKER BOARD ***</h1>
+        <div class="board">
+            
+            
+            {%for j in range(y)%}
+            <div class="row">
+                {% if j%2 == 0 %}
+                    {% for i in range(x) %}
+                        {% if i%2 == 0 %}<div class="square colorA"></div> 
+                        {% else %}<div class="square colorB"></div>
+                        {%endif%}
+                    {%endfor%}
+                {%else%}
+                    {% for i in range(x) %}
+                        {% if i%2 == 0 %}<div class="square colorB"></div>
+                        {% else %}<div class="square colorA"></div> 
+                        {%endif%}
+                    {%endfor%}
+                {%endif%}
+            </div>
+            {%endfor%}
+
+        </div>
+    </div>
+</body>
+</html>
