@@ -22,15 +22,15 @@ class GameRunner:
     
         
     # Do a thing based on the user input once it's been validated by dictionary check
-    def run_action(self, choice):
-        if choice == "exit":
+    # def run_action(self, choice):
+    #     if choice == "exit":
 
-        #action List
-        elif choice == "buy": self.
-        elif choice == "feed":
-        elif choice == "rest":
-        elif choice == "breed":
-        #
-        elif choice == ""
+    #     #action List
+    #     elif choice == "buy": self.
+    #     elif choice == "feed":
+    #     elif choice == "rest":
+    #     elif choice == "breed":
+    #     #
+    #     elif choice == ""
 
 
