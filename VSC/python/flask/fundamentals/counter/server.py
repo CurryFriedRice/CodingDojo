@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 
 app = Flask(__name__)
-app.secret_key = "b'\tb\x92v\x13\x1d(\xfaK\x81\x81\xa2%\xdc-\xc7'" # set a secret key for security purposes
+app.secret_key = '\tb\x92v\x13\x1d(\xfaK\x81\x81\xa2%\xdc-\xc7'  # set a secret key for security purposes
 
 @app.route('/')
 def visit():
