@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.container
+{
+    margin: 0px auto;
+    width:600px;
+    text-align: center;
+}
+.container h1, .container button, .container div
+{
+    margin: 30px;
+}
+
+
+
+
+.container div
+{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.container div button, .container a button
+{
+    width:100px; 
+    height: 50px;
+}
+
