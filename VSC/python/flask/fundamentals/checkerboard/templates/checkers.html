@@ -44,19 +44,13 @@
             
             {%for j in range(y)%}
             <div class="row">
-                {% if j%2 == 0 %}
+             
                     {% for i in range(x) %}
-                        {% if i%2 == 0 %}<div class="square colorA"></div> 
+                        {% if (i+ j)%2 == 0 %}<div class="square colorA"></div> 
                         {% else %}<div class="square colorB"></div>
                         {%endif%}
                     {%endfor%}
-                {%else%}
-                    {% for i in range(x) %}
-                        {% if i%2 == 0 %}<div class="square colorB"></div>
-                        {% else %}<div class="square colorA"></div> 
-                        {%endif%}
-                    {%endfor%}
-                {%endif%}
+                
             </div>
             {%endfor%}
 
