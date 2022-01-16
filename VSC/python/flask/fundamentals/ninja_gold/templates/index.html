@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row ">
+                <h1> Your Gold </h1> 
+                <h1 class="outline">{{session['balance']}} </h1> 
+            </div>
+            
+            {%if session['balance'] > 500 or session['recipts']|length > 15 %}
+            <div class="d-flex flex-row align-items-center">
+                {%if session['balance'] > 500 and session['recipts']|length < 15 %}
+                <h1>YOU WIN!</h1>
+                {%else%}
+                <h1>YOU LOSE!</h1>
+                {%endif%}
+                <a href="/cleanse"><button>Start Over</button></a>
+            </div>
+            {%endif%}
+        </div>
+        <h1>Turn {{session['recipts']|length}}</h1>
+        <div class="d-flex flex-row justify-content-between">
+            {%for building in building_keys%}
+            <div class="card">
+                <h2>{{building}}</h2>
+                <p>
+                    {%if buildings[building]['min'] < 0 and buildings[building]['max'] > 0 %}
+                    earns/takes 0 - {{buildings[building]['max']}} gold
+                    {%else%}
+                    earns {{buildings[building]['min']}}-{{buildings[building]['max']}} gold
+                    {%endif%}
+                </p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value={{building}} />
+                    <input type="submit" value="Find Gold!" />
+                </form>
+            </div>
+            {%endfor%}
+        </div>
+        
+        <div>
+            <p>Activities</p>
+            <div class="scroll">
+                {{message|safe}}
+            </div>
+        </div>
+
+        <div>
+            <h1>Objective of the game</h1>
+            <p>Try to earn 500 gold in less than 15 Turns</p>
+        </div>
+
+    </div>
+</body>
+
+</html>
