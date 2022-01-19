@@ -1,0 +1,32 @@
+-- set DB to use
+USE users_schema;
+
+-- Insert A bunch of users at once
+INSERT INTO users (first_name, last_name, email, created_at, updated_at)
+VALUES
+	("Gregory", "House", "GHouseMD@hospital.org", NOW(), NOW()),
+    ("Derek", "Shepherd", "DShepherdMD@hospital.org", NOW(), NOW()),
+    ("Remy", "Hadley", "RHadleyMD@hospital.org", NOW(), NOW()),
+    ("Christopher", "Turk", "CTurnMD@hospital.org", NOW(), NOW())
+    ;
+
+-- display ALL info from ALL users
+SELECT * FROM users;
+
+-- display ALL info from USERS where their EMAIL is equal to the target
+SELECT * FROM users WHERE users.email = 'GHOUSEMD@hospital.org'
+
+-- display the ENTRY 
+SELECT MAX(id), MAX(first_name), MAX(last_name), MAX(email) FROM users
+
+-- Change User 3 last name to Pancakes
+UPDATE users SET last_name = "Pancakes" where users.id = 3;
+
+-- DELETE user at ID 2
+DELETE FROM users where users.id = 2;
+
+-- organizes data from first name ascending
+SELECT * FROM users ORDER BY first_name;
+
+-- organizes data from first name descending
+SELECT * FROM users ORDER BY first_name DESC

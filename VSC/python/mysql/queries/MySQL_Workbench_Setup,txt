@@ -1,0 +1,10 @@
+USE twitter;
+
+-- INSERT INTO tweets (tweet, user_id, created_at, updated_at)
+-- VALUES ("This is an inserted Tweet", 1, NOW(), NOW());
+
+-- UPDATE tweets SET tweet = 'HONK!' WHERE tweets.user_id = 1 AND tweets.id > 10;
+
+-- DELETE FROM tweets WHERE tweets.user_id = 1 and tweets.id = 14;
+
+SELECT * FROM tweets;
