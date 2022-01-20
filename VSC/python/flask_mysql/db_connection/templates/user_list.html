@@ -10,24 +10,29 @@
 </head>
 <body>
     <div class="container">
-
+        <h1>All Users</h1>
         <table class='table'>
             <tr>
                 <th scope = 'col'>id</th>
                 <th scope = 'col'>first_name</th>
                 <th scope = 'col'>last_name</th>
+                <th scope = 'col'>email</th>
                 <th scope = 'col'>occupation</th>
+                <th scope = 'col'>action</th>
             </tr>
             {%for friend in friends%}
             <tr>
                 <td>{{friend['id']}}</td>
                 <td>{{friend['first_name']}}</td>
                 <td>{{friend['last_name']}}</td>
+                <td>{{friend['email']}}</td>
                 <td>{{friend['occupation']}}</td>
+                <td><a href='/user/{{friend["id"]}}'>SHOW</a>  <a href='/user/{{friend["id"]}}/edit'>EDIT</a>  <a href='/user/{{friend["id"]}}/delete'>Delete</a> </td>
             </tr>
             {%endfor%}
         </table>
         <a href='/user/new'><h1>Add a User</h1></a>
+    
     </div>
 </body>
 </html>
