@@ -1,0 +1,41 @@
+pymysql.err.OperationalError
+pymysql.err.OperationalError: (1049, "Unknown database 'first_flask'")
+
+So I got this twice.... 
+FIRST it was that the DB didn't exist then the 
+
+SOLUTION Make the actual DB...
+SOLUTION Make sure the name matches
+SOLUTION Make sure the server is available
+
+THINGS I WANT TO TEST OUT
+Connecting to a remote DB....
+So I'd have to change the ip from 'localhost' to the ip of the target
+I'd update user and password to match what's needed to login to the server
+
+
+
+TypeError
+TypeError: 'bool' object is not iterable
+
+So I was adding stuff and forgot to take it out....
+
+Not Found
+The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+So i forgot to update the app path....
+
+AttributeError
+AttributeError: type object 'Friend' has no attribute 'update_name'
+
+So i forgot to update the function call
+
+
+TypeError
+TypeError: can only concatenate str (not "tuple") to str
+So I need to conver tuple to string
+
+Alright so I needed to... remove the commas and replace them with + signs....
+
+
+So with that I can now update a friend's 'first_name' field and have it reflect on the table... Cool....
