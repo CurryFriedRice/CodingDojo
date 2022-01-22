@@ -72,14 +72,27 @@ app.run(debug=True)
 
 ## 10. File Setups!
 ### server.py
+- Make sure you import ALL the controllers you're using
 ```py
-from flask import Flask, render_template, redirect, request
 from flask_app import app
-from flask_app.controllers import ninjas, dojos
+from flask_app.controllers import controller_ninjas, controller_dojos
+
+if __name__=="__main__":
+    app.run(debug=True)
+
+DATABASE = ''
+```
+### init.py
+```py
+from flask import Flask
+app = Flask(__name__)
+app.sercret_key ='Shhhh'
+
 
 if __name__=="main":
     app.run(debug=True)
 ```
+
 ### mysqlconnection
 
 ```py
@@ -135,11 +148,11 @@ def connectToMySQL(db):
 ```py
 #Get the connection 
 from flask_app.config.mysqlconnection import connectToMySQL 
-
-DATABASE = 'CHANGE DATABASE'
+from flask_app import DATABASE_SCHEMA
+# DATABASE = 'CHANGE DATABASE'
 #REMEMBER TO REPLACE THE TABLE
 
-class {CLASS_NAME}:
+class Author:
     def __init__(self,data): #DON'T FORGET TO INITIALIZE EVERY FIELD YOU USE
         self.id = data['id']
         self.name= data['name']
@@ -160,18 +173,18 @@ class {CLASS_NAME}:
     # C
     @classmethod
     def create(cls,data:dict) -> int: #The expected return is int
-        query = "INSERT INTO {CLASS_NAME} (FIELDS) VALUES (%(FIELDS)s)"
+        query = "INSERT INTO {TABLE} (FIELDS) VALUES (%(FIELDS)s)"
         user_id = connectToMySQL(DATABASE_SCHEMA).query_db(query,data)
         return user_id
 
     # R
     @classmethod
     def get_all(cls) -> list: #This is a get all and will return a list of dictionaries
-        query = "SELECT * FROM {TABLE};"
+        query = "SELECT * FROM authors;"
         results_from_db =  connectToMySQL(DATABASE_SCHEMA).query_db(query) #Gets a list of dictionaries....
         to_object =[] 
         if results_from_db:
-            for values in results_from_db   #turn those dictionaries into objects
+            for values in results_from_db :  #turn those dictionaries into objects
                 to_object.append(cls(values))
             return to_object
         else : return []
@@ -179,11 +192,11 @@ class {CLASS_NAME}:
 
     @classmethod
     def get_one(cls, data) -> list: #this is the same
-        query "SELECT * FROM {TABLE} WHERE id= %(id)s "
-        result_from_db = connectToMySQL(DATABASE_SCHEMA),query_db(query,data)
+        query = "SELECT * FROM {TABLE} WHERE id= %(id)s "
+        results_from_db = connectToMySQL(DATABASE_SCHEMA).query_db(query,data)
         to_object = []
         if results_from_db:
-            for values in results_from_db   #turn those dictionaries into objects
+            for values in results_from_db :  #turn those dictionaries into objects
                 to_object.append(cls(values))
             return to_object
         else : return []
@@ -192,21 +205,22 @@ class {CLASS_NAME}:
     # U
     @classmethod
     def save(cls,data): #RETURNS NOTHING
-        query = "INSERT INTO {TABLE} (name,bun,meat,calories,created_at,updated_at) VALUES (%(name)s,%(bun)s,%(meat)s,%(calories)s)"
+        query = "UPDATE {CLASS} SET value= %(value)s WHERE id=%(id)s"
         return connectToMySQL(DATABASE_SCHEMA).query_db(query,data)
 
     # D
     @classmethod 
     def delete(cls,data): #RETURNS NOTHING
         query = "DELETE FROM {TABLE} WHERE id=%(id)s;"
+        # This would target a field and flag is as disabled so we get to keep the data.
+        # query = "UPDATE {TABLE} SET account_disabled=true WHERE id = %(id)s"
         return connectToMySQL(DATABASE_SCHEMA).query_db(query,data)
 
 
 ```
 
 ### controller_[table_name].py File
-- This is where all the pathing happens
-meaining the  
+- This is where all the pathing happens meaining the  
 ```py
 #import the app
 from flask_app import app
@@ -214,6 +228,8 @@ from flask_app import app
 from flask import render_template,redirect,request,session,flash
 #then import the SAME relative file
 from flask_app.models.[table_name] import [ClassName] #Importing the object we're manipulating
+
+MODEL = [CLASSNAME]
 
 @app.route('/')
 def index():
@@ -224,15 +240,44 @@ def index():
 #/User/new
 #/user/create
 #/user/<id>/edit
-#/user/<id>/process
+#/user/<id>/update
 #/user/<id>/delete
 
-#So this is what happens when the URL reaches that ROUTE
-@app.route('/create/thing',methods=['POST'])
-def create_thing():
-	user_id = Burger.save(request.form)
-	return redirect('/user/{id}')
+@app.route("/TABLE/new")        #render route
+def get_form():
+    return render_template("TABLE_form.html")
 
+#So this is what happens when the URL reaches that ROUTE
+@app.route('/TABLE/create',methods=['POST']) #action route
+def create():
+	user_id = MODEL.save(request.form)
+	return redirect(f'/TABLE/{user_id}')
+
+@app.route("/TABLE/<int:id>")
+def view(id):
+    context = {
+        "items" : MODEL.get_one({"id": id})
+    }
+    return render_template("TABLE_edit.html", **context)
+
+
+@app.route("/TABLE/<int:id>/edit")
+def edit(id):
+    context = {
+        "items" : MODEL.get_one({"id": id})
+    }
+    return render_template("TABLE.html", items)
+
+@app.route("/TABLE/<int:id>/update", methods=['POST'])
+def update(id):
+    nothing = MODEL.save(request.form)
+    return redirect(f"/TABLE/{id}")
+
+
+@app.route("/TABLE/<int:id>/delete", methods=['POST'])
+def delete(id):
+    nothing = MODEL.delete({"id":id})
+    return redirect("/")  #
 
 ```
 

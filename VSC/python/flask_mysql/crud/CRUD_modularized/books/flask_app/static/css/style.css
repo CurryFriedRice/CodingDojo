@@ -1,0 +1,32 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container
+{
+    width: 800px;
+    margin: 40px auto;
+}
+.nav-bar
+{
+    margin-bottom: 30px
+}
+
+.item
+{
+    width: 350px;
+    padding: 30px;
+    
+}
+
+form > * 
+{
+    margin-top:  10px;
+}
+
+ul
+{
+    list-style:  none;
+}
