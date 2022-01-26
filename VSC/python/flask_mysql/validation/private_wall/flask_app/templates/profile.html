@@ -18,8 +18,8 @@
         {%endif%}
         <div class="d-flex flex-row justify-content-between" >
             <div class="flex-fill">
-                <h1>{{sent_messages|length}} New Messages for you</h1>
-                {%for message in sent_messages%}
+                <h1>{{recieved_messages|length}} New Messages for you</h1>
+                {%for message in recieved_messages%}
                 <form action="/message/delete" method="post"  class='d-flex flex-column mb-4'>
                     <p>Message sent to {{users[message['reciever_id']-1]['username']}} Whose USER ID is {{users[message['reciever_id']-1]['id']}}</p>
                     <p>Sent {{message.get_time_old()}} ago</p>
