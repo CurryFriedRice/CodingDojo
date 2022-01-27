@@ -1,0 +1,13 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+form > *
+{
+    margin:10px;
+}
+form > button
+{
+    padding: 10px 0px
+}

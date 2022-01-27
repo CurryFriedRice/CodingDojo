@@ -1,0 +1,38 @@
+1. all the countries that speak Slovene
+SELECT country.Name, language, percentage FROM countryLanguage
+JOIN country ON countryLanguage.CountryCode = country.Code
+WHERE countryLanguage.Language = "slovene"
+ORDER BY percentage DESC;
+
+2.  total number of cities for each country?
+SELECT country.Code, country.Name, COUNT(CountryCode) FROM city
+JOIN country ON city.CountryCode = country.Code
+GROUP BY countryCode ORDER BY COUNT(id) DESC;
+
+3.
+SELECT * FROM city
+JOIN country ON city.CountryCode = country.Code
+WHERE city.CountryCode = 'MEX' AND city.population > 500000
+ORDER BY city.population DESC;
+
+4.
+SELECT * FROM countryLanguage
+WHERE percentage > 89
+ORDER BY percentage;
+
+5.
+SELECT * From country
+WHERE Population > 100000 and SurfaceArea < 501;
+
+6.
+SELECT * From country
+WHERE GovernmentForm = "Constitutional Monarchy" AND LifeExpectancy > 75 AND GNP >200
+
+7.
+SELECT country.name, city.name, city.district, city.population FROM city
+LEFT JOIN country ON country.Code = city.CountryCode
+WHERE District = 'Buenos Aires' AND city.Population > 500000
+
+8.
+SELECT Region, COUNT(Region) FROM country
+GROUP BY Region ORDER BY COUNT(Region) DESC

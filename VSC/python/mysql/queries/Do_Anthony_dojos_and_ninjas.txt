@@ -1,0 +1,29 @@
+USE dojos_and_ninjas_schema;
+
+INSERT INTO dojos (name, created_at,updated_at)
+VALUES
+	("Red Pheasant", NOW(), NOW()),
+    ("Blue Dragon", NOW(), NOW()),
+    ("White Tiger", NOW(), NOW()),
+    ("Black Turtle", NOW(), NOW());
+    
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM dojos;
+
+INSERT INTO dojos (name, created_at,updated_at)
+VALUES
+	("Astral Dojo", NOW(), NOW()),
+    ("Steel Dojo", NOW(), NOW()),
+    ("Elemental Dojo", NOW(), NOW());
+
+SELECT * FROM ninjas
+WHERE ninjas.dojo_id = 1;
+    
+
+SELECT * FROM ninjas
+WHERE ninjas.dojo_id = (SELECT MAX(id) FROM DOJOS);
+
+SELECT name FROM Dojos 
+WHERE Dojos.id = (SELECT MAX(dojo_id) FROM ninjas )
+

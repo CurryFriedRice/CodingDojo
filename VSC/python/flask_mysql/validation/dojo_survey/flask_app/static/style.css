@@ -1,0 +1,41 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container
+{
+    width: 550px;
+    background-color:steelblue;
+    margin:30px auto;
+    padding:30px;
+    border-radius: 30px;
+ 
+}
+
+.container > *
+{
+    margin:15px 0;
+}
+
+.extra_margin
+{
+    margin-top:50px;
+}
+
+.ui_width
+{
+    width:200px
+}
+
+.width-full
+{
+    width:100%;
+}
+
+.align-edges
+{
+    display: flex;
+    justify-content: space-between;
+}

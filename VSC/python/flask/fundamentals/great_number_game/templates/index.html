@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <style>
+        :root
+        {
+            {%if 'dist_to_guess' not in session %}
+            
+            {%elif session['dist_to_guess'] == 0 %}
+            --res_box_color:green;
+            --text_color:white;
+            {%elif session['dist_to_guess'] < 2 %}
+            --res_box_color:gold;
+            --text_color:white;
+            {%elif session['dist_to_guess'] < 5 %}
+            --res_box_color:orange;
+            --text_color:white;
+            {%elif session['dist_to_guess'] < 10 %}
+            --res_box_color:orangered;
+            --text_color:white;
+            {%else%}
+            --res_box_color:darkred;
+            --text_color:white;
+            {%endif%}
+            
+        }
+        </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div id="response_box">
+            {%for response in session['response']%}
+            <h1>{{response}}</h1>
+            {%endfor%}
+        </div>
+        <div>
+            <!--You're playing-->
+            {%if session['active_guesses']|length == 0 or session['active_guesses'][session['active_guesses']|length - 1] != session['current_num']%}
+            <form action='/guess' method='post'> <!--We need to tell the route its a post-->
+                <label for="guess">What's your guess?</label>
+                <input name="guess" placeholder="Pick 1 - 100">
+                <button>Guess!</button>
+            </form>
+            {%elif 'name' in session%} <!--if it's not your first time finishing-->
+            <form action='/add_to_board' method='post'> <!--We need to tell the route its a post-->
+                <label for="name">Good job {{session['name']}}! Let's see how well you did!</label>
+                <input name="name" value={{ session['name'] }} placeholder="Enter Name">
+                <button>To Leaderboard!</button>
+            </form>
+            {%else%}<!--it's your first time playing-->
+            <form action='/add_to_board' method='post'> <!--We need to tell the route its a post-->
+                <label for="name">I never asked, What's your name?</label>
+                <input name="name" placeholder="Enter Name">
+                <button>Submit!</button>
+            </form>
+            {%endif%}
+        </div>
+    </div>
+</body>
+</html>

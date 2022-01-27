@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1 class='fs-4 fw-bold fs-4 fw-bold text-light'>Dojo Survey</h1>
+        <form action="/process" method="post">
+            <input hidden='true' name = "uuid" value = "{{session['uuid']}}">
+            <div class="d-flex mb-2">
+                <label class='mr-auto p-2 fs-4 fw-bold text-light' for="name">Your Name</label>
+                <input class='p-2  ui_width' name="name" placeholder="Obi-wan"> 
+            </div>
+            <div class="d-flex mb-2">
+                <label class='mr-auto p-2 fs-4 fw-bold text-light' for="location">Dojo Location</label>
+                <select class='p-2 ui_width' name="location" placeholder="Select A location">
+                    <option value="Bellevue, WA">Bellevue, WA</option>
+                    <option value="Boise, ID">Boise, ID</option>
+                    <option value="Chicago, IL">Chicago, IL</option>
+                    <option value="Los Angeles, CA">Los Angeles, CA</option>
+                    <option value="Silicon Valley, CA">Silicon valley, CA</option>
+                </select>
+            </div>
+            <div class="d-flex mb-2">
+                <label class='mr-auto p-2 fs-4 fw-bold text-light' for="fav_lang">Favorite Language</label>
+                <div class='text-light'>
+                    <input type="radio" id="html" name="fav_lang" value="HTML">
+                    <label for="html">HTML</label><br>
+                    <input type="radio" id="css" name="fav_lang" value="CSS">
+                    <label for="css">CSS</label><br>
+                    <input type="radio" id="javascript" name="fav_lang" value="JavaScript">
+                    <label for="javascript">JavaScript</label>
+                </div>
+            </div>
+            <div class='d-flex mb-2 flex-column'>
+                <label class='mr-2 fs-4 fw-bold text-light' for="commnet">Extra Comments</label>
+                <textarea  class='p-2'  name="comment" placeholder="Any Other Comments"></textarea>
+            </div>
+            <div class="d-flex col-2 mx-auto extra_margin">
+                <button class="btn btn-warning" >Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
