@@ -1,0 +1,148 @@
+/* CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+/*set this to set the 'width' of our 'page'*/
+.setWidth
+{
+    width:100%;
+    margin: 0 auto;
+}
+
+/* Fixed width container class that will "auto-center" itself The MAIN body of the content*/
+.container {
+    width: 1100px;
+    margin: 0 auto;
+    /* background-color:red; */
+}
+
+/*Navigation Elements*/
+#nav
+{
+    background-color: skyblue;
+    color:white;
+}
+
+#nav > .header > ul
+{
+    display:flex;
+    list-style: none;
+    margin-right:20px;
+}
+#nav > .header > ul >li
+{
+    margin-left:30px;
+}
+
+.header
+{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:24px 0px;
+}
+/* End of Nav Items*/
+
+/*this sets the border under the location*/
+.container > .header
+{
+    border-bottom: 5px solid black;
+    margin-bottom:40px;
+}
+
+/*Setting up Weather Body*/
+#weatherBody
+{
+    display:flex;
+    justify-content:space-between;
+}
+#weatherBody > * 
+{
+    margin-right:30px;
+}
+#weatherBody > :last-child
+{
+    margin-right:0px;
+}
+/*setting up a weather Card*/
+.card
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:lightgray;
+    flex:1;
+    padding:30px;
+}
+
+.card > * 
+{
+    margin:20px;
+}
+
+.cardFooter
+{
+    width:80%;
+    display:flex;
+    justify-content:space-between;
+}
+.cardFooter :first-child 
+{
+    color:red;
+}
+.cardFooter :last-child 
+{
+    color:blue;
+}
+
+
+/*Cookies popup*/
+#cookiesAgreement 
+{
+    
+    width: 1100px;
+    position:fixed;
+    margin-left: -550px;
+    bottom:25px;
+    left:50%;
+    background-color:lightgray;
+    border: 3px solid black;
+    padding:10px 20px 30px 20px;
+    display:flex;
+    align-items: center;
+}
+
+
+#cookiesAgreement > img
+{  
+    width:64px;
+    height:64px;
+    margin-top: 32px;
+    margin-right:32px;
+}
+
+#cookiesAgreement >input 
+{
+    background-color:skyblue;
+    margin-left: 32px;
+    padding: 10px 20px;
+    border-color: black;
+    box-shadow: 4px 4px 0px black;
+    font-size:12pt;
+}
+
+.round
+{
+    border-radius:50%;
+}
+
+.pictureMedium
+{
+    height:128px;
+    width:128px
+}
+
