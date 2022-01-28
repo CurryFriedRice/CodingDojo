@@ -113,6 +113,13 @@ const two_expected4 = 6;
  * @returns {number|null} The missing integer needed to be able to form an unbroken
  *    consecutive set of integers from the given array or null if none is missing.
  */
+
+function missingValue2(unorderedNums)
+{
+    //Do math to add up the values of the minimum up to the max
+    //Add up the values of the array and the values between min and max
+    //Then expected - unordered to get what's missing
+}
 function missingValue(unorderedNums)
 {
     /** Create a function that takes in an unorders array of numbers

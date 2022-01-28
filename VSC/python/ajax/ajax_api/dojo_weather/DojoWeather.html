@@ -15,9 +15,9 @@
             <div class="container header">
                 <h1>DojoWeather</h1>
                 <ul>
-                    <li><h2 onclick="changeRegion()">Burbank</h2></li>
-                    <li><h2 onclick="changeRegion()">Chicago</h2></li>
-                    <li><h2 onclick="changeRegion()">Dallas</h2></li>
+                    <li><h2 onclick="changeRegion('burbank')">Burbank</h2></li>
+                    <li><h2 onclick="changeRegion('chicago')">Chicago</h2></li>
+                    <li><h2 onclick="changeRegion('dallas')">Dallas</h2></li>
                 </ul>
             </div>
         </div>
@@ -72,7 +72,6 @@
             </div>
         </div>
         <div id="cookiesAgreement">    
-           
             <img src="assets/cookie.png" alt="cookie logo" class="pictureMedium">
             <div>
                 <h2>Stop Cookie time</h2>
@@ -80,8 +79,15 @@
             </div>
             <input type="button" name="cookies" value="I Accept" onClick="dismiss(cookiesAgreement)">
         </div>
+        <div id='Output'>
+      
+        </div>
+        <div id='Output2'>
+          
+        </div>
     </div>
-    <script src="dojoWeather.js"></script>
+   
+    <script src="DojoWeather.js"></script>
 </body>
 
 </html>
