@@ -43,5 +43,9 @@ myForm.onsubmit = function(e){
             email.innerHTML = data['form']['email']
             row.appendChild(email);
             users.appendChild(row);
+        }).then(data => {
+            console.log("Gotta clear the form")
+            console.log(myForm)
+            myForm.reset();
         })
     }
