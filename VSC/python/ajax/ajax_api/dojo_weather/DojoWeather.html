@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DojoWeather</title>
+    <link rel="stylesheet" type="text/css" href="dojo.css">
+</head>
+
+<body>
+    <div class="setWidth">
+        <div id="nav">
+            <div class="container header">
+                <h1>DojoWeather</h1>
+                <ul>
+                    <li><h2 onclick="changeRegion('burbank')">Burbank</h2></li>
+                    <li><h2 onclick="changeRegion('chicago')">Chicago</h2></li>
+                    <li><h2 onclick="changeRegion('dallas')">Dallas</h2></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header">
+                <h1>San Jose</h1>
+                <div>
+                    <label for="tempType">Show Temperature in: </label>
+                    <select name="tempType" id="tempType" onchange="setTemp(value)">
+                        <option value="cel">°C</option>
+                        <option value="far">°F</option>
+                    </select>
+                </div>
+            </div>
+            <div id="weatherBody" class="container">
+                <div class="card">
+                    <h1 class="cardHeader">Today</h1>
+                    <img src="assets/some_rain.png" alt="Some Rain" class="round pictureMedium">
+                    <p>Some Rain</p>
+                    <div class="cardFooter temperatureField">
+                        <h2>24°</h2>
+                        <h2>18°</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1 class="cardHeader">Tomorrow</h1>
+                    <img src="assets/some_sun.png" alt="picture of sun" class="round pictureMedium">
+                    <p>Some Sun</p>
+                    <div class="cardFooter temperatureField">
+                        <h2>27°</h2>
+                        <h2>19°</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1 class="cardHeader">Friday</h1>
+                    <img src="assets/some_clouds.png" alt="Some Clouds" class="round pictureMedium">
+                    <p>Some Clouds</p>
+                    <div class="cardFooter temperatureField">
+                        <h2>21°</h2>
+                        <h2>16°</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1 class="cardHeader">Saturday</h1>
+                    <img src="assets/some_sun.png" alt="Some Clouds" class="round pictureMedium">
+                    <p>Some Sun</p>
+                    <div class="cardFooter temperatureField">
+                        <h2>26°</h2>
+                        <h2>21°</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cookiesAgreement">    
+            <img src="assets/cookie.png" alt="cookie logo" class="pictureMedium">
+            <div>
+                <h2>Stop Cookie time</h2>
+                <p>We use Cookies (sadly not the edible ones) to personalize content and ads, to provide social media features and to analyse our traffic. <a href="#">Read more...</a></p>
+            </div>
+            <input type="button" name="cookies" value="I Accept" onClick="dismiss(cookiesAgreement)">
+        </div>
+        <div id='Output'>
+      
+        </div>
+        <div id='Output2'>
+          
+        </div>
+    </div>
+   
+    <script src="DojoWeather.js"></script>
+</body>
+
+</html>

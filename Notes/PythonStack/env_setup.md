@@ -228,6 +228,7 @@ from flask_app import app
 from flask import render_template,redirect,request,session,flash
 #then import the SAME relative file
 from flask_app.models.[table_name] import [ClassName] #Importing the object we're manipulating
+from flask import jsonify 
 
 MODEL = [CLASSNAME]
 
@@ -281,3 +282,20 @@ def delete(id):
 
 ```
 
+
+
+
+API JSONIFTY
+@app.route("/api/thing/create"), methods=[""POST"]
+def api_thing_create():
+    return jsonify(requets.form)
+
+
+In todo js 
+
+let form = new formData();
+
+fetch("/API/THING/CREATE", {
+    method='post'
+    body: value
+    }).
