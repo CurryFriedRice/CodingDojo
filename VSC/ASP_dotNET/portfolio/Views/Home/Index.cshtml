@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- html/head tags removed for brevity -->
+        @{
+            var StringList = new List<string>
+        {
+        "Apple",
+        "Bacon",
+        "Curry",
+        "Crumble Pie",
+        "Steak",
+        "Vanilla Ice Cream"
+        };
+            <h1>Here are some DELICIOUS foods!</h1>
+            foreach (var food in StringList)
+            {
+                <div>
+                    @if(food.Substring(0,1).ToLower() =="c")
+                    {
+                        <p style='color:red'>@food  </p>
+                    }else
+                    {
+                        <p>@food </p>
+                    }
+                </div>
+            }
+        }
+    </body>
+
+</html>

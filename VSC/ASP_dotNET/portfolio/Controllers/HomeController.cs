@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Html;
 
-namespace portfolio
+
+namespace portfolio.Controllers
 {
     public class HomeController : Controller
     {
@@ -8,22 +10,22 @@ namespace portfolio
         // localhost:5000
         [Route("")]
         [HttpGet]
-        public string Index()
+        public ViewResult Index()
         {
-            return "This is my Index";
+            return View();
         }
                 // localhost:5000
         [Route("projects")]
         [HttpGet]
-        public string Projects()
+        public ViewResult Projects()
         {
-            return "These are my Projects";
+            return View();
         }
 
         [Route("contact")]
-        public string contact()
+        public ViewResult contact()
         {
-            return "This is my Contact";
+            return View();
         }
 
     }
