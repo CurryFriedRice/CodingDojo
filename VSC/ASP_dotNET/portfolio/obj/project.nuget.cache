@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W62QcqvyKc69LGTMhN6/1CiXhVLl48NkoaDyaqRN2wXKtIJOTlXzFxZkeCkys1nHqTiFcNkx9tTEp7s854Bymw==",
+  "dgSpecHash": "tonXiNykzN6dtSzu0JvsrE+qAWg7bjNTlID03H8XANmJ0Il4efhPzcbDzjsxK0siCxEOdVymX0QZ7mXnNMGKlQ==",
   "success": true,
-  "projectFilePath": "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotnet\\portfolio\\portfolio.csproj",
+  "projectFilePath": "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\portfolio.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

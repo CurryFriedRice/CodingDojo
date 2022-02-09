@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotnet\\portfolio\\portfolio.csproj": {}
+    "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\portfolio.csproj": {}
   },
   "projects": {
-    "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotnet\\portfolio\\portfolio.csproj": {
+    "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\portfolio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotnet\\portfolio\\portfolio.csproj",
+        "projectUniqueName": "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\portfolio.csproj",
         "projectName": "portfolio",
-        "projectPath": "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotnet\\portfolio\\portfolio.csproj",
+        "projectPath": "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\portfolio.csproj",
         "packagesPath": "C:\\Users\\setok\\.nuget\\packages\\",
-        "outputPath": "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotnet\\portfolio\\obj\\",
+        "outputPath": "E:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\setok\\AppData\\Roaming\\NuGet\\NuGet.Config"
