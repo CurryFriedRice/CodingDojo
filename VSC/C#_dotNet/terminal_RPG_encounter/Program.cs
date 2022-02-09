@@ -10,9 +10,9 @@ namespace terminal_RPG_encounter
         {
             Console.WriteLine("Hello World!");
 
-            Unit Villager = new Unit("Villager");
-            Console.WriteLine("oops");
-            Console.WriteLine(Villager.ToString());
+            // Unit Villager = new Unit("Villager");
+            // Console.WriteLine("oops");
+            // Console.WriteLine(Villager.ToString());
 
             Wizard Wz = new Wizard("Snurmple");
             Ninja Nj = new Ninja("Lodelle");
