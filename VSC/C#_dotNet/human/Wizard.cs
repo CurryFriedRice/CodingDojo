@@ -36,7 +36,7 @@ namespace human
             target.health += 10*Intelligence;
             Console.WriteLine($"{Name}'s wounds close healing for {10*Intelligence}");
         }
-
+        
     }
 
 
