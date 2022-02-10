@@ -32,6 +32,7 @@ namespace portfolio
         {
             // some code removed for brevity        
             app.UseMvc();    //add this line, replacing the app.UseRouting() and app.UseEndpoints() lines of code    
+            app.UseStaticFiles();
         }
     }
 }

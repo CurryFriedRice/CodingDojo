@@ -1,0 +1,55 @@
+*
+{
+    margin:0px;
+    padding:0px;
+}
+
+.container
+{
+    width:1600px;
+    margin: 0px auto;
+}
+
+.half-container
+{
+    width:600px;
+}
+
+a
+{
+    padding:40px
+}
+
+.center
+{
+    margin:0px auto;
+}
+
+.pfp
+{
+    width: 400px;
+    height:400px;
+}
+
+.project
+{
+    width:800px;
+    height:600px;
+    margin:0px 250px;
+}
+
+.Logo
+{
+    width:90px;
+}
+
+.maxWidth
+{
+    max-width:400px;
+    margin:0px auto;
+}
+
+form
+{
+    margin-top: 30%;
+}

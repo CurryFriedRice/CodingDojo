@@ -1,5 +1,5 @@
 {
-  "FilePath": "e:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\portfolio.csproj",
+  "FilePath": "e:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\time_display\\time_display.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14399,23 +14399,7 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "portfolio",
-  "Documents": [
-    {
-      "FilePath": "e:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\Views\\Home\\Projects.cshtml",
-      "TargetPath": "Views\\Home\\Projects.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\portfolio\\Views\\Home\\contact.cshtml",
-      "TargetPath": "Views\\Home\\contact.cshtml",
-      "FileKind": "mvc"
-    }
-  ],
+  "RootNamespace": "time_display",
+  "Documents": [],
   "SerializationFormat": "0.2"
 }
