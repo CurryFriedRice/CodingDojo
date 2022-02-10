@@ -5,24 +5,25 @@ namespace deck_of_cards{
    
     class Player
     {
-        public Deck deck {get;set;} = new Deck();
         public string Name{get;set;}
         public List<Card> Hand{get;set;} = new List<Card>();
         static void Main(string[] args)
         {
+            Deck deck = new Deck();
+
             Console.WriteLine("Hello World!");
             Player myself = new Player();
-            myself.Draw();
-            myself.Draw();
-            myself.Draw();
+            myself.Draw(deck);
+            myself.Draw(deck);
+            myself.Draw(deck);
             myself.Discard(0);
             myself.Discard(0);
             myself.Discard(0);
 
         }
-        public Card Draw()
+        public Card Draw(Deck _Deck)
         {
-            Card drawn = deck.Draw();
+            Card drawn = _Deck.Draw();
             Console.WriteLine($"Drawn Card is : {drawn.ToString()}");
             Hand.Add(drawn);
             return drawn;
