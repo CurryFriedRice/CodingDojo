@@ -10,6 +10,10 @@ Open up Gitbash by Right Clicking the folder location
 
 ```
 dotnet new web --no-https -o ProjectName
+
+//Still need to edit the Startup CS to use statics
+dotnet new mvc --no-https -o ProjectName 
+
 ```
 
 # Update the Files
