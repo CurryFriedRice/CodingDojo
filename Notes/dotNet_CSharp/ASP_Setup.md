@@ -34,19 +34,20 @@ public class Program
             {
                 webBuilder.UseStartup<Startup>();
             });
-    }
-
+}
+```
+Startup.cs
+```C#
     public void ConfigureServices(IServiceCollection services) {
     services.AddMvc(options => options.EnableEndpointRouting = false);  //add this line    
     }
     
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {        
         // some code removed for brevity        
+        app.UseStaticFiles();
         app.UseMvc();    //add this line, replacing the app.UseRouting() and app.UseEndpoints() lines of code    
     }
-    
 ```
-
 # Open the Project Folder using VS code
 ```
     setx ASPNETCORE_ENVIRONMENT Development

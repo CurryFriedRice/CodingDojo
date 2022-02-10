@@ -16,6 +16,7 @@ namespace dojo_survey
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(options => options.EnableEndpointRouting = false);  //add this line    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -25,40 +26,17 @@ namespace dojo_survey
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStaticFiles();
+            app.UseMvc();    //add this line, replacing the app.UseRouting() and app.UseEndpoints() lines of cod
+        //     app.UseRouting();
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+        //     app.UseEndpoints(endpoints =>
+        //     {
+        //         endpoints.MapGet("/", async context =>
+        //         {
+        //             await context.Response.WriteAsync("Hello World!");
+        //         });
+        //     });
         }
     }
 }
-
-
-    //  // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-    //     public Startup(IWebHostEnvironment env)
-    //     {
-    //         // run this in the debugger, and inspect the "env" object! You can use this object to tell you 
-    //         // the root path of your application, for the purposes of reading from local files, and for            
-    //         // checking environment variables - such as if you are running in Development or Production 
-    //         Console.WriteLine(env.ContentRootPath);
-    //         Console.WriteLine(env.IsDevelopment());
-    //     }
-
-    //     public void ConfigureServices(IServiceCollection services)
-    //     {
-    //         services.AddMvc(options => options.EnableEndpointRouting = false);  //add this line    
-    //     }
-
-    //     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    //     {
-    //         // some code removed for brevity        
-    //         app.UseMvc();    //add this line, replacing the app.UseRouting() and app.UseEndpoints() lines of code    
-    //         app.UseStaticFiles();
-    //     }
-    // }

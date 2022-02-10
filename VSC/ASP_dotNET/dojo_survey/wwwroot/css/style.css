@@ -1,0 +1,20 @@
+*
+{
+    margin: 0px;
+    padding:0px;
+}
+
+.container
+{
+    width:400px;
+} 
+
+.inputWidth
+{
+    width: 200px;
+}
+.smaller
+{
+    width: 100px;
+    margin: 0px auto;
+}
