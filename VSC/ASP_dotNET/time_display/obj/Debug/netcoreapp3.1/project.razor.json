@@ -14400,6 +14400,12 @@
     "CSharpLanguageVersion": 800
   },
   "RootNamespace": "time_display",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "e:\\Applications\\SourceTree\\CodingDojo\\VSC\\ASP_dotNET\\time_display\\Views\\Clock\\time.cshtml",
+      "TargetPath": "Views\\Clock\\time.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }
