@@ -1,3 +1,6 @@
+@using dojo_survey.Models;
+@model SurveyResponse;
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,19 +17,19 @@
         <table class="table text-light">
             <tr>
                 <td>Name</td>
-                <td>@ViewBag.Name</td>
+                <td>@Model.Name</td>
             </tr>
                         <tr>
                 <td>Place</td>
-                <td>@ViewBag.Place</td>
+                <td>@Model.Place</td>
             </tr>
                         <tr>
                 <td>Activity</td>
-                <td>@ViewBag.Activity</td>
+                <td>@Model.Activity</td>
             </tr>
                         <tr>
                 <td>Comment</td>
-                <td>@ViewBag.Comment</td>
+                <td>@Model.Comment</td>
             </tr>
         </table>
 

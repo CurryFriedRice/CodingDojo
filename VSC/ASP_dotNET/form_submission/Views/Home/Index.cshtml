@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model User;
+
+<div class="text-center container">
+    @* <h1 class="display-4">Welcome</h1> *@
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+        <h1>Fill out this form!</h1>
+        <form asp-action="Validate" asp-controller="Home" method="POST" class = "d-flex flex-column">
+            <span asp-validation-for="FirstName" class="text-danger mt-3"></span> 
+           
+            <div class="d-flex justify-content-between">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName">
+            </div>
+            
+                
+            <span asp-validation-for="LastName" class="text-danger mt-3"></span> 
+            <div class="d-flex justify-content-between">
+
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName">
+            </div>
+
+            <span asp-validation-for="Age" class="text-danger mt-3"></span> 
+            <div class="d-flex justify-content-between">
+
+            <label asp-for="Age"></label>
+            <input asp-for="Age">
+            </div>
+
+            <span asp-validation-for="EmailAddress" class="text-danger mt-3"></span> 
+            <div class="d-flex justify-content-between">
+
+            <label asp-for="EmailAddress"></label>
+            <input asp-for="EmailAddress">
+            </div>
+
+            <span asp-validation-for="Password" class="text-danger mt-3"></span> 
+            <div class="d-flex justify-content-between">
+            <label asp-for="Password"></label>
+            <input asp-for="Password">
+            </div>
+
+            <button value="Add User" type="Submit" class="btn btn-success mt-3">Submit</button> 
+        </form>
+</div>

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using dojo_survey.Models;
 
 namespace dojo_survey.Controllers     //be sure to use your own project's namespace!
 {
@@ -31,18 +32,14 @@ namespace dojo_survey.Controllers     //be sure to use your own project's namesp
         }
 
         [HttpPost("result")]
-        public IActionResult Result(string name, string place, string activity, string comment)
+        public IActionResult Result(SurveyResponse Res)
         {
-            ViewBag.Name = name;
-            ViewBag.Place = place;
-            ViewBag.Activity = activity;
-            ViewBag.Comment = comment;
-            
-            return View();
+            return View(Res);
         }
     }
-
-
-
-
 }
+
+
+
+
+//string name, string place, string activity, string comment
