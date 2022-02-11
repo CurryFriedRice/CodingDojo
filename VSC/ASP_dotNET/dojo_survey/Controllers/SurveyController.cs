@@ -12,14 +12,14 @@ namespace dojo_survey.Controllers     //be sure to use your own project's namesp
         // GET requests to "localhost:5000" go here
         public IActionResult SurveyForm(string name, string location, int age)
         {
-            ViewBag.Locations= new string[]{"--Select A Location--",
+            ViewBag.Locations= new string[]{
                                         "Chateau Processing Unit",
                                         "Solid State Depots", 
                                         "Random Access Mall",
                                         "Graphics Processing Pagoda",
                                         "Universal Seriel Bridge"};
             
-            ViewBag.Activities = new List<string>(){"--Select an Activity--",
+            ViewBag.Activities = new List<string>(){
                                                     "Arcade",
                                                     "Antique Hunting", 
                                                     "Food", 
@@ -31,10 +31,32 @@ namespace dojo_survey.Controllers     //be sure to use your own project's namesp
             return  View();
         }
 
-        [HttpPost("result")]
+        [HttpPost("Survey/result")]
         public IActionResult Result(SurveyResponse Res)
         {
-            return View(Res);
+
+            if(ModelState.IsValid)
+            {
+                return View(Res);
+            }
+            ViewBag.Locations= new string[]{
+                                        "Chateau Processing Unit",
+                                        "Solid State Depots", 
+                                        "Random Access Mall",
+                                        "Graphics Processing Pagoda",
+                                        "Universal Seriel Bridge"};
+            
+            ViewBag.Activities = new List<string>(){
+                                                    "Arcade",
+                                                    "Antique Hunting", 
+                                                    "Food", 
+                                                    "Shopping", 
+                                                    "Hanging Out",
+                                                    "Building Gunpla",
+                                                    "Photo Op",
+                                                    "Dancing in the moonlight"};
+                                                    
+            return View("SurveyForm"); 
         }
     }
 }
