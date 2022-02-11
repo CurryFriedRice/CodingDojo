@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Date Form";
+}
+@model PastDate
+
+
+<h1>Welcome to this datetime Validator</h1>
+<h2>Please enter a valid date!</h2>
+<form method="POST" asp-action="Validate" asp-controller="Home" class="d-flex flex-column"> 
+    <span asp-validation-for="NewDateTime" class="text-danger"></span>
+    <label asp-for="NewDateTime"></label>
+    <input asp-for="NewDateTime">
+
+    <button>Submit</button>
+</form>
