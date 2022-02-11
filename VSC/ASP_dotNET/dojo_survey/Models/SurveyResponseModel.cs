@@ -15,7 +15,7 @@ namespace dojo_survey.Models
         [ValidActivity]
         public string Activity { get; set; }
 
-        [MaxLength(20)]
+        [MinLength(20)]
         public string Comment { get; set; }
     }
 
