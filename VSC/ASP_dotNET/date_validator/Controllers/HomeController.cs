@@ -11,6 +11,28 @@ namespace date_validator.Controllers
 {
     public class HomeController : Controller
     {
+
+        [HttpGet("")]
+        public IActionResult DateForm()
+        {
+            return View();
+        }
+
+        [HttpPost("Home/Validate")]
+        public IActionResult Validate(PastDate PD)
+        {
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("Success");
+            }
+            return View("DateForm");
+        }
+
+        [HttpGet("home/success")]
+        public IActionResult Success()
+        {
+            return View();
+        }
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
