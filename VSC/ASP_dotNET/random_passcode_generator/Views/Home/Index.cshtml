@@ -2,7 +2,16 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+@* <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+
+
+<div class="text-center">
+    <h2>Random Passcode Generator <span id="numberOfCodes"></span></h2>
+    <h1 id="passcode"></h1>
+    <button id="generate" class="btn btn-primary" action="updateCount()">Generate</button>
 </div>
+
+<script src="~/js/site.js"></script>
