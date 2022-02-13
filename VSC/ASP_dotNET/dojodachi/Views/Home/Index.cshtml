@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Dojodatchi";
+}
+@model Pet;
+
+<div class="d-flex flex-column justify-content-center">
+    <div class="d-flex flex-row " >
+        <p class="mr-3">Fullness: <span id="fullness">@Model.fullness</span></p>
+        <p class="ml-3 mr-3">Happiness:<span id="happiness"> @Model.happiness </span></p>
+        <p class="ml-3 mr-3">Meals: <span id="meals">@Model.meals </span></p>
+        <P class="ml-3">Energy: <span id="energy">@Model.energy</span></p>
+        </P>
+    </div>
+    <div>
+  
+        <div class = "thumnail" id = "emotionPic"><img src="~/img/happy.png"></div>
+        <p class="Message" id="message"></p>
+    </div>
+    <div id="buttonRow" class="d-flex flex-row " >
+        <button id="feed" class="mr-3 btn btn-primary">Feed</button>
+        <button id="play" class="ml-3 mr-3 btn btn-success">Play</button>
+        <button id="work" class="ml-3 mr-3 btn btn-warning">Work</button>
+        <button id="sleep" class="ml-3 btn btn-danger">Sleep</button>
+        </P>
+    </div>
+    <div id="restart">
+
+    </div>
+</div>
+<script src="~/js/dojotachi.js"></script>
