@@ -44,12 +44,14 @@ Startup.cs
 ```C#
     public void ConfigureServices(IServiceCollection services) {
     services.AddMvc(options => options.EnableEndpointRouting = false);  //add this line    
+       services.AddSession();    // add this line
     }
     
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {        
         // some code removed for brevity        
         app.UseStaticFiles();
         app.UseMvc();    //add this line, replacing the app.UseRouting() and app.UseEndpoints() lines of code    
+        services.AddSession();    // add this line
     }
 ```
 # Open the Project Folder using VS code
@@ -81,6 +83,8 @@ Controllers should be named {NAME}Controller.cs
 When returning a View() if you don't use a string it'll look for the same cshtml file under views
 ```C#
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+
 namespace YourNamespace.Controllers     //be sure to use your own project's namespace!
 {
     public class HelloController : Controller   //remember inheritance??
@@ -135,6 +139,20 @@ namespace YourNamespace.Controllers     //be sure to use your own project's name
 			// it can also be something more complicated like a User Object or 
 			// a list of Product
         }
+
+
+    // *Inside controller methods*
+    // To store a string in session we use ".SetString"
+    // The first string passed is the key and the second is the value we want to retrieve later
+    HttpContext.Session.SetString("UserName", "Samantha");
+    // To retrieve a string from session we use ".GetString"
+    string LocalVariable = HttpContext.Session.GetString("UserName");
+    
+    // To store an int in session we use ".SetInt32"
+    HttpContext.Session.SetInt32("UserAge", 28);
+    // To retrieve an int from session we use ".GetInt32"
+    int? IntVariable = HttpContext.Session.GetInt32("UserAge");
+    HttpContext.Session.Clear();
 }
 ```
 # csHtml
@@ -253,4 +271,11 @@ public class SecondController : Controller
         return View();
     }
 }
+```
+
+# Accesssing Session in Views
+- You need to assign a ViewBag.{Variable} to the Session(Value)
+```
+// in your Controller
+ViewBag.Count = HttpContext.Session.GetInt32("count");
 ```
