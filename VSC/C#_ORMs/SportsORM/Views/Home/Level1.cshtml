@@ -19,5 +19,26 @@
             <li>...every player with last name "Cooper" EXCEPT those with "Joshua" as the first name</li>
             <li>...all players with first name "Alexander" OR first name "Wyatt"</li>
         </ol>
+
+        <ol>
+            <li>
+                <p>Womens Leagues</p>
+                <ul>
+                @foreach (var league in ViewBag.WomensLeagues)
+                {
+                    <li>@league.Name</li>
+                }
+                </ul>
+            </li>
+            <li>
+                <p>Hockey Leagues</p>
+                <ul>
+                @foreach (var league in ViewBag.HockeyLeagues)
+                {
+                    <li>@league.Name</li>
+                }
+                </ul>
+            </li>
+        </ol>
     </div>
 </div>
