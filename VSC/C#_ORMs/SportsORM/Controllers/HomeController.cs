@@ -34,7 +34,10 @@ namespace SportsORM.Controllers
             ViewBag.WomensLeagues = _context.Leagues
                 .Where(l => l.Sport.Contains("women"))
                 .ToList();
-
+            ViewBag.HockeyLeagues = _context.Leagues
+                .Where(l => l.Name.Contains("Hockey"))
+                .ToList();
+            
             
             return View();
         }
