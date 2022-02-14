@@ -37,7 +37,9 @@ namespace SportsORM.Controllers
             ViewBag.HockeyLeagues = _context.Leagues
                 .Where(l => l.Name.Contains("Hockey"))
                 .ToList();
-            
+            ViewBag.NotFootball = _context.Leagues
+                .Where(l => (l.Sport != "football"))
+                .ToList();
             
             return View();
         }

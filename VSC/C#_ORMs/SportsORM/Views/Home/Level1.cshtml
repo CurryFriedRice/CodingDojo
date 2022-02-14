@@ -39,6 +39,15 @@
                 }
                 </ul>
             </li>
+                        <li>
+                <p>Not Football</p>
+                <ul>
+                @foreach (var league in ViewBag.NotFootball)
+                {
+                    <li>@league.Name</li>
+                }
+                </ul>
+            </li>
         </ol>
     </div>
 </div>
