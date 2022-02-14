@@ -43,15 +43,15 @@ public class Program
 Startup.cs
 ```C#
     public void ConfigureServices(IServiceCollection services) {
-    services.AddMvc(options => options.EnableEndpointRouting = false);  //add this line    
-       services.AddSession();    // add this line
+        services.AddMvc(options => options.EnableEndpointRouting = false);  //add this line    
+        services.AddSession();    // add this line
     }
     
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {        
         // some code removed for brevity        
         app.UseStaticFiles();
         app.UseMvc();    //add this line, replacing the app.UseRouting() and app.UseEndpoints() lines of code    
-        services.AddSession();    // add this line
+        app.UseSession();
     }
 ```
 # Open the Project Folder using VS code
@@ -274,7 +274,7 @@ public class SecondController : Controller
 ```
 
 # Accesssing Session in Views
-- You need to assign a ViewBag.{Variable} to the Session(Value)
+- You need to assign a ViewBag.{Variable} to the Session(Value) 
 ```
 // in your Controller
 ViewBag.Count = HttpContext.Session.GetInt32("count");

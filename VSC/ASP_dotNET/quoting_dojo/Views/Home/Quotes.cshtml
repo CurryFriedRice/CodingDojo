@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Quotes Page";
+}
+
+<h1>We made it to quotes</h1>
+@model QuoteModel
+
+<table class='table'>
+<tr>
+    <th>Quote Content</th>
+    <th>Created By</th>
+
+</tr>
+@foreach(var user in ViewBag.AllQuotes)
+{
+    <tr>
+        <td> @user["quote"] </td> 
+        <td> @user["creator_name"]</td>
+        <td> @user["created_at"]</td>
+    </tr>
+
+}
+</table>
