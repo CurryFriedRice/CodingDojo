@@ -53,7 +53,16 @@ namespace SportsORM.Controllers
             ViewBag.BeginsWithT = _context.Teams
                 .Where(t => t.TeamName[0].ToString().ToLower() == "t")
                 .ToList();
-            
+            ViewBag.AlphaLocation = _context.Teams
+                .OrderBy(t => t.Location)
+                .ToList();
+            ViewBag.ReverseAlphaTeamName = _context.Teams
+                .OrderByDescending(t => t.TeamName)
+                .ToList();
+
+            ViewBag.Coopers = _context.Players
+                .Where(p => p.LastName =="Cooper")
+                .ToList();
 
             return View();
         }
