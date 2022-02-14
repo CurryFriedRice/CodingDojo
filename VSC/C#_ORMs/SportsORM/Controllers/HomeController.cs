@@ -47,6 +47,14 @@ namespace SportsORM.Controllers
                 .Where(l => l.Name.Contains("atlantic"))
                 .ToList();
             
+            ViewBag.DallasTeams = _context.Teams
+                .Where(t => t.Location == "Dallas")
+                .ToList();
+            ViewBag.BeginsWithT = _context.Teams
+                .Where(t => t.TeamName[0].ToString().ToLower() == "t")
+                .ToList();
+            
+
             return View();
         }
 
