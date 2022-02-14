@@ -40,18 +40,24 @@ namespace SportsORM.Controllers
             ViewBag.NotFootball = _context.Leagues
                 .Where(l => (l.Sport != "football"))
                 .ToList();
-            ViewBag.ConferenceLeauges = _context.Leagues
-                .Where(l => l.Name.Contains("conference"))
+            ViewBag.ConferenceLeagues = _context.Leagues
+                .Where(l => l.Name.Contains("Conference"))
                 .ToList();
             ViewBag.AtlanticRegion = _context.Leagues
-                .Where(l => l.Name.Contains("atlantic"))
+                .Where(l => l.Name.Contains("Atlantic"))
                 .ToList();
             
             ViewBag.DallasTeams = _context.Teams
                 .Where(t => t.Location == "Dallas")
                 .ToList();
+            ViewBag.Raptors = _context.Teams
+                .Where(t => t.TeamName.Contains("Raptors"))
+                .ToList();
+            ViewBag.LocationCities = _context.Teams
+                .Where(t => t.Location.Contains("City"))
+                .ToList();
             ViewBag.BeginsWithT = _context.Teams
-                .Where(t => t.TeamName[0].ToString().ToLower() == "t")
+                .Where(t => t.TeamName.StartsWith("T"))
                 .ToList();
             ViewBag.AlphaLocation = _context.Teams
                 .OrderBy(t => t.Location)

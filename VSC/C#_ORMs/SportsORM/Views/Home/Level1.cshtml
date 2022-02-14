@@ -19,35 +19,144 @@
             <li>...every player with last name "Cooper" EXCEPT those with "Joshua" as the first name</li>
             <li>...all players with first name "Alexander" OR first name "Wyatt"</li>
         </ol>
-
         <ol>
             <li>
                 <p>Womens Leagues</p>
                 <ul>
-                @foreach (var league in ViewBag.WomensLeagues)
-                {
-                    <li>@league.Name</li>
-                }
+                    @foreach (var league in ViewBag.WomensLeagues)
+                    {
+                        <li>@league.Name</li>
+                    }
                 </ul>
             </li>
             <li>
                 <p>Hockey Leagues</p>
                 <ul>
-                @foreach (var league in ViewBag.HockeyLeagues)
-                {
-                    <li>@league.Name</li>
-                }
+                    @foreach (var league in ViewBag.HockeyLeagues)
+                    {
+                        <li>@league.Name</li>
+                    }
                 </ul>
             </li>
-                        <li>
+            <li>
                 <p>Not Football</p>
                 <ul>
-                @foreach (var league in ViewBag.NotFootball)
-                {
-                    <li>@league.Name</li>
-                }
+                    @foreach (var league in ViewBag.NotFootball)
+                    {
+                        <li>@league.Name</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Conference Leauges</p>
+                <ul>
+                    @foreach (var league in ViewBag.ConferenceLeagues)
+                    {
+                        <li>@league.Name</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Atlantic Regions</p>
+                <ul>
+                    @foreach (var league in ViewBag.AtlanticRegion)
+                    {
+                        <li>@league.Name</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Dallas Teams</p>
+                <ul>
+                    @foreach (var Team in ViewBag.DallasTeams)
+                    {
+                        <li>@Team.Location - @Team.TeamName</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>The Raptors</p>
+                <ul>
+                    @foreach (var Team in ViewBag.Raptors)
+                    {
+                        <li>@Team.Location - @Team.TeamName</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Start with T</p>
+                <ul>
+                    @foreach (var Team in ViewBag.BeginsWithT)
+                    {
+                        <li>@Team.TeamName</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Contains City</p>
+                <ul>
+                    @foreach (var Team in ViewBag.LocationCities)
+                    {
+                        <li>@Team.Location - @Team.TeamName</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Alphabetical By Location</p>
+                <ul>
+                    @foreach (var Team in ViewBag.AlphaLocation)
+                    {
+                        <li>@Team.Location - @Team.TeamName</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Team name Reverse Alpha</p>
+                <ul>
+                    @foreach (var Team in ViewBag.ReverseAlphaTeamName)
+                    {
+                        <li>@Team.TeamName</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Last Name Cooper</p>
+                <ul>
+                    @foreach (var Player in ViewBag.Coopers)
+                    {
+                        <li>@Player.FirstName @Player.LastName</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>First Name Joshua</p>
+                <ul>
+                    @foreach (var Player in ViewBag.Joshuas)
+                    {
+                        <li>@Player.FirstName @Player.LastName</li>
+                    }
+                </ul>
+            </li>
+
+            <li>
+                <p>Joshua and Coopers but not Joshua Cooper</p>
+                <ul>
+                    @foreach (var Player in ViewBag.Joshuas)
+                    {
+                        <li>@Player.FirstName @Player.LastName</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <p>Alexander or Wyatts</p>
+                <ul>
+                    @foreach (var Player in ViewBag.AlexanderOrWyatt)
+                    {
+                        <li>@Player.FirstName @Player.LastName</li>
+                    }
                 </ul>
             </li>
         </ol>
+
     </div>
 </div>
