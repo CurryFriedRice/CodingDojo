@@ -63,6 +63,10 @@ namespace SportsORM.Controllers
             ViewBag.Coopers = _context.Players
                 .Where(p => p.LastName =="Cooper")
                 .ToList();
+            ViewBag.Joshuas = _context.Players
+                .Where(p => p.FirstName == "Joshua")
+                .ToList();
+                
 
             return View();
         }
