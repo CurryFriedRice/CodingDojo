@@ -66,7 +66,15 @@ namespace SportsORM.Controllers
             ViewBag.Joshuas = _context.Players
                 .Where(p => p.FirstName == "Joshua")
                 .ToList();
-                
+            
+            ViewBag.CoopersNotJosh = _context.Players
+                .Where(p => p.LastName == "Cooper")
+                .Where(p => p.FirstName !=  "Joshua")
+                .ToList();
+
+            ViewBag.AlexanderOrWyatt = _context.Players
+                .Where(p => (p.FirstName == "Alexander" || p.FirstName == "Wyatt"))
+                .ToList();
 
             return View();
         }
