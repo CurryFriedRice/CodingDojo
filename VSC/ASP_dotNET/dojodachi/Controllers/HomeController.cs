@@ -18,6 +18,7 @@ namespace dojodachi.Controllers
         [HttpGet("")]
         public IActionResult Index()
         {
+            Pet = new Pet();
             return View(Pet);
         }
 
@@ -61,6 +62,13 @@ namespace dojodachi.Controllers
         {
             var resJson = new {win = Pet.win(), lose = Pet.lose()};
             return Json(resJson);
+        }
+        
+        [HttpGet("home/restart")]
+        public IActionResult Restart()
+        {
+            
+            return RedirectToAction("Index");
         }
         // private readonly ILogger<HomeController> _logger;
 

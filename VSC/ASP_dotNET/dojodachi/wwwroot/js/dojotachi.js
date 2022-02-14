@@ -108,13 +108,13 @@ function updateState()
         {
             document.getElementById("emotionPic").innerHTML = `<img src="/img/win.png">`;
             document.getElementById("message").innerText = `YOU WIN`;
-            document.getElementById("buttonRow").innerhtml = "<button onclick='home/restart' class='btn btn-primary'>Restart?</button>"
+            document.getElementById("buttonRow").innerHTML = "<button onclick='home/restart' class='btn btn-primary'>Restart?</button>"
         }
         else if (data['lose'])
         {
             document.getElementById("emotionPic").innerHTML = `<img src="/img/lose.png">`;
             document.getElementById("message").innerText = `YOU LOSE`;
-            document.getElementById("buttonRow").innerhtml = "<button onclick='home/restart' class='btn btn-primary'>Restart?</button>"
+            document.getElementById("buttonRow").innerHTML = "<a href= 'Home/restart'><button class='btn btn-primary'>Restart?</button> </a>"
         }
         console.log(data);
     })
