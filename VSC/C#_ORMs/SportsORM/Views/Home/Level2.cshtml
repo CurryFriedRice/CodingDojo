@@ -11,6 +11,26 @@
             <li>...all teams with a (current) player named "Sophia"</li>
             <li>...all leagues with a (current) player named "Sophia"</li>
             <li>...everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders</li>
+            
+        </ol>
+        <ol>
+            <li>
+                <p>...all teams in the Atlantic Soccer Conference</p>
+                    <ul>
+                        @foreach(var item in ViewBag.AtlanticConferenceTeams)
+                        {
+                            <li>@item.TeamName</li>
+                        }
+                    </ul>
+
+            </li>
+            <li>...all (current) players on the Boston Penguins (Hint: Boston is the Location, Penguins is the TeamName)</li>
+            <li>...all (current) players in the International Collegiate Baseball Conference</li>
+            <li>...all (current) players in the American Conference of Amateur Football with last name "Lopez"</li>
+            <li>...all football players</li>
+            <li>...all teams with a (current) player named "Sophia"</li>
+            <li>...all leagues with a (current) player named "Sophia"</li>
+            <li>...everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders</li>
         </ol>
     </div>
 </div>
