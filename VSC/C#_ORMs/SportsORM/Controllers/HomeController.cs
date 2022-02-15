@@ -107,7 +107,7 @@ namespace SportsORM.Controllers
             ViewBag.FootballLopez = _context.Players
                 //.Include(Pla => Pla.CurrentTeam)
                 .Include(Pla => Pla.CurrentTeam.CurrLeague)
-                .Where(Pla =>  Pla.CurrentTeam.CurrLeague.Name == "American Conference of Amateur Football" && Pla.LastName == "Lopez").ToList();
+                .Where(Pla => Pla.LastName == "Lopez" && Pla.CurrentTeam.CurrLeague.Name == "American Conference of Amateur Football").ToList();
             
             ViewBag.AllFootball = _context.Players
                 .Include(Pla => Pla.CurrentTeam.CurrLeague)
@@ -130,7 +130,7 @@ namespace SportsORM.Controllers
                 .Where(P => P.CurrentTeam.TeamName != "Washington Roughriders" && P.LastName == "Flores")
                 .ToList();
 
-                
+
             return View();
         }
 
