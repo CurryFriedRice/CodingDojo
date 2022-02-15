@@ -279,3 +279,19 @@ public class SecondController : Controller
 // in your Controller
 ViewBag.Count = HttpContext.Session.GetInt32("count");
 ```
+
+```
+dotnet add package MySql.Data -v 8.0.16
+```
+# Entity Framework
+We've added Pomello so remember to include them in each UNIQUE project
+```
+dotnet add package Pomelo.EntityFrameworkCore.MySql --version 3.1.1
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.5
+```
+
+Startup.cs
+```
+using Monster.Models;
+using Microsoft.EntityFrameworkCore;
+```

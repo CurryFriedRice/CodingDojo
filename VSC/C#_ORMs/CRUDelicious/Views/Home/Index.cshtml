@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<DishModel>
+
+
+<div class="text-center">
+    <div>
+        <a href="dish/form">Add a Dish</a>
+    </div>
+    <h1 class="display-4">Welcome To CRUDelicious</h1>
+
+    <div>
+        <div>
+            <h2>Check out some recent Dishes</h2>
+            <hr>
+            <table class="table">
+                <tr>
+                    <tr>
+                        <th>DIsh Id</th>
+                        <th>Name</th>
+                        <th>Chef</th>
+                        <th>Updated on</th>
+                        <th>View</th>
+                    </tr>
+                </tr>
+                @foreach(var dish in Model)
+                {
+                    <tr>
+                        <td>@dish.id</td>
+                        <td>@dish.Name</td>
+                        <td>@dish.Chef</td>
+
+                        <td>@dish.UpdatedAt</td>
+                        <td><a href="dish/@dish.id">View</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+  
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>

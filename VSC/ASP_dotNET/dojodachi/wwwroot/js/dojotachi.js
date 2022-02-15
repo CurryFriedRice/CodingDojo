@@ -51,7 +51,7 @@ function feed()
             document.getElementById("message").innerText = data['err'];
         }
         else{
-            document.getElementById("message").innerText = `Ate a meal and gained ${data['amount']} fullness and 1 meal`;
+            document.getElementById("message").innerText = `Ate a meal and gained ${data['amount']} fullness and lost 1 meal`;
 
             updateText(data['pet']);
         }

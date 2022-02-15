@@ -1,0 +1,49 @@
+@model DishModel;
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+
+<div>
+    <table class="table">
+        <tr>
+        <td>Dish Name</td>
+        <td>@Model.Name</td>
+        </tr>
+        <tr>
+        <td>Chef Name</td>
+        <td>@Model.Chef</td>
+        </tr>
+        <tr>
+        <td>Calories</td>
+        <td>@Model.Calories</td>
+        </tr>
+        <tr>
+        <td>Description</td>
+        <td>@Model.Description</td>
+        </tr>
+        <tr>
+        <td>Tastiness</td>
+        <td>@Model.Tastiness</td>
+        </tr>
+                <tr>
+        <td>Created At:</td>
+
+        <td>@Model.CreatedAt</td>
+        </tr>
+        <tr>
+        <td>Updated At:</td>
+
+        <td>@Model.UpdatedAt</td>
+        </tr>
+    </table>
+    <div class="d-flex jusify-content-between">
+    <form asp-action="delete" asp-controller="dish" method="POST">
+        <input hidden value="@Model.id">
+        <button class="btn btn-danger">Delete</button>
+    </form>
+    <td><a href="@Model.id/Edit" class="btn btn-warning">Edit</a></td>
+    </div>
+
+</div>

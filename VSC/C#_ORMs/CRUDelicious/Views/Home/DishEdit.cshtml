@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Edit a dish";
+}
+@model DishModel
+
+<div class="container">
+
+<form method="POST" asp-action="update" asp-controller="Dish">
+<span asp-validation-for="Name"></span>
+<input hidden asp-for="id" value=@Model.id>
+<div class="mt-1 d-flex justify-content-between">
+
+    <label asp-for="Name" ></label>
+    <input asp-for="Name" value="@Model.Name"  class="fixedWidth">
+</div>
+
+
+<span asp-validation-for="Chef"></span>
+<div class="mt-1 d-flex justify-content-between">
+
+    <label asp-for="Chef"></label>
+    <input asp-for="Chef" value="@Model.Chef"  class="fixedWidth">
+</div>
+
+<span asp-validation-for="Tastiness"></span>
+<div class="mt-1 d-flex justify-content-between">
+
+    <label asp-for="Tastiness"></label>
+    <select asp-for="Tastiness"  class="fixedWidth">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+    </select>
+</div>
+
+<span asp-validation-for="Calories"></span>
+<div class="mt-1 d-flex justify-content-between">
+
+    <label asp-for="Calories"></label>
+    <input asp-for="Calories" value="@Model.Calories"  class="fixedWidth">
+</div>
+<span asp-validation-for="Description"></span>
+<div class="mt-1 d-flex justify-content-between">
+
+    <label asp-for="Description"></label>
+    <textarea asp-for="Description" value="@Model.Description"  class="fixedWidth"></textarea>
+</div>
+
+
+
+<button class="btn btn-primary"> Update!</button>
+</form>
+</div>
