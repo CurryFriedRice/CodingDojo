@@ -41,7 +41,7 @@ namespace SportsORM.Controllers
                 .Where(l => (l.Sport != "football"))
                 .ToList();
             ViewBag.ConferenceLeagues = _context.Leagues
-                .Where(l => l.Name.Contains("Conference"))
+                .Where(l => l.Name.ToLower().Contains("Conference"))
                 .ToList();
             ViewBag.AtlanticRegion = _context.Leagues
                 .Where(l => l.Name.Contains("Atlantic"))
@@ -88,6 +88,11 @@ namespace SportsORM.Controllers
         [HttpGet("level_2")]
         public IActionResult Level2()
         {
+
+            ViewBag.AtlanticConferenceTeams = _context.Teams.Where(Tea => Tea.CurrLeague.Name == "Atlantic Soccer Conference").ToList();
+
+            ViewBag.BostonPenguins = _context.Players.Where(Pla => Pla.CurrentTeam.TeamName == "Penguins").ToList();
+
             return View();
         }
 
