@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model UserModel;
+<div class="text-center">
+    <div class="d-flex flex-column">
+    <h1 class="display-4">Welcome!</h1>
+    <h2>Register before you can use the site</h2> 
+   
+    </div>
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+    <form style="width:600px; margin:0px auto;" method="POST" asp-action="register" asp-controller="home">
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+        <div class="d-flex justify-content-between mt-1">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName">
+        </div>
+
+        <span asp-validation-for="LastName" class="text-danger"></span>
+        <div class="d-flex justify-content-between mt-1">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName">
+        </div>
+
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <div class="d-flex justify-content-between mt-1">
+            <label asp-for="Email"></label>
+            <input asp-for="Email">
+        </div>
+
+        <span asp-validation-for="Email_Confirm" class="text-danger"></span>
+        <div class="d-flex justify-content-between mt-1">
+            <label asp-for="Email_Confirm"></label>
+            <input asp-for="Email_Confirm">
+        </div>
+
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <div class="d-flex justify-content-between mt-1">
+            <label asp-for="Password"></label>
+            <input asp-for="Password">
+        </div>
+
+        <span asp-validation-for="Password_Confirm" class="text-danger"></span>
+        <div class="d-flex justify-content-between mt-1">
+            <label asp-for="Password_Confirm"></label>
+            <input asp-for="Password_Confirm">
+        </div>
+        <button>Submit!</button>
+    </form>
+</div>
