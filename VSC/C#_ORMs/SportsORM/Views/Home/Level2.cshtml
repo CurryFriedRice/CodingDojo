@@ -4,33 +4,151 @@
         <p>Using the SportsORM, complete all the following queries and show their results on Level2.cshtml.</p>
         <ol>
             <li>...all teams in the Atlantic Soccer Conference</li>
-            <li>...all (current) players on the Boston Penguins (Hint: Boston is the Location, Penguins is the TeamName)</li>
+            <li>...all (current) players on the Boston Penguins (Hint: Boston is the Location, Penguins is the TeamName)
+            </li>
             <li>...all (current) players in the International Collegiate Baseball Conference</li>
             <li>...all (current) players in the American Conference of Amateur Football with last name "Lopez"</li>
             <li>...all football players</li>
             <li>...all teams with a (current) player named "Sophia"</li>
             <li>...all leagues with a (current) player named "Sophia"</li>
             <li>...everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders</li>
-            
+
         </ol>
         <ol>
             <li>
                 <p>...all teams in the Atlantic Soccer Conference</p>
-                    <ul>
-                        @foreach(var item in ViewBag.AtlanticConferenceTeams)
-                        {
-                            <li>@item.TeamName</li>
-                        }
-                    </ul>
+                <table class="table">
+                    <tr>
+                        <th>City Rep</th>
+                        <th>Team name</th>
+                    </tr>
+                    @foreach (var item in ViewBag.AtlanticConferenceTeams)
+
+                    {
+                        <tr>
+                            <td>@item.TeamName</td>
+                            <td>@item.Location</td>
+                        </tr>
+
+                    }
+                </table>
 
             </li>
-            <li>...all (current) players on the Boston Penguins (Hint: Boston is the Location, Penguins is the TeamName)</li>
-            <li>...all (current) players in the International Collegiate Baseball Conference</li>
-            <li>...all (current) players in the American Conference of Amateur Football with last name "Lopez"</li>
-            <li>...all football players</li>
-            <li>...all teams with a (current) player named "Sophia"</li>
-            <li>...all leagues with a (current) player named "Sophia"</li>
-            <li>...everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders</li>
+            <li>
+                <p>...all (current) players on the Boston Penguins (Hint: Boston is the Location, Penguins is the
+                    TeamName)</p>
+
+                <table class="table">
+                    <tr>
+                        <th>Player Name</th>
+
+                    </tr>
+                    @foreach (var item in ViewBag.BostonPenguins)
+
+                    {
+                        <tr>
+                            <td>@item.FirstName @item.LastName</td>
+                        </tr>
+
+                    }
+                </table>
+
+            </li>
+            <li>
+                <p>...all (current) players in the International Collegiate Baseball Conference</p>
+                <table class="table">
+                    <tr>
+                        <th>Players</th>
+                        <th>Team</th>
+                    </tr>
+                    @foreach (var item in ViewBag.ICBCPlayers)
+
+                    {
+                        <tr>
+                            <td>@item.FirstName @item.LastName</td>
+                            <td>@item.CurrentTeam.TeamName</td>
+                        </tr>
+
+                    }
+                </table>
+
+            </li>
+            <li>
+                <p>...all (current) players in the American Conference of Amateur Football with last name "Lopez" </p>
+                <table class="table">
+                    <tr>
+                        <th>Players</th>
+                        <th>Team</th>
+                    </tr>
+                    @foreach (var item in ViewBag.FootballLopez)
+
+                    {
+                        <tr>
+                            <td>@item.FirstName @item.LastName</td>
+                            <td>@item.CurrentTeam.TeamName</td>
+                        </tr>
+                    }
+                </table>
+            </li>
+            <li><p>...all football players</p>
+
+                <table class="table">
+                    <tr>
+                        <th>Players</th>
+                    </tr>
+                    @foreach (var item in ViewBag.AllFootBall)
+
+                    {
+                        <tr>
+                            <td>@item.FirstName @item.LastName</td>
+                        </tr>
+                    }
+                </table>
+            </li>
+            <li><p>...all teams with a (current) player named "Sophia"</p>
+                
+                <table class="table">
+                    <tr>
+                        <th>Teams</th>
+                    </tr>
+                    @foreach (var item in ViewBag.TeamsWithSophia)
+
+                    {
+                        <tr>
+                            <td>@item.TeamName</td>
+                        </tr>
+                    }
+                </table>
+            </li>
+            <li> <p>...all leagues with a (current) player named "Sophia"</p>
+                <table class="table">
+                    <tr>
+                        <th>Teams</th>
+                    </tr>
+                    @foreach (var item in ViewBag.LeaguesWithSophia)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                        </tr>
+                    }
+                </table>
+            </li>
+            <li><p>..everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders</p>.
+
+                <table class="table">
+                    <tr>
+                        <th>Flores that aren't RoughRiders</th>
+                        <th>Current Team</th>
+                    </tr>
+                    @foreach (var item in ViewBag.FloresNotRider)
+                    {
+                        <tr>
+                            <td>@item.FirstName @item.LastName</td>
+                            <td>@item.CurrentTeam.TeamName</td>
+                        </tr>
+                    }
+                </table>
+            </li>
         </ol>
     </div>
 </div>
