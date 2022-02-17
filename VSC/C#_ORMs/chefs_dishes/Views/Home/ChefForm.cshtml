@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Chef Form Submission";
+}
+@model Chef
+<a href="../chef">Back to Chefs</a>
+
+<h1>Submit a chef!</h1>
+<form action="Validate" method="POST" class="d-flex flex-column"> 
+    <span asp-validation-for="FirstName" class='text-danger'></span>
+    <div class="d-flex justify-content-between">
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName">
+    </div>
+
+        
+    <span asp-validation-for="LastName" class='text-danger'></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName">
+    </div>
+
+
+    <span asp-validation-for="DoB" class='text-danger'></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="DoB"></label>
+        <input asp-for="DoB">
+    </div>
+
+    <button>Submit a Chef!</button>
+</form>

@@ -1,0 +1,23 @@
+@* @model BankAccount
+
+
+<form  asp-action="logout" asp-controller = "user" method="POST" >
+    <button>Logout</button>
+</form>
+
+<form asp-action="Add" asp-controller="BankAccount" method="Post">
+
+    
+</form>
+
+<table>
+    @foreach (var transaction in Model.Transactions);
+    {
+        <tr>
+            <td>
+                Bonk
+            </td>
+        </tr>
+    }
+</table>
+ *@

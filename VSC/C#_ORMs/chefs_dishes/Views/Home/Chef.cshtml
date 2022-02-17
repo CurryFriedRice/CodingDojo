@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "All Chefs";
+}
+@model List<Chef>
+<div class="d-flex justify-content-between" >
+<a href = "chef/form">Add A chef</a>
+<a href = "dish">go to dish</a>
+</div>
+<table class="table">
+    <tr>
+        <th>Chef Name</th>
+        <th>Chef Age</th>
+        <th>Chef Dishes</th>
+    </tr>
+    @foreach(var chef in Model)
+    {
+    <tr>
+        <td>@chef.FirstName @chef.LastName</td>
+        <td>@chef.Age</td>
+        <td>@chef.DishCount</td>
+    </tr>
+    }
+</table>

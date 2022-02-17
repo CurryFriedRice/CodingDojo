@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = $"{ViewBag.FirstName} {ViewBag.LastName}'s' Account";
+}
+
+@model Transaction
+<div style="width: 900px">
+
+<form  asp-action="logout" asp-controller = "user" method="POST" >
+    <button>Logout</button>
+</form>
+
+<div class="d-flex justify-content-between">
+    <h1>Welcome @ViewBag.User.FirstName @ViewBag.User.LastName </h1>
+    <h2>Current Balance :
+    @if(ViewBag.User.CurrentBalance > 0)
+    {
+        <span style="color:green">$@ViewBag.User.CurrentBalance</span>
+    }
+    else
+    {
+        <span style="color:red">$@ViewBag.User.CurrentBalance</span>
+
+    }
+    </h2>
+</div>
+<form asp-action="add" asp-controller="user" method="POST" >
+    <input hidden asp-for="UserId" value=@ViewBag.User.UserId>
+    <span asp-validation-for="Amount" class="text-danger"></span>
+    <div class="d-flex flex-row">
+        <label asp-for="Amount" class="m-3"></label>
+        <input asp-for="Amount" class="m-3">
+        <button class="m-3">Submit</button>
+    </div>
+</form>
+
+<table class="table">
+    <tr>
+        <th>Transctions</th>
+        <th>Date</th>
+    </tr>
+    @foreach (var transaction in ViewBag.User.MyTransactions)
+    {
+        <tr>
+            <td>
+                @if (transaction.Amount > 0)
+                {
+                    <span style="color:green">$@transaction.Amount</span>
+                }else
+                {
+                    <span style="color:red">-$@transaction.Amount</span>
+                }
+
+            </td>
+            <td>@transaction.CreatedAt</td>
+        </tr>
+    }
+</table>
+</div>

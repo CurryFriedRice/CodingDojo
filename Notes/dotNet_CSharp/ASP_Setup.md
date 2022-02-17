@@ -290,8 +290,36 @@ dotnet add package Pomelo.EntityFrameworkCore.MySql --version 3.1.1
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.5
 ```
 
+Creating the Database
+```
+    dotnet ef migrations add FirstMigration
+    dotnet ef database update
+```
+
 Startup.cs
 ```
 using Monster.Models;
 using Microsoft.EntityFrameworkCore;
 ```
+
+
+Pattern to add route parameters you can have more than one 
+asp-route-{value}="@Value"
+
+in controller 
+[httpget("route/{value}")]
+public IactionResult blah({value})
+
+The parameters must match what is used in the controller
+```
+<a
+    asp-controller="Posts"
+    asp-action="details"
+    asp-route-postID="@Post.PostId"
+>
+
+```
+
+Class Properties are PascalCase and params are camelCase
+class Property == param value
+      p.PostId == postId

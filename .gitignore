@@ -2,3 +2,13 @@
 /VSC/WebFundamentals/Assignments_JS/BeltExam
 /VSC/python/flask_mysql/BeltExam
 __pycache__/
+VSC/C#_ORMs/CRUDelicious/appsettings.json
+VSC/C#_ORMs/CRUDelicious/appsettings.json
+
+**/bin/Debug/
+**/bin/Release/
+
+**/appsettings.Development.json
+**/appsettings.json
+**/.vscode
+**/obj

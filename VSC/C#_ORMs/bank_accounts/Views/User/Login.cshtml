@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Create New Account";
+}
+
+@model UserLogin
+ <div style="width: 600px; margin: 0px auto;">
+<h1>Log in!</h1> 
+<div>
+<a asp-action="" asp-controller="user">New User?</a>
+<form method="POST" asp-action="validateLogin" asp-controller="user">
+  
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="Email"></label>
+        <input asp-for="Email">
+    </div>
+
+    
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="Password"></label>
+        <input asp-for="Password">
+    </div>
+
+    <button>Submit</button>
+</form>
+</div>
+</div>
