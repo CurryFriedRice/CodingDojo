@@ -3,14 +3,14 @@
     <h1 class="halfContainer"> Categories </h1>
 </div>
 
-@model Categories
-<h1 class="container text-center">@Model.Name</h1>
+@model ProductCategories
+<h1 class="container text-center">@ViewBag.Category.Name</h1>
 <div class="container text-center d-flex" >
         
     <div class="halfContainer border-right">
         <h2>Products</h2>
         <ul>
-        @foreach (var product in Model.ProdCat)
+        @foreach (var product in @ViewBag.Category.ProdCat)
         {
             <li>@product.Product.Name</li>
         }
@@ -18,9 +18,20 @@
     </div>
     <div class="halfContainer">
         <h2>Add Products</h2>
-        @* @foreach (var item in ViewBag)
-        {
-            
-        } *@
+        <div class="halfContainer">
+            <h1 class="text-center">Add Categories</h1>
+            <form asp-action="product" asp-controller="categories" class="d-flex flex-column">
+                <span asp-validation-for="CategoryID" class="text-warning"></span>
+                <input hidden asp-for="CategoryID" value=@ViewBag.Category.CategoryID>
+
+                <select asp-for="ProductID">
+                    @foreach (var item in ViewBag.ValidProducts)
+                    {
+                        <option value=@item.ProductID>@item.Name</option>
+                    }
+                </select>
+                <button>Submit</button>
+            </form>
+        </div>
     </div>
 </div>

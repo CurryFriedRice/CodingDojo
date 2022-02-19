@@ -41,17 +41,20 @@ namespace products_and_categories.Controllers
         }
 
 
-        [HttpGet("categories/{CategoryName}")]
-        public IActionResult Details(string CategoryName)
+        [HttpGet("categories/{CategoryID}")]
+        public IActionResult Details(int CategoryID)
         {
-            Categories category = DbConnection.Categories
+            ViewBag.Category = DbConnection.Categories
                 .Include(Category => Category.ProdCat)
                     .ThenInclude(ProdCat => ProdCat.Product)
-                .SingleOrDefault(Category => Category.Name == CategoryName);
+                .SingleOrDefault(Category => Category.CategoryID == CategoryID);
 
-         
+            ViewBag.ValidProducts = DbConnection.Products
+                .Where(prod => prod.ProdCat.FirstOrDefault(prodCat => prodCat.CategoryID == CategoryID) == null)
+                .ToList();//Select(ProdCat => ProdCat.Name);
+            
 
-            return View(category);
+            return View();
         }
 
         [HttpPost("categories/add")]
@@ -71,6 +74,26 @@ namespace products_and_categories.Controllers
             }
             ViewBag.Categories = AllCategories;
             return View("index");
+        }
+
+        [HttpPost("categories/product")]
+        public IActionResult Product(ProductCategories NewRelation)
+        {
+            ProductCategories Exists = DbConnection.ProductCategories.FirstOrDefault(prodCat => prodCat.ProductID == NewRelation.ProductID && prodCat.CategoryID == NewRelation.CategoryID);
+            if(Exists != null)
+            {
+                ModelState.AddModelError("ProductID", "Already Related");
+                ViewBag.Product = DbConnection.Products
+                .Include(Prod => Prod.ProdCat)
+                    .ThenInclude(ProdCat => ProdCat.Category)
+                .FirstOrDefault(prod => prod.ProductID == NewRelation.ProductID);
+
+                ViewBag.ValidCategories = DbConnection.Categories.ToList();//Select(ProdCat => ProdCat.Name);
+                return View("Details");
+            }
+            DbConnection.ProductCategories.Add(NewRelation);
+            DbConnection.SaveChanges();
+            return RedirectToAction($"{NewRelation.CategoryID}", "categories");
         }
         public IActionResult Privacy()
         {

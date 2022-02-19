@@ -47,7 +47,10 @@ namespace products_and_categories.Controllers
                     .ThenInclude(ProdCat => ProdCat.Category)
                 .FirstOrDefault(prod => prod.ProductID == ProductID);
 
-            ViewBag.ValidCategories = DbConnection.Categories.ToList();//Select(ProdCat => ProdCat.Name);
+            ViewBag.ValidCategories = DbConnection.Categories
+                    .Where(cate => cate.ProdCat.FirstOrDefault(prodCat => prodCat.ProductID == ProductID) == null)
+                    .ToList();//Select(ProdCat => ProdCat.Name);
+            
             return View();
         }
 
@@ -69,6 +72,29 @@ namespace products_and_categories.Controllers
             }
             ViewBag.Products = AllProducts;
             return View("Index");
+        }
+
+        [HttpPost("products/categorize")]
+        public IActionResult Categorize(ProductCategories NewRelation)
+        {
+            ProductCategories Exists = DbConnection.ProductCategories.FirstOrDefault(prodCat => prodCat.ProductID == NewRelation.ProductID && prodCat.CategoryID == NewRelation.CategoryID);
+            Console.WriteLine(Exists == null);
+            if(Exists != null)
+            {
+            ViewBag.Product = DbConnection.Products
+                .Include(Prod => Prod.ProdCat)
+                    .ThenInclude(ProdCat => ProdCat.Category)
+                .FirstOrDefault(prod => prod.ProductID == NewRelation.ProductID);
+
+            ViewBag.ValidCategories = DbConnection.Categories
+                    .Where(cate => cate.ProdCat.FirstOrDefault(prodCat => prodCat.ProductID == NewRelation.ProductID) == null)
+                    .ToList();//Select(ProdCat => ProdCat.Name);
+            
+                return View("Details");
+            }
+            DbConnection.ProductCategories.Add(NewRelation);
+            DbConnection.SaveChanges();
+            return RedirectToAction($"{NewRelation.ProductID}","products");
         }
 
         public IActionResult Privacy()

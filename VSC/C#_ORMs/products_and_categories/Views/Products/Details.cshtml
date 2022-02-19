@@ -12,16 +12,18 @@
     <div class="halfContainer border-right">
         <h1 class="text-center">Categories</h1>
         <ul>
-        @foreach (var product in ViewBag.product.ProdCat)
+        @foreach (var Product in ViewBag.Product.ProdCat)
         {
-            <li>@product.Product.Name</li>
+            <li>@Product.Category.Name</li>
         }
         </ul>
     </div>
     <div class="halfContainer">
         <h1 class="text-center">Add Categories</h1>
         <form asp-action="categorize" asp-controller="products" class="d-flex flex-column">
+            <span asp-validation-for="ProductID" class="text-warning"></span>
             <input hidden asp-for="ProductID" value=@ViewBag.Product.ProductID>
+
             <select asp-for="CategoryID">
                 @foreach (var item in ViewBag.ValidCategories)
                 {
