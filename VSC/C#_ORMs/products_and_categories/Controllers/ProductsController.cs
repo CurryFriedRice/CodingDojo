@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using products_and_categories.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace products_and_categories.Controllers
 {
@@ -39,8 +42,13 @@ namespace products_and_categories.Controllers
         [HttpGet("products/{ProductID}")]
         public IActionResult Details(int ProductID)
         {
-            Products Product = DbConnection.Products.FirstOrDefault(prod => prod.ProductID == ProductID);
-            return View(Product);
+            ViewBag.Product = DbConnection.Products
+                .Include(Prod => Prod.ProdCat)
+                    .ThenInclude(ProdCat => ProdCat.Category)
+                .FirstOrDefault(prod => prod.ProductID == ProductID);
+
+            ViewBag.ValidCategories = DbConnection.Categories.ToList();//Select(ProdCat => ProdCat.Name);
+            return View();
         }
 
         [HttpPost("products/add")]

@@ -49,6 +49,8 @@ namespace products_and_categories.Controllers
                     .ThenInclude(ProdCat => ProdCat.Product)
                 .SingleOrDefault(Category => Category.Name == CategoryName);
 
+         
+
             return View(category);
         }
 

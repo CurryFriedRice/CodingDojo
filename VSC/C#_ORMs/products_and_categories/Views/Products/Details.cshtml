@@ -1,21 +1,34 @@
-@model Products;
-
 <div class="container d-flex">
     <h1 class="halfContainer text-right border-right">Products</h1>
     <h1 class="halfContainer"><a asp-action="" asp-controller="categories">Categories</a> </h1>
 </div>
 
-<h1 class="container text-center">@Model.Name</h1>
+<h1 class="container text-center">@ViewBag.Product.Name</h1>
 
-<div class="container">
-    <div class="halfContainer text-center">
-        <h1>Categories</h1>
+
+@model ProductCategories
+
+<div class="container d-flex ">
+    <div class="halfContainer border-right">
+        <h1 class="text-center">Categories</h1>
         <ul>
-        @foreach (var product in Model.ProdCat)
+        @foreach (var product in ViewBag.product.ProdCat)
         {
             <li>@product.Product.Name</li>
         }
         </ul>
     </div>
-    <div class="halfContainer"></div>
+    <div class="halfContainer">
+        <h1 class="text-center">Add Categories</h1>
+        <form asp-action="categorize" asp-controller="products" class="d-flex flex-column">
+            <input hidden asp-for="ProductID" value=@ViewBag.Product.ProductID>
+            <select asp-for="CategoryID">
+                @foreach (var item in ViewBag.ValidCategories)
+                {
+                    <option value=@item.CategoryID>@item.Name</option>
+                }
+            </select>
+            <button>Submit</button>
+        </form>
+    </div>
 </div>
