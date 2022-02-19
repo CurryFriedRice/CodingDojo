@@ -18,8 +18,7 @@
     </div>
     <div class="halfContainer">
         <h2>Add Products</h2>
-        <div class="halfContainer">
-            <h1 class="text-center">Add Categories</h1>
+       
             <form asp-action="product" asp-controller="categories" class="d-flex flex-column">
                 <span asp-validation-for="CategoryID" class="text-warning"></span>
                 <input hidden asp-for="CategoryID" value=@ViewBag.Category.CategoryID>
@@ -32,6 +31,5 @@
                 </select>
                 <button>Submit</button>
             </form>
-        </div>
     </div>
 </div>
