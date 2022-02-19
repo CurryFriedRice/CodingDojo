@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Products";
+}
+@model Products;
+
+<div class="container d-flex">
+    <h1 class="halfContainer text-right border-right">Products</h1>
+    <h1 class="halfContainer"><a asp-action="" asp-controller="categories">Categories</a></h1> 
+</div>
+
+<div class="container d-flex">
+    <div class="halfContainer text-center border-right">
+
+     <h1>New Product</h1>
+    <form asp-action="add" asp-controller="Products" methods="POST">
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="d-flex justify-content-between">
+            <label asp-for="Name"></label>
+            <input asp-for="Name">
+        </div>
+
+        <span asp-validation-for="Description" class="text-danger"></span>
+        <div class="d-flex justify-content-between">
+            <label asp-for="Description"></label>
+            <input asp-for="Description">
+        </div>
+
+        <span asp-validation-for="Price" class="text-danger"></span>
+        <div class="d-flex justify-content-between">
+            <label asp-for="Price"></label>
+            <input asp-for="Price">
+        </div>
+
+        <button class="btn btn-primary">Create!</button>
+    </form>
+    </div>
+    <div class="halfContainer">
+        <h1 class="text-center">Existing Products</h1>
+        <ul>
+            @foreach (var Product in ViewBag.Products)
+            {
+                <li><a asp-action="details" asp-route-ProductId="@Product.ProductID" asp-controller="products">@Product.Name</a></li>
+            }
+        </ul>
+    </div>
+</div>

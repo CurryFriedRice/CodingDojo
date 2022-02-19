@@ -1,0 +1,26 @@
+<div class="container d-flex">
+    <h1 class="halfContainer text-right border-right"> <a asp-action="" asp-controller="products">Products</a> </h1>
+    <h1 class="halfContainer"> Categories </h1>
+</div>
+
+@model Categories
+<h1 class="container text-center">@Model.Name</h1>
+<div class="container text-center d-flex" >
+        
+    <div class="halfContainer border-right">
+        <h2>Products</h2>
+        <ul>
+        @foreach (var product in Model.ProdCat)
+        {
+            <li>@product.Product.Name</li>
+        }
+        </ul>
+    </div>
+    <div class="halfContainer">
+        <h2>Add Products</h2>
+        @* @foreach (var item in ViewBag)
+        {
+            
+        } *@
+    </div>
+</div>

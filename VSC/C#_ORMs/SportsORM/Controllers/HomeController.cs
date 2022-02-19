@@ -137,6 +137,71 @@ namespace SportsORM.Controllers
         [HttpGet("level_3")]
         public IActionResult Level3()
         {
+            Player SamuelEvans = _context.Players.FirstOrDefault(p => (p.FirstName == "Samuel") && (p.LastName=="Evans"));
+            ViewBag.AllTeamsWithSamuelEvans = _context.PlayerTeams
+                .Include(t => t.TeamOfPlayer)
+                .Where(p => p.PlayerId == SamuelEvans.PlayerId)
+                .ToList();
+
+            ViewBag.AllTigerCats = _context.Teams
+                .Include(t=>t.AllPlayers)
+                    .ThenInclude(p => p.PlayerOnTeam)
+                .FirstOrDefault(t => t.TeamName == "Tiger-Cats");
+            // Console.WriteLine(ViewBag.AllTigerCats.allPlayers);
+
+            ViewBag.AllFormerVikings = _context.Teams
+                .Include(t=> t.AllPlayers)
+                    .ThenInclude(p => p.PlayerOnTeam)
+                    .ThenInclude(PoT => PoT.CurrentTeam)
+                .Where(t => t.AllPlayers.FirstOrDefault(p => p.PlayerOnTeam.CurrentTeam.TeamName.Contains("Vikings")) == null)
+                .FirstOrDefault(t => t.TeamName.Contains("Vikings"));
+
+
+            ViewBag.AllCurrentVikings = _context.Teams
+                .Include(t => t.CurrentPlayers)
+                .FirstOrDefault(t=> t.TeamName == "Vikings");
+            
+            ViewBag.JacobGray = _context.Players
+                .Include(Pla => Pla.AllTeams)
+                    .ThenInclude(PT => PT.TeamOfPlayer)
+                .Include(Pla => Pla.CurrentTeam)
+                .FirstOrDefault(p=> p.FirstName =="Jacob" && p.LastName=="Gray");
+
+            // ViewBag.JoshuasAmateur = _context.Leagues
+            //     // .Include(l => l.Teams)
+            //     //     .ThenInclude(t => t.AllPlayers)
+            //     //         .ThenInclude(p => p.PlayerOnTeam)
+            //     .Where(l => l.Name.Contains("Federation of Amateur"))
+            //     .ToList();
+
+            ViewBag.AllJoshuas = _context.Players
+                .Include(p => p.AllTeams)
+                    .ThenInclude(AT => AT.TeamOfPlayer)
+                        .ThenInclude(ToP => ToP.CurrLeague)
+                .Where(p => p.FirstName=="Joshua")
+                //.Where(p => p.AllTeams.FirstOrDefault(AT => AT.TeamOfPlayer.CurrLeague.Name.Contains( "Federation of Amateur Baseball Players"))!= null)
+                .ToList();
+
+            ViewBag.JoshuasAmateur = _context.Players
+                .Include(p => p.AllTeams)
+                    .ThenInclude(AT => AT.TeamOfPlayer)
+                        .ThenInclude(ToP => ToP.CurrLeague)
+                .Where(p => p.FirstName=="Joshua")
+                .Where(p => p.AllTeams.FirstOrDefault(AT => AT.TeamOfPlayer.CurrLeague.Name.Contains( "Federation of Amateur Baseball Players"))!= null)
+                .ToList();
+
+            ViewBag.TeamsWith12PlusPlayers = _context.Teams
+                .Include(T => T.AllPlayers)
+                    .ThenInclude(AT => AT.PlayerOnTeam)
+                .Where(T => T.AllPlayers.Count > 12)
+                .ToList();
+
+            ViewBag.AllPlayersByTeam = _context.Players
+                .Include(p=>p.AllTeams)
+                    .ThenInclude(AT => AT.TeamOfPlayer)
+                .OrderByDescending(p => p.AllTeams.Count)
+                .ToList();
+
             return View();
         }
 
