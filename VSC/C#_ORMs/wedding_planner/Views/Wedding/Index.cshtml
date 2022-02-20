@@ -1,0 +1,48 @@
+@model RSVP
+
+<div class="d-flex justify-content-between" >
+    <h2>Hello @ViewBag.User.FullName</h2>
+    <div class="d-flex">
+        @* <form class="mr-3" asp-action="Index" asp-controller="weddings"><button class="btn">Dashboard</button></form> *@
+        <form asp-action="logout" asp-controller="user" methods="POST"><button class="btn">Log Out!</button></form>
+
+    </div>
+</div>
+<h1>Welcome to the Wedding Planner!</h1>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Wedding</th>
+            <th>Date</th>
+            <th>Guest</th>
+            <th>Action</th>
+        </tr>
+        @foreach (Weddings wedding in ViewBag.Weddings)
+        {
+            <tr>
+                <td><a asp-action="@wedding.WeddingID" asp-controller="weddings">@wedding.Partners</a></td>
+                <td>@wedding.DateFormatted</td>
+                <td>@wedding.UsersRSVP.Count</td>
+                <td>@if(wedding.UsersRSVP.FirstOrDefault(uRSVP => uRSVP.User.UserID == ViewBag.User.UserID) == null)
+                    {
+                        //If it's Null then we should have the option to RVSP
+                        <form asp-controller="weddings" asp-action="rsvp"  asp-route-id=@wedding.WeddingID  methods="POST">
+                            <button class="btn">RSVP</button>
+                        </form>
+                        @* <a asp-controller="weddings" asp-action="rsvp"  asp-route-id=@wedding.WeddingID  methods="POST">RSVP</a> *@
+                        
+                    }
+                    else
+                    {
+                        //If it's not Null then we should have the option to Un RSVP
+                        <form asp-controller="weddings" asp-action="unrsvp"  asp-route-id=@wedding.WeddingID  methods="POST">
+                            <button class="btn">UnRSVP</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

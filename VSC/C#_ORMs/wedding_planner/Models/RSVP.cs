@@ -12,9 +12,9 @@ namespace wedding_planner.Models
         public int WeddingID{get;set;}
         public int UserID{get;set;}
         
-        [NotMapped]
+
         public Weddings Wedding{get;set;}
-        [NotMapped]
+
         public Users User{get;set;}
         
     }

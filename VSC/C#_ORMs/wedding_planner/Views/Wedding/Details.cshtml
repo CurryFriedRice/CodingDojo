@@ -1,0 +1,35 @@
+@model Weddings
+
+<div class="d-flex justify-content-between" >
+    <h2>@Model.Partners's Wedding</h2>
+    <div class="d-flex ">
+        <a class="mr-3" asp-action="Index" asp-controller="weddings" style="margin-top:10px;"><button class="btn">Dashboard</button></a>
+        <form asp-action="logout" asp-controller="user" methods="POST"><button class="btn">Log Out!</button></form>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Date: @Model.DateFormatted</h1>
+    <div class="d-flex">
+        <div class="halfContainer  border-right">
+            <h2>Guests</h2>
+            <ul>
+                @foreach (var Guest in Model.UsersRSVP)
+                {
+                    <li>@Guest.User.FullName</li>
+                }
+            </ul>
+        </div>
+        <div class="halfContainer">
+            @{
+                string address = Model.WeddingAddress.Replace(" ", "+");
+            }
+            <iframe
+            width="540"
+            height="540"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBnddCcDfmEkR5ZYW9wcmHd3AesG7dmNMg&q=@address" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>

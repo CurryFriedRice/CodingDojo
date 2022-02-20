@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using wedding_planner.Models;
 using Microsoft.EntityFrameworkCore;
+
+
 namespace wedding_planner
 {
     public class Startup
@@ -41,6 +43,8 @@ namespace wedding_planner
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

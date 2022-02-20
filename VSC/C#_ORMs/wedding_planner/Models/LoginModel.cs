@@ -12,9 +12,11 @@ namespace wedding_planner.Models
         
         [Required]
         [EmailAddress]
-        public string Email{get;set;}
+        [Display(Name = "Email Addresss")]
+        public string Login_Email{get;set;}
         [Required]
         [DataType(DataType.Password)]
-        public string Password{get;set;}
+        [Display(Name = "Password")]
+        public string Login_Password{get;set;}
     }
 }
