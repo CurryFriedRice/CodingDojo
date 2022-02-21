@@ -1,0 +1,43 @@
+
+@model Users
+
+<h2>New User?</h2>
+<h1>Register Here!</h1>
+<form asp-action="register" asp-controller="user" methods="POST">
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="Email"></label>
+        <input asp-for="Email">
+    </div>
+    <span asp-validation-for="Email_confirm" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="Email_confirm"></label>
+        <input asp-for="Email_confirm">
+    </div>
+
+        <span asp-validation-for="Password" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="Password"></label>
+        <input asp-for="Password">
+    </div>
+    <span asp-validation-for="Password_confirm" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="Password_confirm"></label>
+        <input asp-for="Password_confirm">
+    </div>
+
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName">
+    </div>
+
+    <span asp-validation-for="LastName" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName">
+    </div>
+
+
+    <button class="btn btn-primary">Register!</button>
+</form>

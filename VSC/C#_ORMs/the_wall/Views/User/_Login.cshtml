@@ -1,0 +1,18 @@
+@model Login
+
+<h2>Already Registered</h2>
+<h1>Login Here!</h1>
+<form asp-action="login" asp-controller="user" methods="POST">
+    <span asp-validation-for="Login_Email" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="Login_Email"></label>
+        <input asp-for="Login_Email">
+    </div>
+
+    <span asp-validation-for="Login_Password" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <label asp-for="Login_Password"></label>
+        <input asp-for="Login_Password">
+    </div>
+    <button class="btn btn-primary">Log In!</button>
+</form>

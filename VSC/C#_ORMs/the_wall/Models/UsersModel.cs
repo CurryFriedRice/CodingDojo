@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace login_registration_template.Models
+namespace the_wall.Models
 {
     public class Users
     {
@@ -24,10 +24,8 @@ namespace login_registration_template.Models
         [MinLength(2, ErrorMessage = "Last name must be at least 2 characters long")]
         public string LastName {get;set;}
 
-        
         public DateTime created_at{get;set;}
         public DateTime updated_at{get;set;}
-
 
         [NotMapped]
         [DataType(DataType.Password)]
@@ -42,6 +40,9 @@ namespace login_registration_template.Models
         public string FullName{get{
             return $"{FirstName} {LastName}"; 
         }}
+
+        public List<Messages> Messages;
+        public List<Comments> Comments;
         
     }
 }
