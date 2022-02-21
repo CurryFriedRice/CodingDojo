@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - the_wall</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css"/>
 </head>
 <body>
     <header>
@@ -26,6 +27,13 @@
                         </li>
                     </ul>
                 </div>
+                @* @if(ViewBag.LoggedIn){
+                    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="logout">Logout</a> 
+                }
+                else
+                {
+                    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Sign in</a> 
+                } *@
             </div>
         </nav>
     </header>

@@ -18,9 +18,10 @@ namespace the_wall.Controllers
             _logger = logger;
         }
 
+        [HttpGet("")]
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index","User");
         }
 
         public IActionResult Privacy()

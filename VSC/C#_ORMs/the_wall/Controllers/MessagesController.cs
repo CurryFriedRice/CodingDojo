@@ -43,6 +43,8 @@ namespace the_wall.Controllers
         [HttpGet("Messages")]
         public IActionResult Index()
         {
+            if(!LoggedIn) return RedirectToAction("Index","User");
+
             ViewBag.Messages = DbConnection.Messages.ToList();
             return View();
         }
@@ -50,9 +52,22 @@ namespace the_wall.Controllers
         [HttpPost("Messages/New")]
         public IActionResult New(SubmissionModel newSubmission)
         {
+
+            if(!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            Console.WriteLine($"USERID {UserID}");
+
             newSubmission.UserID = (int)UserID;
             Messages newMessage = new Messages();
             newMessage.Setup(newSubmission);
+
+            Console.WriteLine(newMessage.Message);
+
+
+            DbConnection.Messages.Add(newMessage);
+            DbConnection.SaveChanges();
             return RedirectToAction("Index", "Messages");
         }
 

@@ -95,7 +95,7 @@ namespace the_wall.Controllers
                 HttpContext.Session.SetInt32("uid", user.UserID);
                 //ViewBag.UUID = HttpContext.Session.getU("UserId");
 
-                return RedirectToAction("Success");
+                return RedirectToAction("Index", "Messages");
             }
 
             return View("Index");
