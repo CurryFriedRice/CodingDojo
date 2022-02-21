@@ -20,7 +20,7 @@ namespace login_registration_template.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "user");
         }
 
         public IActionResult Privacy()

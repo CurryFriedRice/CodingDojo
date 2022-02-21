@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace wedding_planner.Models
+namespace login_registration_template.Models
 {
     public class Login
     {
