@@ -13,14 +13,12 @@ namespace the_wall.Models
         public int UserID{get;set;}
         public string Message{get;set;}
         
-        public DateTime Created_At{get;set;}
-        public DateTime Updated_At{get;set;}
+        public DateTime Created_At{get;set;} = DateTime.Now;
+        public DateTime Updated_At{get;set;} = DateTime.Now;
 
-        public Users User;
-        public List<Comments> Comments;
-    
-    
-        
+        public Users User {get;set;}
+        public List<Comments> Comments{get;set;}
+
         public string DateFormatted()
         {
             return Updated_At.ToString("MMMM dd, yyyy");

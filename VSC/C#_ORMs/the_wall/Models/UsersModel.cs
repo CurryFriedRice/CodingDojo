@@ -24,8 +24,8 @@ namespace the_wall.Models
         [MinLength(2, ErrorMessage = "Last name must be at least 2 characters long")]
         public string LastName {get;set;}
 
-        public DateTime created_at{get;set;}
-        public DateTime updated_at{get;set;}
+        public DateTime created_at{get;set;} = DateTime.Now;
+        public DateTime updated_at{get;set;} = DateTime.Now;
 
         [NotMapped]
         [DataType(DataType.Password)]

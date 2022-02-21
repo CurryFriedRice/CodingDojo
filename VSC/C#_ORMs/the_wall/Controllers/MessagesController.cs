@@ -45,7 +45,17 @@ namespace the_wall.Controllers
         {
             if(!LoggedIn) return RedirectToAction("Index","User");
 
-            ViewBag.Messages = DbConnection.Messages.ToList();
+            ViewBag.Messages = DbConnection.Messages
+                .Include(M => M.User)
+                .Include(M => M.Comments)
+                    .ThenInclude(C => C.User)
+                .ToList();
+
+            // ViewBag.Messages = DbConnection.Messages
+            //         .Include(msg => msg.User)
+            //         .Include(msg => msg.Comments)
+            //             .ThenInclude(com => com.User)
+            //         .ToList();
             return View();
         }
 
@@ -55,6 +65,7 @@ namespace the_wall.Controllers
 
             if(!ModelState.IsValid)
             {
+                ViewBag.Messages = DbConnection.Messages.ToList();
                 return View("Index");
             }
             Console.WriteLine($"USERID {UserID}");

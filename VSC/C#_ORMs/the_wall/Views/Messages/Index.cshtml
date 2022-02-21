@@ -1,7 +1,12 @@
 @model SubmissionModel
 
 
+<div class="d-flex justify-content-between">
 <h1>Post a message</h1>
+    <form asp-area="" asp-controller="User" asp-action="logout" methods="POST">
+    <a><button class="btn">Logout</button></a> 
+    </form>
+</div>
 <form asp-action="new" asp-controller="messages" methods="POST" class="d-flex flex-column justify-content-right">
     <textarea asp-for="Message"></textarea>
     <button class="btn btn-primary half-side">Post a Message</button>

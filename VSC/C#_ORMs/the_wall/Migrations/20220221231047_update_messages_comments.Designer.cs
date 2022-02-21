@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using the_wall.Models;
 
 namespace the_wall.Migrations
 {
     [DbContext(typeof(WallContext))]
-    partial class WallContextModelSnapshot : ModelSnapshot
+    [Migration("20220221231047_update_messages_comments")]
+    partial class update_messages_comments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
