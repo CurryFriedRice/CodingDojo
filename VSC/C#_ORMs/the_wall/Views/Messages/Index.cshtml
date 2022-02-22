@@ -12,24 +12,38 @@
     <button class="btn btn-primary half-side">Post a Message</button>
 </form>
 
-
+@* Note this is mad inefficient..... Figure out how to make it efficient later *@
 @foreach(Messages Message in ViewBag.Messages)
 {
     <div>
-        <h2>@Message.User.FullName - @Message.</h2>
+        <div class="d-flex justify-content-between">
+            <h2>@Message.User.FullName - @Message.DateFormatted()</h2>
+            @if(Message.User.UserID == ViewBag.UserID && (DateTime.Now-Message.Created_At).Minutes < 30)
+            {
+                <form asp-action="delete" asp-controller="messages" methods="POST">
+                    <input hidden asp-for="MessageID">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            }
+        </div>
         <p>@Message.Message</p>
             <div>
-                foreach(Comments Comment in Message.Comments)
+                @foreach(Comments Comment in ViewBag.Comments)
                 {
-                    <h2>@Message.User.FullName - @Message.</h2>
-                    <p>@Message.Message</p>
+                    if(Comment.MessageID == Message.MessageID){
+                    <div class="pl-3">
+                        <h3>@Comment.User.FullName - @Comment.DateFormatted()</h3>
+                        <p>@Comment.Message</p>
+                    </div>
+                    }
                 }
-            <form asp-action="new" asp-controller="Comments" methods="POST" >
-                <input hidden asp-for="MessageID" value=@Message.MessageID>
-                <textarea asp-for="Message"></textarea>
-                <button class="btn btn-success">Post a Message</button>
-            </form>
-            </div>
-    
+                <form asp-action="new" asp-controller="Comments" methods="POST" class="d-flex flex-column justify-content-right">
+                    <h2>Post a comment!</h2>
+                    <input hidden asp-for="MessageID" value=@Message.MessageID>
+                    <textarea asp-for="Message"></textarea>
+                    <button class="btn btn-success">Post a Message</button>
+                </form>
+            </div>   
+            <hr>
     </div>
 }

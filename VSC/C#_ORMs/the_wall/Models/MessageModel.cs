@@ -17,7 +17,7 @@ namespace the_wall.Models
         public DateTime Updated_At{get;set;} = DateTime.Now;
 
         public Users User {get;set;}
-        public List<Comments> Comments{get;set;}
+        public List<Comments> UserComments{get;set;}
 
         public string DateFormatted()
         {

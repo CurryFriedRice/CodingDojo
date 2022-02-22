@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using the_wall.Models;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 
 namespace the_wall.Controllers
@@ -46,11 +45,22 @@ namespace the_wall.Controllers
             if(!LoggedIn) return RedirectToAction("Index","User");
 
             ViewBag.Messages = DbConnection.Messages
-                .Include(M => M.User)
-                .Include(M => M.Comments)
+                .Include(M => M.UserComments)
                     .ThenInclude(C => C.User)
+                .Include(M => M.User)
                 .ToList();
+            
+            ViewBag.Comments = DbConnection.Comments.ToList();
+            foreach(var Message in ViewBag.Messages)
+            {
+                Console.WriteLine($"Message Count: {Message.UserComments.Count}");
+            }
 
+            ViewBag.UserID = UserID;
+            foreach(var Message in ViewBag.Messages)
+            {
+                Console.WriteLine(Message.UserID == UserID);
+            }
             // ViewBag.Messages = DbConnection.Messages
             //         .Include(msg => msg.User)
             //         .Include(msg => msg.Comments)

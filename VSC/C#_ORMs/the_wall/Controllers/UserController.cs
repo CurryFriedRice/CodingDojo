@@ -65,7 +65,8 @@ namespace the_wall.Controllers
                 int uid = DbConnection.Users.FirstOrDefault(user => user.Email == NewUser.Email).UserID;
                 HttpContext.Session.SetInt32("uid", uid);
 
-                return RedirectToAction("Success");
+
+                return RedirectToAction("Index", "Messages");
             }
 
             return View("Index");
