@@ -18,10 +18,12 @@
     <div>
         <div class="d-flex justify-content-between">
             <h2>@Message.User.FullName - @Message.DateFormatted()</h2>
-            @if(Message.User.UserID == ViewBag.UserID && (DateTime.Now-Message.Created_At).Minutes < 30)
+            @if(Message.User.UserID == ViewBag.UserID && (DateTime.Now-Message.Created_At).TotalMinutes < 30)
             {
+                TimeSpan aged = (DateTime.Now-Message.Created_At); 
+                <p>@aged.TotalMinutes</p>
                 <form asp-action="delete" asp-controller="messages" methods="POST">
-                    <input hidden asp-for="MessageID">
+                    <input hidden asp-for="MessageID" value=@Message.MessageID>
                     <button class="btn btn-danger">Delete</button>
                 </form>
             }

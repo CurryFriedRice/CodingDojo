@@ -92,6 +92,19 @@ namespace the_wall.Controllers
             return RedirectToAction("Index", "Messages");
         }
 
+        [HttpPost("Messages/delete")]
+        public IActionResult Delete(SubmissionModel target)
+        {
+            Messages message = DbConnection.Messages.FirstOrDefault(mess => mess.MessageID == target.MessageID);
+            // Console.WriteLine(message);
+            // Console.WriteLine(message.Message);
+            // Console.WriteLine(message.MessageID);
+
+            DbConnection.Messages.Remove(message);
+            DbConnection.SaveChanges();
+            return RedirectToAction("Index", "Messages");
+
+        }
         public IActionResult Privacy()
         {
             return View();
