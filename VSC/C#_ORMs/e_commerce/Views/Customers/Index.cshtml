@@ -1,0 +1,27 @@
+
+@using Stripe
+@model StripeList<Customer>
+
+@{
+    AddCustomer newCustomer = new AddCustomer();
+}
+<partial name="_NewCustomerPartial.cshtml" model="newCustomer"/>
+
+
+<h1>All USERS</h1>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Created On</th>
+    <th>Action</th>
+</tr>
+@foreach(Customer customer in ViewBag.Customers.Data)
+{
+    <tr>
+        <td>@customer.Name</td>
+        <td>@customer.Created.ToString("MMMM dd, yyyy")</td>
+        <td><form><button class="btn btn-danger">Remove</button></form></td>
+    </tr>
+}
+</table>

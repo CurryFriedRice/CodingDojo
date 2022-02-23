@@ -1,0 +1,14 @@
+@using Stripe
+@model StripeList<Customer>
+
+@{
+    AddCustomer newCustomer = new AddCustomer();
+}
+<partial name="_NewCustomerPartial.cshtml" model="newCustomer"/>
+
+<h1>All Users</h1>
+
+@foreach(Customer customer in Model.Data)
+{
+    <h1>@customer.Name</h1>
+}

@@ -1,0 +1,11 @@
+
+@model AddCustomer;
+
+<form asp-action="add" asp-controller="customers" methods="POST">
+    <span asp-validation-for="Name"></span>
+    <div class="d-flex mr-3">
+        <label asp-for="Name" class="mr-3"></label>
+        <input asp-for="Name" class="mr-3">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+</form>

@@ -21,15 +21,62 @@ namespace e_commerce.Controllers
             _logger = logger;
         }
 
+        [HttpGet("customers")]
         public IActionResult Index()
         {
-        CustomerService service = new CustomerService();
-        var requestOptions = new RequestOptions
+            CustomerService service = new CustomerService();
+            var requestOptions = new RequestOptions
+            {
+                ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq"
+            };
+            StripeList<Customer> customers = service.List(null, requestOptions);
+            Console.WriteLine(customers);
+            ViewBag.Customers = customers;
+            return View();
+        }
+
+        // [HttpGet("customers/new")]
+        // public IActionResult New()
+        // {
+        //     //Get the form for a new Customer
+        //     CustomerService service = new CustomerService();
+        //     var requestOptions = new RequestOptions
+        //     {
+        //         ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq"
+        //     };
+        //     StripeList<Customer> customers = service.List(null, requestOptions);
+        //     Console.WriteLine(customers);
+        //     return View(customers);
+        // }
+
+        [HttpGet("customers/edit")]
+        public IActionResult Edit()
         {
-            ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq"
-        };
-        var customer = service.Get("cus_LCViLKMDcHExWJ" ,null, requestOptions);
-        Console.WriteLine(customer.Balance);
+
+            return View();
+        }
+
+        [HttpPost("customers/add")]
+        public IActionResult Add(AddCustomer newCustomer)
+        {
+            // var requestOptions = new RequestOptions
+            // {
+            //     ApiKey = ""
+            // };
+            StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
+
+            var options = new CustomerCreateOptions
+            {
+                Name = newCustomer.Name
+            };   
+            CustomerService service = new CustomerService();
+            service.Create(options);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("customers/delete")]
+        public IActionResult Delete()
+        {
             return View();
         }
 
