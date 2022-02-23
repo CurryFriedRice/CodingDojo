@@ -1,0 +1,32 @@
+@using Stripe
+@model StripeList<Quote>
+@* 
+@{
+    AddCustomer newCustomer = new AddCustomer();
+}
+<partial name="_NewCustomerPartial.cshtml" model="newCustomer"/>
+ *@
+
+@{
+    AddOrder newOrder = new AddOrder();
+}
+<partial name="_NewOrderPartial.cshtml" model="newOrder"/>
+@* @Html.Partial("_NewOrderPartial.cshtml", {V}) *@
+<h3>All Orders</h3>
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Product</th>
+    <th>Amount</th>
+    <th>Created On</th>
+</tr>
+@foreach(Invoice Invoice in ViewBag.Invoices.Data)
+{
+    <tr>
+        <td>@Invoice.CustomerName</td>
+        <td>@Invoice.Lines.Data[0].Description</td>
+        <td>@Invoice.Lines.Data[0].Quantity</td>
+        <td>@Invoice.Created.ToString("MMMM dd, yyyy")</td>
+    </tr>
+}
+</table>
