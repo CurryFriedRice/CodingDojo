@@ -57,19 +57,20 @@ namespace e_commerce.Controllers
         }
 
         [HttpPost("customers/add")]
-        public IActionResult Add(AddCustomer newCustomer)
+        public IActionResult Add(CustomerModel newCustomer)
         {
-            // var requestOptions = new RequestOptions
-            // {
-            //     ApiKey = ""
-            // };
             StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
-
+            CustomerService service = new CustomerService();
+            var existingCustomers = service.List();
+            if(existingCustomers.FirstOrDefault(cust=> cust.Name.ToLower() == newCustomer.Name.ToLower()) != null)
+            {
+                ModelState.AddModelError("Name", "User with that name already exists");
+            }
+            
             var options = new CustomerCreateOptions
             {
                 Name = newCustomer.Name
             };   
-            CustomerService service = new CustomerService();
             service.Create(options);
             return RedirectToAction("Index");
         }
@@ -77,6 +78,7 @@ namespace e_commerce.Controllers
         [HttpPost("customers/delete")]
         public IActionResult Delete()
         {
+
             return View();
         }
 
