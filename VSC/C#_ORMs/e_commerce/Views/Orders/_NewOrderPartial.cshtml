@@ -13,7 +13,7 @@
     </select>
     </div>
     <div>
-    <span asp-validation-for="Quantity"></span>
+    <span asp-validation-for="Quantity" class="text-danger"></span>
     <label asp-for="Quantity"  style="width:100px"></label>
     <select asp-for="Quantity" style="width:50px">
         @for(int i = 1; i < 100; i++)
