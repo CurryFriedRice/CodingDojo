@@ -31,6 +31,8 @@ namespace e_commerce
             // services.AddDbContext<ProjectContext>(options => options.UseMySql (Configuration["DBInfo:ConnectionString"]));
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddSession();
+            StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
+
 
         }
 

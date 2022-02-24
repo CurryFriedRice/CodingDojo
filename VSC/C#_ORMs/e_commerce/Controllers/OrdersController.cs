@@ -40,7 +40,7 @@ namespace e_commerce.Controllers
         [HttpPost("orders/add")]
         public IActionResult Add(OrderModel newOrder)
         {
-            StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
+            // StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
 
             var prodService = new ProductService();
             var prod = prodService.Get(newOrder.ProductID);
@@ -62,6 +62,8 @@ namespace e_commerce.Controllers
                     {"Stock", amountLeft.ToString()}
                 }
             };
+
+            prodService.Update(prod.Id, prodOptions);
            
             var custService = new CustomerService();
             var cust = custService.Get(newOrder.CustomerID);
@@ -74,7 +76,7 @@ namespace e_commerce.Controllers
                 Customer =  newOrder.CustomerID,
                 Quantity = newOrder.Quantity,
                 Description = prod.Name,
-                // Price = allPrices.FirstOrDefault(price => price.ProductId == newOrder.ProductID).Id
+                Price = allPrices.FirstOrDefault(price => price.ProductId == newOrder.ProductID).Id
             };
             var iiService = new InvoiceItemService();
             iiService.Create(iiOptions);

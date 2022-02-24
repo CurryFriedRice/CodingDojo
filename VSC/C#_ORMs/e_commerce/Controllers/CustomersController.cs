@@ -59,7 +59,7 @@ namespace e_commerce.Controllers
         [HttpPost("customers/add")]
         public IActionResult Add(CustomerModel newCustomer)
         {
-            StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
+            // StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
             CustomerService service = new CustomerService();
             var existingCustomers = service.List();
             if(existingCustomers.FirstOrDefault(cust=> cust.Name.ToLower() == newCustomer.Name.ToLower()) != null)
@@ -78,7 +78,7 @@ namespace e_commerce.Controllers
         [HttpPost("customers/delete")]
         public IActionResult Delete(CustomerModel targetCustomer)
         {
-            StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
+            // StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
 
             var Service = new CustomerService();
             Service.Delete(targetCustomer.Name);
