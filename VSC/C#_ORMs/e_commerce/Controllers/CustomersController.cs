@@ -24,14 +24,11 @@ namespace e_commerce.Controllers
         [HttpGet("customers")]
         public IActionResult Index()
         {
-            CustomerService service = new CustomerService();
-            var requestOptions = new RequestOptions
-            {
-                ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq"
-            };
-            StripeList<Customer> customers = service.List(null, requestOptions);
-            Console.WriteLine(customers);
-            ViewBag.Customers = customers;
+         
+            var service = new CustomerService();
+
+            ViewBag.Customers = new CustomerService().List();
+            // ViewBag.Products = new ProductService().List(null, requestOptions);
             return View();
         }
 

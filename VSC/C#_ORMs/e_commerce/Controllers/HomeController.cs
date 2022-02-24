@@ -21,8 +21,31 @@ namespace e_commerce.Controllers
             _logger = logger;
         }
 
+        [HttpGet("")]
         public IActionResult Index()
         {
+            var customerService = new CustomerService();
+            var customerOptions = new CustomerListOptions
+            {
+                Limit = 5,
+            };
+            ViewBag.Customers = customerService.List(customerOptions);
+            
+            var invoiceService = new InvoiceService();
+
+            var invoiceOptions = new InvoiceListOptions
+            {
+                Limit = 3,
+            };
+            ViewBag.Invoices = invoiceService.List(invoiceOptions);
+
+            var productService = new ProductService();
+            var productOptions = new ProductListOptions
+            {
+                Limit = 3,
+            };
+
+            ViewBag.Products = productService.List(productOptions);
             return View();
         }
 
