@@ -1,6 +1,6 @@
 
 @using Stripe
-@model StripeList<Customer>
+@model CustomerModel
 
 @{
     CustomerModel newCustomer = new CustomerModel();
@@ -21,7 +21,11 @@
     <tr>
         <td>@customer.Name</td>
         <td>@customer.Created.ToString("MMMM dd, yyyy")</td>
-        <td><form><button class="btn btn-danger">Remove</button></form></td>
+        <td><form asp-action="delete" asp-controller="customers" methods="POST"> 
+            <input hidden value="@customer.Id" asp-for="Name">
+            <button class="btn btn-danger">Remove</button>
+            </form>
+        </td>
     </tr>
 }
 </table>

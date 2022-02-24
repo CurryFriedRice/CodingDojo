@@ -4,7 +4,7 @@ using Stripe;
 
 namespace e_commerce.Models 
 {
-    public class AddOrder
+    public class OrderModel
     {
         public string CustomerID{get;set;}
         // public Customer Customer{get;set;}

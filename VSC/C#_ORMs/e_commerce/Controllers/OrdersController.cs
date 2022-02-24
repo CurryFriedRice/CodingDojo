@@ -38,7 +38,7 @@ namespace e_commerce.Controllers
         }
         
         [HttpPost("orders/add")]
-        public IActionResult Add(AddOrder newOrder)
+        public IActionResult Add(OrderModel newOrder)
         {
             StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
 

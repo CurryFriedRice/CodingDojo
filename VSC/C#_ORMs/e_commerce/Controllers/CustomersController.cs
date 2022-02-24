@@ -76,10 +76,13 @@ namespace e_commerce.Controllers
         }
 
         [HttpPost("customers/delete")]
-        public IActionResult Delete()
+        public IActionResult Delete(CustomerModel targetCustomer)
         {
+            StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
 
-            return View();
+            var Service = new CustomerService();
+            Service.Delete(targetCustomer.Name);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

@@ -24,21 +24,18 @@ namespace e_commerce.Controllers
         [HttpGet("Products")]
         public IActionResult Index()
         {
-            InvoiceService service = new InvoiceService();
-            var requestOptions = new RequestOptions
-            {
-                ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq"
-            };
-            StripeList<Invoice> invoices = service.List(null, requestOptions);
+            StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
+
+            ProductService service = new ProductService();
+
+            StripeList<Product> products = service.List();
             //Console.WriteLine(invoices);
-            ViewBag.Invoices = invoices;
-            ViewBag.Customers = new CustomerService().List(null,requestOptions);
-            ViewBag.Products = new ProductService().List(null, requestOptions);
+            ViewBag.Products = products;
             return View();
         }
         
         [HttpPost("Products/add")]
-        public IActionResult Add(AddOrder newOrder)
+        public IActionResult Add(OrderModel newOrder)
         {
             StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
 
