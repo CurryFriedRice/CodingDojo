@@ -13,8 +13,8 @@ namespace products_and_categories.Models
         public int ProductID { get; set; }
         public int CategoryID { get; set; }
 
-        public DateTime CreatedAt{get;set;}
-        public DateTime UpdatedAt{get;set;}
+        public DateTime CreatedAt{get;set;} = DateTime.Now;
+        public DateTime UpdatedAt{get;set;} = DateTime.Now;
 
         public Products Product{get;set;}
 
