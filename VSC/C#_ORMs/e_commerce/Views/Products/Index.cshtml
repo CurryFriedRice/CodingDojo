@@ -1,22 +1,33 @@
 @using Stripe
-@model StripeList<Product>
+@* @model StripeList<Product> *@
 
 @{
-    Product newProduct = new Product();
+    ProductModel newProduct = new ProductModel();
 }
 <div class="d-flex">
 
     <div>
         <partial name="_NewProduct.cshtml" model="newProduct"/>
     </div>
-    <div class="d-flex overflow-auto">
+    <div class="d-flex flex-wrap">
         @foreach (Product Product in ViewBag.Products)
         {
-            <div class="card m-1" style="width: 18rem;">
-                <img src="~/img/NoImage.jpg" class="card-img-top" alt="...">
+            <div class="card m-1" style="width: 200px;">
+                @if(Product.Images.Count == 0)
+                {
+                    <img src="~/img/NoImage.jpg" class="card-img-top" alt="..." style="width:200px; height:200px"> 
+                }
+                else
+                {
+                    <img src=@Product.Images[0] class="card-img-top" alt="..." style="width:200px; height:200px">
+                }
+                <p>@Product.Images.Count</p>
                 <div class="card-body">
                     <p class="card-text">@Product.Name</p>
+                </div>
+                <div class="card-footer">
                     <p>(@Product.Metadata["Stock"] left)</p>
+
                 </div>
             </div>
         }

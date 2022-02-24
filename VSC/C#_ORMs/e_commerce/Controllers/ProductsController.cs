@@ -35,36 +35,37 @@ namespace e_commerce.Controllers
         }
         
         [HttpPost("Products/add")]
-        public IActionResult Add(OrderModel newOrder)
+        public IActionResult Add(ProductModel newProduct)
         {
             StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
-
-            var prodService = new ProductService();
-            var prod = prodService.Get(newOrder.ProductID);
-            Console.WriteLine(prod);
-  
-            var custService = new CustomerService();
-            var cust = custService.Get(newOrder.CustomerID);
-           
-            var priceService = new PriceService();
-            var allPrices = priceService.List();
-
-            var iiOptions = new InvoiceItemCreateOptions
+            if(!ModelState.IsValid)
             {
-                Customer =  newOrder.CustomerID,
-                Quantity = newOrder.Quantity,
-                Description = prod.Name,
-                Price = allPrices.FirstOrDefault(price => price.ProductId == newOrder.ProductID).Id
-            };
-            var iiService = new InvoiceItemService();
-            iiService.Create(iiOptions);
+                ProductService prodService = new ProductService();
 
-            var invoiceOptions = new InvoiceCreateOptions
-            {
-                Customer = newOrder.CustomerID,
+                StripeList<Product> products = prodService.List();
+                //Console.WriteLine(invoices);
+                
+                ViewBag.Products = products;
+                return View("index");
+            }
+            
+            
+            // Dictionary<string, string> metadata = new Dictionary<string,string>();
+            // metadata.Add("Stock", newProduct.Quantity.ToString());
+            
+            ProductCreateOptions options = new ProductCreateOptions{
+                Name = newProduct.Name,    
+                Metadata = new Dictionary<string, string>
+                {
+                    {"Stock", newProduct.Quantity.ToString()}
+                }
             };
-            var service = new InvoiceService();
-            service.Create(invoiceOptions);
+
+            if(newProduct.ImageUrl != null)
+                options.Images = new List<string>(){newProduct.ImageUrl};
+
+            var service = new ProductService();
+            service.Create(options);
 
             return RedirectToAction("Index");
         }

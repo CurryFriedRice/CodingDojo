@@ -45,7 +45,32 @@ namespace e_commerce.Controllers
             var prodService = new ProductService();
             var prod = prodService.Get(newOrder.ProductID);
             Console.WriteLine(prod);
-  
+            
+            int amountLeft = int.Parse(prod.Metadata["Stock"])-newOrder.Quantity;
+            if(amountLeft < 0)
+            {
+                ModelState.AddModelError("Quantity", "Attempting to order more than available stock");
+                InvoiceService errService = new InvoiceService();
+                var requestOptions = new RequestOptions
+                {
+                    ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq"
+                };
+                StripeList<Invoice> invoices = errService.List(null, requestOptions);
+                //Console.WriteLine(invoices);
+                ViewBag.Invoices = invoices;
+                ViewBag.Customers = new CustomerService().List(null,requestOptions);
+                ViewBag.Products = new ProductService().List(null, requestOptions);
+                return View("Index");
+            }
+            var prodOptions = new ProductUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    {"Stock", amountLeft.ToString()}
+                }
+            };
+
+
             var custService = new CustomerService();
             var cust = custService.Get(newOrder.CustomerID);
            

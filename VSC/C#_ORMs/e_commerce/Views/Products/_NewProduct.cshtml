@@ -1,0 +1,27 @@
+@using Stripe
+@model ProductModel
+
+<form asp-action="add" asp-controller="products" style="width:200px">
+    <p>Add a new Product</p>
+    <div>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+        
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl">
+
+        <span asp-validation-for="Description" class="text-danger"></span>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity">
+
+    </div>
+    <div class="d-flex justify-content-end">
+    <button class="btn btn-primary">Submit</button>
+    </div>
+</form> 
