@@ -64,7 +64,7 @@ namespace e_commerce.Controllers
             };
 
             prodService.Update(prod.Id, prodOptions);
-           
+            
             var custService = new CustomerService();
             var cust = custService.Get(newOrder.CustomerID);
            
@@ -76,7 +76,8 @@ namespace e_commerce.Controllers
                 Customer =  newOrder.CustomerID,
                 Quantity = newOrder.Quantity,
                 Description = prod.Name,
-                Price = allPrices.FirstOrDefault(price => price.ProductId == newOrder.ProductID).Id
+                // Price = allPrices.FirstOrDefault(price => price.ProductId == newOrder.ProductID).Id
+                Price = "price_1KWWwZFBXJzgkFolVPmbOuDQ"
             };
             var iiService = new InvoiceItemService();
             iiService.Create(iiOptions);
