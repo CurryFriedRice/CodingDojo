@@ -50,16 +50,9 @@ namespace e_commerce.Controllers
             if(amountLeft < 0)
             {
                 ModelState.AddModelError("Quantity", "Attempting to order more than available stock");
-                InvoiceService errService = new InvoiceService();
-                var requestOptions = new RequestOptions
-                {
-                    ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq"
-                };
-                StripeList<Invoice> invoices = errService.List(null, requestOptions);
-                //Console.WriteLine(invoices);
-                ViewBag.Invoices = invoices;
-                ViewBag.Customers = new CustomerService().List(null,requestOptions);
-                ViewBag.Products = new ProductService().List(null, requestOptions);
+                ViewBag.Invoices = new InvoiceService().List();
+                ViewBag.Customers = new CustomerService().List();
+                ViewBag.Products = new ProductService().List();
                 return View("Index");
             }
             var prodOptions = new ProductUpdateOptions
@@ -69,8 +62,7 @@ namespace e_commerce.Controllers
                     {"Stock", amountLeft.ToString()}
                 }
             };
-
-
+           
             var custService = new CustomerService();
             var cust = custService.Get(newOrder.CustomerID);
            
@@ -82,7 +74,7 @@ namespace e_commerce.Controllers
                 Customer =  newOrder.CustomerID,
                 Quantity = newOrder.Quantity,
                 Description = prod.Name,
-                Price = allPrices.FirstOrDefault(price => price.ProductId == newOrder.ProductID).Id
+                // Price = allPrices.FirstOrDefault(price => price.ProductId == newOrder.ProductID).Id
             };
             var iiService = new InvoiceItemService();
             iiService.Create(iiOptions);

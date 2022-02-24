@@ -16,10 +16,10 @@ namespace e_commerce
         public static void Main(string[] args)
         {
             //GLOBALLY SET API KEY
-            // StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
-            // var service = new CustomerService();
-            // var customers = service.List();
-            // Console.WriteLine(customers);
+            StripeConfiguration.ApiKey = "sk_test_51KW5uZFBXJzgkFoluhW0nVcnAPNkdE5sfHkMiVIDzMBzNbDY0G1ppEHlWpAEzWmWDW6vV27xYJldoLvR5DQY0kFM00GDXz75Oq";
+            var service = new CustomerService();
+            var customers = service.List();
+            Console.WriteLine(customers);
 
             //Per Request
             // var service = new CustomerService();
