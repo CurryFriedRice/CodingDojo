@@ -39,9 +39,7 @@
         }
         document.querySelectorAll("p")[document.querySelectorAll("p").length-1].onclick = () => 
         {
-            console.log("click");
             let docItem = document.querySelectorAll("p")[document.querySelectorAll("p").length-1];
-            console.log(docItem);
             let value =  docItem.querySelector("input").value;
             docItem.style = `background-color: ${value}`;
             // let value =  document.querySelectorAll("p")[document.querySelectorAll("p").length-1].querySelector("input").value;
