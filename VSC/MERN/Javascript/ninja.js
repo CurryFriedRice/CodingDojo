@@ -11,7 +11,7 @@ class Ninja
     sayName = () => console.log(this.name);
     showStats = () => 
     {
-        console.log(`STR: ${this.strength} | SPD ${this.speed}`)
+        console.log(`HP: ${this.health} | STR: ${this.strength} | SPD ${this.speed}`)
     }
     drinkSake = () => this.health += 10;
     
@@ -20,4 +20,5 @@ class Ninja
 const ninja = new Ninja("Hayabusa");
 
 ninja.sayName();
+// ninja.drinkSake();
 ninja.showStats();
