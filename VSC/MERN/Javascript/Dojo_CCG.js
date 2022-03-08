@@ -50,9 +50,10 @@ class Effect extends Card
     ActivateEffect = (Target) => 
     {
         console.log(`${this.name} was Activated!`)
-        console.log(`${this.name} has ${this.Effect(Target, this.Amount)} `)
+        console.log(`${this.name} has ${this.Effect(Target)} `)
     }
 }
+
 
 /**
  * 
@@ -70,25 +71,47 @@ const   AdjustPower = (target, amount) =>
             return `${amount > 0 ? "Increased" : "Decreased"} ${target.name}'s Health By ${amount}`
         }
 
+/**
+ * 
+ * @param {string} statTarget 
+ * @param {int} amount 
+ * @returns 
+ */
+const Adjust = (statTarget, amount) =>
+{
+    return StatsOf = (target) => 
+    {
+        switch(statTarget.toLowerCase())
+        {
+            case "resiliance":
+                target.resiliance = (target.resiliance + amount) > 0 ? target.resiliance + amount : 0
+                return `${amount > 0 ? "Increased" : "Decreased"} ${target.name}'s Health By ${amount}`
+            case "power":
+                target.power = (target.power + amount) > 0 ? target.power + amount : 0
+                return `${amount > 0 ? "Increased" : "Decreased"} ${target.name}'s Resiliance By ${amount}`
+        }
+    }
+}
+
 const scenario = () => 
 {
     const printTurn = (number) => console.log(`\n===== TURN ${number} =====`);
 
     printTurn(1);
     const RedBeltNinja = new Unit(3,"Red Belt Ninja", 3, 4);
-    const HardAlgorithm = new Effect(2,"Hard Algorithim",AdjustHealth, 3)
+    const HardAlgorithm = new Effect(2,"Hard Algorithim",Adjust("resiliance",3))
     HardAlgorithm.ActivateEffect(RedBeltNinja);
     RedBeltNinja.ShowStats();
 
     printTurn(2);
     const BlackBeltNinja = new Unit(4,"Black Belt Ninja", 5,4);
-    const PromiseRejection = new Effect(1,"Unhandled Promise Rejection", AdjustHealth, -2)
+    const PromiseRejection = new Effect(1,"Unhandled Promise Rejection", Adjust("resiliance",-2))
     PromiseRejection.ActivateEffect(RedBeltNinja);
     BlackBeltNinja.ShowStats();
     RedBeltNinja.ShowStats();
 
     printTurn(3);
-    const PairProgramming = new Effect(3, "Pair Programming",AdjustPower, 2);
+    const PairProgramming = new Effect(3, "Pair Programming",Adjust("power", 2));
     PairProgramming.ActivateEffect(RedBeltNinja);
     RedBeltNinja.Attack(BlackBeltNinja);
     RedBeltNinja.ShowStats();
