@@ -1,5 +1,3 @@
-const { Console } = require("console");
-
 class Card
 {
     constructor(cost = 0,name = "N/A")
@@ -71,9 +69,6 @@ const   AdjustPower = (target, amount) =>
             target.resiliance = (target.resiliance + amount) > 0 ? target.resiliance + amount : 0
             return `${amount > 0 ? "Increased" : "Decreased"} ${target.name}'s Health By ${amount}`
         }
-
-
-
 
 const scenario = () => 
 {
