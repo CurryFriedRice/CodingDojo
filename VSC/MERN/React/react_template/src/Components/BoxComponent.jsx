@@ -11,13 +11,13 @@ const Box = props =>
             height: '128px',
             width: '128px'
     }
-        boxJSX.push(<div style={styleString}>{color}</div>)
+        boxJSX.push(<div style={styleString}></div>)
     }
 
     return(
         <fieldset>
             <div>Hello Boxes Go here!</div>  
-            <div>{JSON.stringify(props)}</div>
+            {/* <div>{JSON.stringify(props)}</div> */}
             <div class="d-flex">
             {
                 boxJSX
