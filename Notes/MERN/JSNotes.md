@@ -18,7 +18,12 @@ const [,varname]
 Targets the index of the array split via commas
 
 
+Spread operator
 //Take all the values of the object and output the copy
 const objectCopy = {...object}
 
 const [...value2] = array1;
+
+
+JSON.stringify(Object)
+- Turn an object into a JSON String Object so you can print it out.
