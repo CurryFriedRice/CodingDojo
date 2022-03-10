@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import BoxForm  from './Components/BoxFormComponent';
 import Box from './Components/BoxComponent';
-
+import isValidColor from "./js/isValidColor";
 
 function App() {
   const [colors, setColors] = useState([]);
@@ -12,10 +12,15 @@ function App() {
   
   const addNewColor = (color, newSize) =>
   {
-    setColors([...colors,color] );
-    setSize([...size,newSize]);
-  }
+    if(isValidColor(color))
+    {
+      setColors([...colors,color] );
+      setSize([...size,newSize]);
+    }else
+    {
 
+    }
+  }
 
   let boxes = []
   for(let i = 0; i < colors.length; i++)
@@ -29,7 +34,6 @@ function App() {
         <BoxForm onAddNewColor={addNewColor}/>
         <div className="d-flex">{boxes}</div>
       </header>
-      
     </div>
   );
 }
