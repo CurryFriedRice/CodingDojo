@@ -7,6 +7,7 @@ const Box = props =>
         backgroundColor: props.color,
         height: `${props.size}px`,
         width: `${props.size}px`,
+    
     }
     console.log(props)
     return <div style={Styling}></div>
