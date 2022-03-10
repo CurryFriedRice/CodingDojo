@@ -7,31 +7,27 @@ import Box from './Components/BoxComponent';
 
 function App() {
   const [colors, setColors] = useState([]);
-  const colorList = [];
-  const addNewColor = (color) =>
+  const [size, setSize] = useState([])
+  
+  
+  const addNewColor = (color, newSize) =>
   {
-    console.log(color)
-    colorList.push(...colors,color)
-    setColors(colorList);
+    setColors([...colors,color] );
+    setSize([...size,newSize]);
+  }
+
+
+  let boxes = []
+  for(let i = 0; i < colors.length; i++)
+  {
+    boxes = colors.map((color, index) => <Box color={color} size={size[index]}></Box>)
   }
 
   return (
-    <div className="App">
+    <div className="App" >
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
         <BoxForm onAddNewColor={addNewColor}/>
-        <Box colors={colors}/>
+        <div className="d-flex">{boxes}</div>
       </header>
       
     </div>

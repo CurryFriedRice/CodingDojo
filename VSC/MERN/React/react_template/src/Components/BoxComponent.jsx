@@ -1,30 +1,16 @@
-import React, { useState } from  'react';
+import React, {Component, useState} from "react"
 
 const Box = props => 
 {
-    let boxJSX = []
-    for(const color of props.colors)
-    {
-        let styleString = {
-            margin: "10px",
-            backgroundColor: color,
-            height: '128px',
-            width: '128px'
+    const Styling = {
+        margin: "10px",
+        backgroundColor: props.color,
+        height: `${props.size}px`,
+        width: `${props.size}px`,
+    
     }
-        boxJSX.push(<div style={styleString}></div>)
-    }
-
-    return(
-        <fieldset>
-            <div>Hello Boxes Go here!</div>  
-            {/* <div>{JSON.stringify(props)}</div> */}
-            <div class="d-flex">
-            {
-                boxJSX
-            }
-            </div>
-            <div>Help!</div>
-        </fieldset>
-    )
+    console.log(props)
+    return <div style={Styling}></div>
 }
+
 export default Box;
