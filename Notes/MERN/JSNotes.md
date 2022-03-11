@@ -1,4 +1,4 @@
-
+# 2022-03-09
 
 Keys must exist in object
 Destructuring
@@ -27,3 +27,13 @@ const [...value2] = array1;
 
 JSON.stringify(Object)
 - Turn an object into a JSON String Object so you can print it out.
+
+
+
+# 2022-03-10
+- When you start your react Project Open up the Dev tools
+
+const [State, setState] = useState('')
+const [State, setState] = useState(props.state)
+
+setState([...State, newState])
