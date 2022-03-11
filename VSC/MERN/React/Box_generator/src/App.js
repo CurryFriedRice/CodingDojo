@@ -27,7 +27,7 @@ function App() {
   {
     boxes = colors.map((color, index) => <Box color={color} size={size[index]}></Box>)
   }
-
+  
   return (
     <div className="App" >
       <header className="App-header">
