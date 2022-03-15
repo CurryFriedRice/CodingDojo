@@ -69,7 +69,7 @@
 
 .container
 {
-  width:480px;
+  width:1080px;
   color:white;
 }
 .content
@@ -80,4 +80,14 @@ body
 {
   background-color: #282c34;
 }
-.center{margin:0px auto;}
+
+.selected
+{
+  position: relative;
+  padding:10px;
+  margin:10px;
+  border: 2px solid #282c34;
+  background-color: white;
+  color: #282c34;
+
+}
