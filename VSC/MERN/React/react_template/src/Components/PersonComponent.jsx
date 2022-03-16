@@ -3,30 +3,35 @@ import
 {
   Link,
   useParams,
-  useHistory
 } from "react-router-dom";
 
 const Person = props => 
 {
     const [character, setCharacter] = useState();
     const [homeworld, setHomeWorld] = useState();
+    
     const {idx} = useParams();
-    const history = useHistory();
 
-    const updatePerson = () =>
+    const setHomeworldLink = ()=> 
     {
-        fetch(`https://swapi.dev/api/people/${idx}`)
-        .then(res => res.json())
-        .then(data => {
-            setCharacter(data)
-            fetch(data.homeworld)
-                .then(res => res.json())
-                .then(data => setHomeWorld(data));
-        })
+        const url = homeworld.url.split('/');
+        props.ChangeRoute(`/planets/${url[url.length-2]}`);
     }
 
     useEffect(() => {
-        updatePerson()
+        fetch(`https://swapi.dev/api/people/${idx}`)
+        .then(res => res.json())
+        .then(data => {
+
+            if(data.detail === "Not found") throw("err");
+            else
+            {
+                setCharacter(data)
+                fetch(data.homeworld)
+                .then(res => res.json())
+                .then(data => setHomeWorld(data));
+            }
+        }).catch((err) => props.err())
     },[idx])
 
 
@@ -46,8 +51,9 @@ const Person = props =>
             </tr>
             <tr>
                 <th>Homeworld: </th>
-                <td><a href=''onClick={() => history.push(`/planets/${idx}`)}>{homeworld === undefined?'' : homeworld.name}</a></td>
+                <td>{homeworld === undefined?'' : <a href=''onClick={() => setHomeworldLink()}>{homeworld.name}</a>}</td>
             </tr>
+            {/* <tr>{JSON.stringify(character)}</tr> */}
         </table>
     )
 }

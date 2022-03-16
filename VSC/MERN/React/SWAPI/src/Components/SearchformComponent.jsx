@@ -16,7 +16,8 @@ const SearchForm = props => {
         // props.Search(category.toLowerCase(),idx);
         // props.setURL(`/${category}/${idx}`)
         history.push(`/${category}/${idx}`)
-      }
+    }
+      
   return (
     <div>
         <form onSubmit={submitForm}>

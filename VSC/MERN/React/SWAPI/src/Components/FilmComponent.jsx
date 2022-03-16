@@ -1,30 +1,43 @@
 import React, {useState, useEffect} from "react";
-import 
-{
-  Link,
-} from "react-router-dom";
+import {useParams} from 'react-router-dom'
 
 const Film = props => 
 {
-  
+    const [film, setFilm] = useState()
+    const {idx} = useParams()
+
+    useEffect (() => {    
+        fetch(`https://swapi.dev/api/films/${idx}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data.detail === "Not found") throw("err");
+                setFilm(data)
+            }).catch(() => props.err());
+    },[idx])
+     
     return(
         <table className="table container text-light">
+            {film === undefined ? 
+            <p>"Loading"</p> :
+            <>
             <tr>
                 <th>Title: </th>
-                <td>{props.Film.title}</td>
+                <td>{film.title}</td>
             </tr>
             <tr>
                 <th>Episode: </th>
-                <td>{props.Film.episode_id}</td>
+                <td>{film.episode_id}</td>
             </tr>
             <tr>
                 <th>Director: </th>
-                <td>{props.Film.director}</td>
+                <td>{film.director}</td>
             </tr>
             <tr>
-                <th>Homeworld: </th>
-                <td>{props.Film.opening_crawl}</td>
+                <th>Crawl: </th>
+                <td>{film.opening_crawl}</td>
             </tr>
+            </>}
+            {}
         </table>
     )
 }

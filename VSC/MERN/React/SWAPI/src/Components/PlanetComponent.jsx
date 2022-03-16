@@ -10,11 +10,13 @@ const Planet = props =>
     const [planet, setPlanet] = useState()
     const {idx} = useParams()
     useEffect (() => {
+        
         fetch(`https://swapi.dev/api/planets/${idx}`)
             .then(res => res.json())
             .then(data => {
+                if(data.detail === "Not found") throw("err");
                 setPlanet(data)
-            })
+            }).catch(() => props.err());
     },[idx])
     
 
