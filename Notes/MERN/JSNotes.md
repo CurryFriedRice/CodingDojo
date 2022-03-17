@@ -37,3 +37,11 @@ const [State, setState] = useState('')
 const [State, setState] = useState(props.state)
 
 setState([...State, newState])
+
+
+# 2022-03-17
+Event loop
+Data goes in
+Data goes out
+The server runs asynchronously and can continue processing multiple requests
+
