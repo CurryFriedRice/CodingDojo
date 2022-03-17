@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//Connect to the mongoose server and create/use the Jokes_API model to post and get documents from
 mongoose.connect("mongodb://localhost/Jokes_API", {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
