@@ -45,3 +45,21 @@ Data goes in
 Data goes out
 The server runs asynchronously and can continue processing multiple requests
 
+
+
+
+# 2022-03-21
+"For in" is for items IN an array
+"for of" is for every KEY in an array
+
+The .notation implies that we know what the key is
+use square brackets to search for a parameter
+
+let keys = Object.keys(doggo) //Returns am array of keys in the object
+
+let values = Object.values(doggo) // Returns an array of values in the object JUST the values
+
+Object.entries(doggo) // returns a 2D array of Key value[] pairs
+
+doggo.hasOwnProperty("PROPERTY") // Returns a true/false
+//It's o[1] because just tries the key and if it can it can
