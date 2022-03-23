@@ -58,7 +58,8 @@ app.listen(PORT,() => console.log(`🌟🌟🌟Server up and ready to rock on po
 
 
 # 5. Server Config
-```js server/config/mongoose.config.js
+```js 
+//server/config/mongoose.config.js
 const mongoose = require('mongoose')
 
 module.exports = (DB) => {
@@ -69,7 +70,8 @@ module.exports = (DB) => {
 ```
 
 # 6. Models
-```js server/models/SCHEMA.models.js
+```js 
+//server/models/SCHEMA.models.js
 const mongoose = require('mongoose')
 
 const NoteSchema = new mongoose.Schema({
@@ -97,7 +99,8 @@ module.exports.Note = new mongoose.model("Notes", NoteSchema)
 ```
 
 # 7. Controllers - the CRUD operators
-```js server/models/SCHEMA.controllers.js
+```js 
+//server/models/SCHEMA.controllers.js
 const Note = require("../models/Note.models")
 // 8. -> CHECKPOINT CREATE A ROUTE
 
@@ -138,7 +141,8 @@ module.exports = {
 
 
 # 9. Controllers - the CRUD operators PT2
-```js server/models/SCHEMA.controllers.js
+```js 
+//server/models/SCHEMA.controllers.js
 const Note = require("../models/Note.models")
 // 8. -> CHECKPOINT CREATE A ROUTE
 
@@ -166,7 +170,7 @@ module.exports = {
             .then(newNote => res.json(newNote))
             .catch(err => {
                 console.log(err)
-                return res.json({Message: "Something Went wrong", error: err})
+                return res.status(400).json({Message: "Something Went wrong", error: err})
                 });
     },
     findOneWithID : (req,res) => //R of CRUD - READ 
@@ -174,7 +178,7 @@ module.exports = {
         console.log(req.params)
         Note.findByID(req.params.id)    //this should match "/api/:id"
             .then(note => res.json({data: note})) //Implicit Return
-            .catch(err => res.json({Message: "Something went wrong", error: err}))
+            .catch(err => res.status(400).json({Message: "Something went wrong", error: err}))
     },
     
     update : (req,res) => 
@@ -184,14 +188,14 @@ module.exports = {
             runValidators: true     //Tell it to run Validators
         })
             .then(updatedNote => res.json({"message": "Note Successfully Updated","data": note}))
-            .catch(err=> res.json({"message":"There was an error", error: "err"))
+            .catch(err=> res.status(400).json({"message":"There was an error", error: "err"))
     },
     deleteById : (req,res) =>
     {
         // Note.DeleteOne({_id:req.params.id})
         Note.findByIdAndDelete(req.params.id)
             .then(res => res.json({"message": "Successfully Deleted", data:res}))
-            .catch(err => res.json({"message": "Failed to Delete", error:err})
+            .catch(err => res.status(400).json({"message": "Failed to Delete", error:err})
     } 
 
     //----------------------------
@@ -215,3 +219,304 @@ module.exports = {
 6. DO NOT LEAVE POSTMAN UNTIL ALL ROUTES ARE TESTED!
 
 # -----FULL CRUD BACK END COMPLETE-----
+
+# 1 Client Side
+Outside of the Server Folder
+```
+npx create-react-app client
+
+cd client
+
+npm install axios react-router-dom@5
+```
+
+# 2 Setting up 
+```
+//index.js
+ADD BROWSER ROUTER TO WRAP THE CODE
+```
+
+```js
+import "./App.css"
+import {Link, Switch, Route, Redirect} from 'react-router-dom';
+
+import Main from "./views/main"
+import Create from "./views/create"
+import ViewOne from "./views/viewOne"
+
+function app() 
+{
+    return (
+        <div classname="App">
+            <h3>THING</h3>
+            <Link to="/"> Home</Link> 
+            <Link to="/notes/new"> new</Link>
+            <hr>
+            <Switch>
+            
+            // CREATE
+            <Route path="/notes/new">
+                <Create>
+            </Route>
+
+            // UPDATE
+            <Route path="/notes/:id/update">
+                <Update />
+            </Route>
+
+            //SHOW ONE
+            <Route path="/notes/:id">
+                <ViewOne/>
+            </Route>
+            <Route path="/notes">
+                <Main/>
+            </Route>
+            {/* REDIRECT */}
+            <Route path="/">
+                <Redirect to="/notes">
+            </Route>
+
+            </Switch> 
+        </div>
+    )
+}
+```
+
+# 3 Main JSX
+
+```jsx
+import react, {useEffect, useState} from 'react'
+import axios from 'axios'
+//IMPORTING CSS FROM MODULE
+import style from "./main.module.css"
+
+import {Link} from 'react-router-dom'
+
+const Main = (props) =>{
+    const [notes, setNotes] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/notes")
+        .then(res => {
+            console.log(res.data)   //Logs the data to see if we're even getting it
+            setNotes(res.data)
+        })
+        .catch(err => console.log(err))
+    },[])
+
+    return (
+        <div>
+        <h3>All notes<h3>
+           {json.stringify(notes)}
+           {notes.map((note, idx) => (
+            <div key={note._id}>
+            <h5>{note.isImportant? "IMPORTANT! 📌" : ''} - <Link to={`/notes/${id}`}>{note.title}</link</h5>
+            <p>{note.content}</p>
+            <p>{note.createdAt.toString("MM/dd/yyyy")}</p>
+            <br/>
+            <button><Link to={`/notes/update/${note._id}`}>Edit</Link></button>
+            <button>Delete</button>
+            </div>
+        ))}
+
+        </div>
+    )
+}
+
+```
+
+# 4. Create Form
+
+```jsx
+// ./views/create.module.jsx
+import React, {useState}from "react"
+import axios from "axios"
+
+import {useHistory} from "react-router-dom";
+
+
+const Create = props => 
+{
+    const [title,setTitle] = useState('')
+    const [content, setContent] = useState('')
+    const [important, setImportant] = useState(false)
+    const history = useHistory();
+    const createNote = (e) =>{
+        e.preventDefault()
+        console.log(title,content,important)
+        axios.post("http://localhost:8000/api/notes", {
+            title : title ,
+            content,
+            isImportant: important
+            })
+            .then( res => {console.log(res.data
+                history.push("/");
+            }))
+            .catch(err => console.log(err))
+    }
+    
+    return (
+    <div>
+        <h3> FORM: </h3>
+        <form onSubmit = {(e) => createNote(e)} >
+            <label>Title</label>
+            <input onChange={(e) => setTitle(e.target.value) value={title}}/>
+            <label>Content</label>
+            <input onChange={(e) => setContent(e.target.value) value={content}}/>
+            <label>Important?</label>
+            <input type="checkbox" onChange={(e) = setIsImportant(e.target.checked) checked={important}}/>
+            <button type="submit"> Submit</button>
+        </form>
+
+    </div>
+    )
+}
+```
+
+
+# 5. Update
+```jsx
+//UPDATE.JSX
+import React, {useState, useEffect}from "react"
+import axios from "axios"
+
+import {useHistory, useParams} from "react-router-dom";
+
+const Update = props =>{
+    const [title,setTitle] = useState('')
+    const [content, setContent] = useState('')
+    const [important, setImportant] = useState(false)
+    const history = useHistory();
+    const id = useParams();
+
+    const updateNote = (e) =>{
+        e.preventDefault()
+        console.log(title,content,important)
+        axios.put("http://localhost:8000/api/notes", {
+            title : title ,
+            content,
+            isImportant: important
+            })
+            .then( res => {console.log(res.data
+                history.push("/");
+            }))
+            .catch(err => console.log(err))
+    }
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/notes/${id}`)
+            .then(res => {
+                setTitle = res.data.title
+                setContent= res.data.content
+                important = res.data.isImportant;
+            })
+            .catch()
+    },[id]) //<--- DO NOT PUT PARAMS OR STATES IN HERE
+    
+    return (
+    <div>
+        <h3> UPDATE: </h3>
+        <form onSubmit = {(e) => createNote(e)} >
+            <label>Title</label>
+            <input onChange={(e) => setTitle(e.target.value) value={title}}/>
+            <label>Content</label>
+            <input onChange={(e) => setContent(e.target.value) value={content}}/>
+            <label>Important?</label>
+            <input type="checkbox" onChange={(e) = setIsImportant(e.target.checked) checked={important}}/>
+            <button type="submit"> Submit</button>
+        </form>
+    </div>
+    )
+}
+```
+
+# 6. SHOW ONE
+
+``` jsx
+import react, {useEffect, useState} from 'react'
+import axios from 'axios'
+
+import {
+    useParams
+} from 'react-router-dom'
+
+const viewOne = props => {
+    const {id} = useParams();
+    const {thisNote, setThisNote} = useState({})
+    useEffect(() => {
+        axios.get(`http://localhost/api/notes/${id}`)
+            .then(res=>{
+                console.log(res.data)
+                setThisNote(res.data);
+            })
+            .catch(err => 
+            {
+            console.log(err)
+            //Do get all errors in one line 
+            //const messages = Object.keys(errors).map(error => errors[error])
+            }
+            )
+    })
+    return(
+        <div >
+        <h3>{thisNote.Title}</h3> 
+        <p>{thisNote.content}</p> 
+        <p>{thisNote.isImportant}</p> 
+        </div>
+    )
+}
+
+```
+
+# 7. DELETE
+* MAIN.JSX
+```jsx
+import react, {useEffect, useState} from 'react'
+import axios from 'axios'
+//IMPORTING CSS FROM MODULE
+import style from "./main.module.css"
+
+import {Link} from 'react-router-dom'
+
+const Main = (props) =>{
+    const [notes, setNotes] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/notes")
+        .then(res => {
+            console.log(res.data)   //Logs the data to see if we're even getting it
+            setNotes(res.data)
+        })
+        .catch(err => console.log(err))
+    },[])
+
+    const deleteNote = (_id) => {
+        axios.delete(`http://localhost:8000/api/notes/${_id}`)
+            .then(res => {
+                console.log(res.data)
+                setNotes(notes.filter(item => item._id !== _id)
+            })
+
+            .catch((err) => console.log(err))
+    }
+
+    return (
+        <div>
+        <h3>All notes<h3>
+           {json.stringify(notes)}
+           {notes.map((note, idx) => (
+            <div key={note._id}>
+            <h5>{note.isImportant? "IMPORTANT! 📌" : ''} - {note.title}</h5>
+            <p>{note.content}</p>
+            <p>{note.createdAt.toString("MM/dd/yyyy")}</p>
+            <br/>
+            <button><Link to={`/notes/update/${note._id}`}>Edit</Link></button>
+            <button onClick={()=>deleteNote(note._id)}>Delete</button>
+            </div>
+        ))}
+
+        </div>
+    )
+}
+
+```
+
