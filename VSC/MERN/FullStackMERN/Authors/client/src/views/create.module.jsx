@@ -11,14 +11,6 @@ export default (props) =>{
     const [name, setName] = useState('')
     const [errors, setErrors] = useState([])
     const history = useHistory();
-    // useEffect(() => {
-    //     axios.get("http://localhost:8000/api/notes")
-    //     .then(res => {
-    //         console.log(res.data)   //Logs the data to see if we're even getting it
-    //         setNotes(res.data)
-    //     })
-    //     .catch(err => console.log(err))
-    // },[])
 
     const addItem = (e, authorName) =>
     {

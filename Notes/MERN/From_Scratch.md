@@ -119,6 +119,12 @@ module.exports = {
         .then(allNotes => res.json({notes: allNotes})) //Implicit Return
         .catch(err => res.json({Message: "Something went wront", error: err}))
     }, //<---- REMEMBER TO PUT THE COMMA AFTER
+
+    update : (req,res) => {
+        Author.findByIdAndUpdate(req.params.id, req.body, {new:true, runValidators:true})
+            .then(data => res.json({authors:data}))
+            .catch(err => res.status(400).json({err}))
+    }
 }
 ```
 
@@ -232,6 +238,10 @@ npm install axios react-router-dom@5
 
 # 2 Setting up 
 ```
+IN HTML FOR BOOTSTRAP ADD TO THE HEAD
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+```
+```
 //index.js
 ADD BROWSER ROUTER TO WRAP THE CODE
 ```
@@ -306,7 +316,7 @@ const Main = (props) =>{
 
     return (
         <div>
-        <h3>All notes<h3>
+        <h3>All notes</h3>
            {json.stringify(notes)}
            {notes.map((note, idx) => (
             <div key={note._id}>

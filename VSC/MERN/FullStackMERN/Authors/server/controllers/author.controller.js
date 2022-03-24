@@ -24,7 +24,7 @@ module.exports = {
     },
 
     update : (req,res) => {
-        Author.findByIdAndUpdate(req.params.id, req.body)
+        Author.findByIdAndUpdate(req.params.id, req.body, {new:true, runValidators:true})
             .then(data => res.json({authors:data}))
             .catch(err => res.status(400).json({err}))
     },

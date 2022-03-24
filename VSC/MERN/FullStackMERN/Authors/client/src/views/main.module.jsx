@@ -41,6 +41,10 @@ export default (props) =>{
             <h3>All Authors</h3>
             <Link to="/authors/new">Add new favorite Author</Link>
             <table className="table">
+                <tr>
+                    <th>Author</th>
+                    <th>Actions</th>
+                </tr>
                 {authors.map((author) => {
                     return(
                     <tr key={author._id}> 
