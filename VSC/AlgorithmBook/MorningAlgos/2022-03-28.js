@@ -28,23 +28,23 @@ const expected3 = [];
 
 function dropIt2(arr, callback) 
 {
-    for(let i = 0; i <= arr.length; i++)
-        if(callback(arr[i]))
-            return arr.slice(i)
-    return []
+    for(let i = 0; i <= arr.length; i++) //Ityerate through the entire array
+        if(callback(arr[i]))    //if we match the callback function then return at i
+            return arr.slice(i) //
+    return []   //otherwise return empty
 }
 
 function dropIt3(arr, callback) 
 {
-    for(let i = 0; i <= arr.length; i++){
-        if(callback(arr[0]))
-            return arr
-        else customShift(arr)
+    for(let i = 0; i <= arr.length; i++){   //Iterate through the array
+        if(callback(arr[0]))    //If the 0th elemen matches then return the array
+        return arr              //
+        else customShift(arr)   //Otherwise shift the array
     }
-    return []
+    return []   
 }
 
-const customShift = (arr) => {
+const customShift = (arr) => {  //It does what shift would do
     for(let i = 0; i < arr.length-1; i++)
         [arr[i], arr[i+1]] = [arr[i+1],arr[i]]
     arr.pop()
