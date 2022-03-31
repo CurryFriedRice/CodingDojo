@@ -63,13 +63,13 @@
 .stylish:hover
 {
   background-color: #aaaaaa;
-  animation-name: lighten;
+  animation-name: example;
   animation-duration: 1s;
 }
 
 .container
 {
-  width:480px;
+  width:1080px;
   color:white;
 }
 .content
@@ -80,4 +80,3 @@ body
 {
   background-color: #282c34;
 }
-.center{margin:0px auto;}

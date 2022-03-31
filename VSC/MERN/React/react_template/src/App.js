@@ -1,41 +1,26 @@
-import React, {useEffect, useState} from  'react';
-import 
-{
-  BrowserRouter,
-  Link,
-  Switch,
-  Route,
-  useLocation,
-  useHistory
-} from "react-router-dom";
+import React, {useState, createContext}from 'react';
+import Wrapper from './Components/Wrapper'
+import NavBar from './Components/NavBar'
+import FormWrapper from './Components/FormWrapper';
 
-import logo from './logo.svg';
-import obiwan from './static/img/obi-wan.jpg';
-import './App.css';
-
-import SearchForm from "./Components/SearchformComponent"
-import RenderResult from './Components/RenderResultComponent';
-
-function App() {
-  const Categories = ["People", "Planets", "Films", "Species", "Starships", "Vehicles"]
-  
-  const [result, setResult] = useState('')
-  // const [history] = useHistory();
-  
+export default function App() {
+  const [username, setUsername] = useState('Blah')
 
   return (
-    <BrowserRouter>
-    <div className='App text-light'>
-    <SearchForm Categories={Categories}/>
-    <Switch>
-      <Route to="/:category/:idx">
-        <RenderResult/>
-      </Route>
-    </Switch>
-    {/* <div>{JSON.stringify(result)}</div> */}
-    </div>
-    </BrowserRouter>
-  );
+    <Wrapper>
+      <NavBar/>
+      <FormWrapper/>
+    </Wrapper>
+  )
 }
 
-export default App;
+
+
+// function User() {
+//   return (
+//     <UserContext.Consumer>
+//       {value => <h1>{value}</h1>} 
+//       {/* prints: Reed */}
+//     </UserContext.Consumer>
+//   )
+// }
