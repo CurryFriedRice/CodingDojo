@@ -14,6 +14,8 @@ pipenv install PyMySQL Flask
 pipenv shell
 OR
 python -m pipenv shell
+
+Then python server.py
 ```
 ## 7. Create server.py
 ```py
